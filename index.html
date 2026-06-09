@@ -44,7 +44,7 @@ button{background:#06C755;color:#fff;border:0;padding:14px;width:100%;border-rad
 <input id="time" type="time">
 <textarea id="note" placeholder="備註：例如不加蔥、加辣"></textarea>
 <p><b>總金額：<span id="total">0</span> 元</b></p>
-<button onclick="sendOrder()">送出 LINE 訂單</button>
+<button onclick="sendOrder()">送出訂單</button>
 </div>
 </div>
 
@@ -77,39 +77,70 @@ document.getElementById('total').innerText=t;
 
 async function sendOrder(){
 
-  let total = 0;
-  let items = [];
-  let txt = '【初萊食麵線上訂餐】\n';
+let total = 0;
+let items = [];
 
-  data.forEach((m,i)=>{
-    let q = parseInt(document.getElementById('i'+i).value) || 0;
+data.forEach((m,i)=>{
 
-    if(q>0){
-      txt += `${m[1]} x ${q}\n`;
-      items.push(`${m[1]} x ${q}`);
-      total += q * m[2];
-    }
-  });
+let q = parseInt(
+document.getElementById('i'+i).value
+) || 0;
 
-  const orderData = {
-    name: document.getElementById('name').value,
-    phone: document.getElementById('phone').value,
-    pickupTime: document.getElementById('time').value,
-    note: document.getElementById('note').value,
-    items: items.join('、'),
-    total: total
-  };
-
-txt += `\n姓名：${orderData.name}`;
-txt += `\n電話：${orderData.phone}`;
-txt += `\n取餐時間：${orderData.pickupTime}`;
-txt += `\n備註：${orderData.note}`;
-txt += `\n總金額：${total}元`;
-
-  location.href =
-    'https://line.me/R/oaMessage/@249jltei/?' +
-    encodeURIComponent(txt);
+if(q > 0){
+items.push(`${m[1]} x ${q}`);
+total += q * m[2];
 }
-</script>
-</body>
-</html>
+
+});
+
+if(items.length === 0){
+alert('請先選擇餐點');
+return;
+}
+
+const orderData = {
+name: document.getElementById('name').value,
+phone: document.getElementById('phone').value,
+pickupTime: document.getElementById('time').value,
+note: document.getElementById('note').value,
+items: items.join('\n'),
+total: total
+};
+
+try{
+
+const response = await fetch(
+'https://script.google.com/macros/s/AKfycbypf75MeQUzAggQW4uxARUmrp3sZ08Nzc-1agVUSBtJnbX6pXS6WA6AVtKlkWHIiDDeig/exec',
+{
+method:'POST',
+headers:{
+'Content-Type':'application/json'
+},
+body:JSON.stringify(orderData)
+}
+);
+
+const result = await response.json();
+
+if(result.success){
+
+alert(
+'訂單送出成功！\n訂單編號：' +
+result.orderNo
+);
+
+location.reload();
+
+}else{
+
+alert('送單失敗');
+
+}
+
+}catch(err){
+
+alert('送單失敗，請稍後再試');
+
+}
+
+}
