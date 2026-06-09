@@ -100,11 +100,11 @@ async function sendOrder(){
     total: total
   };
 
-  txt += `\n姓名：${orderData.name}`;
-  txt += `\n電話：${orderData.phone}`;
-  txt += `\n取餐時間：${orderData.pickupTime}`;
-  txt += `\n備註：${orderData.note}`;
-  txt += `\n總金額：${total}元`;
+txt += `\n姓名：${orderData.name}`;
+txt += `\n電話：${orderData.phone}`;
+txt += `\n取餐時間：${orderData.pickupTime}`;
+txt += `\n備註：${orderData.note}`;
+txt += `\n總金額：${total}元`;
 
   location.href =
     'https://line.me/R/oaMessage/@249jltei/?' +
