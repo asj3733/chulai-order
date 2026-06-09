@@ -75,16 +75,52 @@ t+=q*m[2];
 document.getElementById('total').innerText=t;
 }
 
-function sendOrder(){
-let txt='【初萊食麵線上訂餐】\n';
+async function sendOrder(){
+
+let txt=’【初萊食麵線上訂餐】\n’;
 let total=0;
+let items=[];
+
 data.forEach((m,i)=>{
-let q=parseInt(document.getElementById('i'+i).value)||0;
-if(q>0){txt+=`${m[1]} x ${q}\n`; total+=q*m[2];}
-});
-txt+=`\n姓名：${name.value}\n電話：${phone.value}\n取餐時間：${time.value}\n備註：${note.value}\n總金額：${total}元`;
-location.href='https://line.me/R/oaMessage/@249jltei/?'+encodeURIComponent(txt);
+let q=parseInt(document.getElementById(‘i’+i).value)||0;
+
+if(q>0){
+txt+=${m[1]} x ${q}\n;
+items.push(${m[1]} x ${q});
+total+=q*m[2];
 }
-</script>
-</body>
-</html>
+});
+
+const orderData = {
+name: document.getElementById(‘name’).value,
+phone: document.getElementById(‘phone’).value,
+pickupTime: document.getElementById(‘time’).value,
+note: document.getElementById(‘note’).value,
+items: items.join(’、’),
+total: total
+};
+
+try{
+
+await fetch(
+‘https://script.google.com/macros/s/AKfycbypf75MeQUzAggQW4uxARUmrp3sZ08Nzc-1agVUSBtJnbX6pXS6WA6AVtKlkWHIiDDeig/exec’,
+{
+method:‘POST’,
+body:JSON.stringify(orderData)
+}
+);
+
+}catch(err){
+console.log(err);
+}
+
+txt += \n姓名：${orderData.name};
+txt += \n電話：${orderData.phone};
+txt += \n取餐時間：${orderData.pickupTime};
+txt += \n備註：${orderData.note};
+txt += \n總金額：${total}元;
+
+location.href =
+‘https://line.me/R/oaMessage/@249jltei/?’+encodeURIComponent(txt);
+
+}
