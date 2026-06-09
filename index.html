@@ -77,13 +77,40 @@ document.getElementById('total').innerText=t;
 
 async function sendOrder(){
 
-let txt=’【初萊食麵線上訂餐】\n’;
-let total=0;
-let items=[];
+async function sendOrder(){
 
 let total = 0;
 let items = [];
 let txt = '【初萊食麵線上訂餐】\n';
+
+data.forEach((m,i)=>{
+  let q = parseInt(document.getElementById('i'+i).value)||0;
+
+  if(q>0){
+    txt += `${m[1]} x ${q}\n`;
+    items.push(`${m[1]} x ${q}`);
+    total += q*m[2];
+  }
+});
+
+const orderData = {
+  name: document.getElementById('name').value,
+  phone: document.getElementById('phone').value,
+  pickupTime: document.getElementById('time').value,
+  note: document.getElementById('note').value,
+  items: items.join('、'),
+  total: total
+};
+
+txt += `\n姓名：${orderData.name}`;
+txt += `\n電話：${orderData.phone}`;
+txt += `\n取餐時間：${orderData.pickupTime}`;
+txt += `\n備註：${orderData.note}`;
+txt += `\n總金額：${total}元`;
+
+location.href='https://line.me/R/oaMessage/@249jltei/?'+encodeURIComponent(txt);
+
+}
 
 data.forEach((m,i)=>{
   let q = parseInt(document.getElementById('i'+i).value) || 0;
