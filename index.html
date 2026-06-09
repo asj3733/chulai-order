@@ -83,11 +83,41 @@ const data=[
 ];
 
 data.forEach((m,i)=>{
-document.getElementById(m[0]).insertAdjacentHTML('beforeend',
-`<div class="item"><span>${m[1]} $${m[2]}</span><input type="number" min="0" value="0" id="i${i}" onchange="calc()"></div>`);
+document.getElementById(m[0]).insertAdjacentHTML(
+'beforeend',
+`
+<div class="item">
+  <span>${m[1]} $${m[2]}</span>
+
+  <div class="qty">
+    <button type="button" onclick="minus(${i})">-</button>
+    <span id="qty${i}">0</span>
+    <button type="button" onclick="plus(${i})">+</button>
+    <input type="hidden" id="i${i}" value="0">
+  </div>
+</div>
+`
+);
 });
 
 function calc(){
+function plus(i){
+let el = document.getElementById('i'+i);
+el.value = parseInt(el.value || 0) + 1;
+document.getElementById('qty'+i).innerText = el.value;
+calc();
+}
+
+function minus(i){
+let el = document.getElementById('i'+i);
+
+if(parseInt(el.value) > 0){
+el.value = parseInt(el.value) - 1;
+}
+
+document.getElementById('qty'+i).innerText = el.value;
+calc();
+}
 let t=0;
 data.forEach((m,i)=>{
 let q=parseInt(document.getElementById('i'+i).value)||0;
