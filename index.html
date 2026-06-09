@@ -77,8 +77,6 @@ document.getElementById('total').innerText=t;
 
 async function sendOrder(){
 
-async function sendOrder(){
-
 let total = 0;
 let items = [];
 let txt = '【初萊食麵線上訂餐】\n';
@@ -113,7 +111,6 @@ location.href='https://line.me/R/oaMessage/@249jltei/?'+encodeURIComponent(txt);
 }
 
 data.forEach((m,i)=>{
-  let q = parseInt(document.getElementById('i'+i).value) || 0;
 
   if(q>0){
     txt += `${m[1]} x ${q}\n`;
