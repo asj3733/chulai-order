@@ -196,39 +196,24 @@ total: total
 
 try{
 
-const response = await fetch(
+await fetch(
 'https://script.google.com/macros/s/AKfycbypf75MeQUzAggQW4uxARUmrp3sZ08Nzc-1agVUSBtJnbX6pXS6WA6AVtKlkWHIiDDeig/exec',
 {
 method:'POST',
+mode:'no-cors',
 headers:{
-'Content-Type':'application/json'
+'Content-Type':'text/plain'
 },
 body:JSON.stringify(orderData)
 }
 );
 
-const result = await response.json();
-
-if(result.success){
-
-alert(
-'訂單送出成功！\n訂單編號：' +
-result.orderNo
-);
-
+alert('訂單已送出');
 location.reload();
-
-}else{
-
-alert('送單失敗');
-
-}
 
 }catch(err){
 
 alert(err);
-
-console.log(err);
 
 }
 
