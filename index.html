@@ -2,165 +2,75 @@
 <html lang="zh-Hant">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>初萊食麵｜線上點餐</title>
-
 <style>
-body{
-font-family:Arial,sans-serif;
-background:#f7f7f7;
-margin:0;
-padding:0;
-}
-
-header{
-background:#d35400;
-color:white;
-text-align:center;
-padding:20px;
-}
-
-.container{
-max-width:900px;
-margin:auto;
-padding:20px;
-}
-
-.card{
-background:white;
-padding:15px;
-margin-bottom:15px;
-border-radius:10px;
-box-shadow:0 2px 5px rgba(0,0,0,.1);
-}
-
-.menu-item{
-display:flex;
-justify-content:space-between;
-margin:10px 0;
-}
-
-input[type=number]{
-width:60px;
-}
-
-input,select{
-padding:8px;
-width:100%;
-margin-top:5px;
-margin-bottom:10px;
-}
-
-button{
-background:#06C755;
-color:white;
-border:none;
-padding:15px;
-width:100%;
-font-size:18px;
-border-radius:10px;
-cursor:pointer;
-}
-
-button:hover{
-opacity:0.9;
-}
+body{font-family:sans-serif;background:#f5f5f5;margin:0}
+header{background:#c75f22;color:#fff;text-align:center;padding:24px}
+.wrap{max-width:900px;margin:auto;padding:16px}
+.card{background:#fff;border-radius:12px;padding:16px;margin:16px 0}
+.item{display:flex;justify-content:space-between;align-items:center;padding:8px 0}
+input[type=number]{width:70px}
+input{width:100%;padding:10px;margin:6px 0}
+button{width:100%;padding:14px;background:#06C755;color:#fff;border:0;border-radius:10px;font-size:18px}
 </style>
 </head>
-
 <body>
-
 <header>
 <h1>初萊食麵</h1>
 <p>高雄市三民區遼寧二街168號</p>
-<p>電話：0903-392687</p>
-<p>週一~週五 11:30-20:30</p>
-<p>週六~週日 11:30-18:30</p>
+<p>0903-392687</p>
+<p>週一~週五 11:30-20:30｜週六~週日 11:30-18:30</p>
 </header>
-
-<div class="container">
-
-<div class="card">
-<h2>麵類</h2>
-
-<div class="menu-item">
-<span>肉燥乾麵 小 $50</span>
-<input type="number" min="0" value="0" id="a">
+<div class="wrap">
+<div class="card"><h2>麵類</h2>
+<div class="item"><span>肉燥乾麵 小 55</span><input type="number" id="n1" min="0" value="0"></div>
+<div class="item"><span>肉燥乾麵 大 65</span><input type="number" id="n2" min="0" value="0"></div>
+<div class="item"><span>肉燥米粉 小 55</span><input type="number" id="n3" min="0" value="0"></div>
+<div class="item"><span>湯麵 小 55</span><input type="number" id="n4" min="0" value="0"></div>
+<div class="item"><span>麻醬麵 小 60</span><input type="number" id="n5" min="0" value="0"></div>
+<div class="item"><span>鮮蝦餛飩麵 小 70</span><input type="number" id="n6" min="0" value="0"></div>
 </div>
 
-<div class="menu-item">
-<span>肉燥乾麵 大 $65</span>
-<input type="number" min="0" value="0" id="b">
+<div class="card"><h2>關東煮</h2>
+<div class="item"><span>黑輪 10</span><input type="number" id="n7" min="0" value="0"></div>
+<div class="item"><span>米血 10</span><input type="number" id="n8" min="0" value="0"></div>
+<div class="item"><span>魚板 10</span><input type="number" id="n9" min="0" value="0"></div>
+<div class="item"><span>蛋丸 10</span><input type="number" id="n10" min="0" value="0"></div>
 </div>
 
-<div class="menu-item">
-<span>麻醬麵 小 $55</span>
-<input type="number" min="0" value="0" id="c">
-</div>
-
-<div class="menu-item">
-<span>麻醬麵 大 $70</span>
-<input type="number" min="0" value="0" id="d">
-</div>
-
+<div class="card"><h2>其他</h2>
+<div class="item"><span>肉燥飯 35</span><input type="number" id="n11" min="0" value="0"></div>
+<div class="item"><span>白飯 15</span><input type="number" id="n12" min="0" value="0"></div>
+<div class="item"><span>燙青菜 40</span><input type="number" id="n13" min="0" value="0"></div>
+<div class="item"><span>水餃(10顆) 50</span><input type="number" id="n14" min="0" value="0"></div>
 </div>
 
 <div class="card">
 <h2>訂購資訊</h2>
-
-<label>姓名</label>
-<input id="name">
-
-<label>電話</label>
-<input id="phone">
-
-<label>取餐時間</label>
-<input type="time" id="time">
-</div>
-
-<div class="card">
+<input id="name" placeholder="姓名">
+<input id="phone" placeholder="電話">
+<input id="time" type="time">
 <button onclick="sendOrder()">送出LINE訂單</button>
 </div>
-
 </div>
 
 <script>
-
-function sendOrder(){
-
-let order="【初萊食麵線上訂餐】%0A";
-
-let total=0;
-
-const items=[
-["肉燥乾麵 小",50,"a"],
-["肉燥乾麵 大",65,"b"],
-["麻醬麵 小",55,"c"],
-["麻醬麵 大",70,"d"]
+const menu=[
+["肉燥乾麵 小",55,"n1"],["肉燥乾麵 大",65,"n2"],["肉燥米粉 小",55,"n3"],
+["湯麵 小",55,"n4"],["麻醬麵 小",60,"n5"],["鮮蝦餛飩麵 小",70,"n6"],
+["黑輪",10,"n7"],["米血",10,"n8"],["魚板",10,"n9"],["蛋丸",10,"n10"],
+["肉燥飯",35,"n11"],["白飯",15,"n12"],["燙青菜",40,"n13"],["水餃(10顆)",50,"n14"]
 ];
-
-items.forEach(i=>{
-let qty=parseInt(document.getElementById(i[2]).value)||0;
-if(qty>0){
-order+=`${i[0]} x ${qty}%0A`;
-total+=qty*i[1];
-}
+function sendOrder(){
+let txt="【初萊食麵線上訂餐】\n",total=0;
+menu.forEach(m=>{
+let q=parseInt(document.getElementById(m[2]).value)||0;
+if(q>0){txt+=m[0]+" x "+q+"\n"; total+=q*m[1];}
 });
-
-order+="%0A";
-order+="姓名："+document.getElementById("name").value+"%0A";
-order+="電話："+document.getElementById("phone").value+"%0A";
-order+="取餐時間："+document.getElementById("time").value+"%0A";
-order+="總金額："+total+"元";
-
-window.open(
-"https://line.me/R/oaMessage/@249jltei/?"+order,
-"_blank"
-);
-
+txt+="\n姓名："+name.value+"\n電話："+phone.value+"\n取餐時間："+time.value+"\n總金額："+total+"元";
+location.href="https://line.me/R/oaMessage/@249jltei/?"+encodeURIComponent(txt);
 }
-
 </script>
-
 </body>
 </html>
