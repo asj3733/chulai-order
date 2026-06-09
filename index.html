@@ -1,1 +1,166 @@
-index.html
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>初萊食麵｜線上點餐</title>
+
+<style>
+body{
+font-family:Arial,sans-serif;
+background:#f7f7f7;
+margin:0;
+padding:0;
+}
+
+header{
+background:#d35400;
+color:white;
+text-align:center;
+padding:20px;
+}
+
+.container{
+max-width:900px;
+margin:auto;
+padding:20px;
+}
+
+.card{
+background:white;
+padding:15px;
+margin-bottom:15px;
+border-radius:10px;
+box-shadow:0 2px 5px rgba(0,0,0,.1);
+}
+
+.menu-item{
+display:flex;
+justify-content:space-between;
+margin:10px 0;
+}
+
+input[type=number]{
+width:60px;
+}
+
+input,select{
+padding:8px;
+width:100%;
+margin-top:5px;
+margin-bottom:10px;
+}
+
+button{
+background:#06C755;
+color:white;
+border:none;
+padding:15px;
+width:100%;
+font-size:18px;
+border-radius:10px;
+cursor:pointer;
+}
+
+button:hover{
+opacity:0.9;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>初萊食麵</h1>
+<p>高雄市三民區遼寧二街168號</p>
+<p>電話：0903-392687</p>
+<p>週一~週五 11:30-20:30</p>
+<p>週六~週日 11:30-18:30</p>
+</header>
+
+<div class="container">
+
+<div class="card">
+<h2>麵類</h2>
+
+<div class="menu-item">
+<span>肉燥乾麵 小 $50</span>
+<input type="number" min="0" value="0" id="a">
+</div>
+
+<div class="menu-item">
+<span>肉燥乾麵 大 $65</span>
+<input type="number" min="0" value="0" id="b">
+</div>
+
+<div class="menu-item">
+<span>麻醬麵 小 $55</span>
+<input type="number" min="0" value="0" id="c">
+</div>
+
+<div class="menu-item">
+<span>麻醬麵 大 $70</span>
+<input type="number" min="0" value="0" id="d">
+</div>
+
+</div>
+
+<div class="card">
+<h2>訂購資訊</h2>
+
+<label>姓名</label>
+<input id="name">
+
+<label>電話</label>
+<input id="phone">
+
+<label>取餐時間</label>
+<input type="time" id="time">
+</div>
+
+<div class="card">
+<button onclick="sendOrder()">送出LINE訂單</button>
+</div>
+
+</div>
+
+<script>
+
+function sendOrder(){
+
+let order="【初萊食麵線上訂餐】%0A";
+
+let total=0;
+
+const items=[
+["肉燥乾麵 小",50,"a"],
+["肉燥乾麵 大",65,"b"],
+["麻醬麵 小",55,"c"],
+["麻醬麵 大",70,"d"]
+];
+
+items.forEach(i=>{
+let qty=parseInt(document.getElementById(i[2]).value)||0;
+if(qty>0){
+order+=`${i[0]} x ${qty}%0A`;
+total+=qty*i[1];
+}
+});
+
+order+="%0A";
+order+="姓名："+document.getElementById("name").value+"%0A";
+order+="電話："+document.getElementById("phone").value+"%0A";
+order+="取餐時間："+document.getElementById("time").value+"%0A";
+order+="總金額："+total+"元";
+
+window.open(
+"https://line.me/R/oaMessage/@249jltei/?"+order,
+"_blank"
+);
+
+}
+
+</script>
+
+</body>
+</html>
