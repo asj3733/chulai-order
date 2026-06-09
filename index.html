@@ -133,30 +133,33 @@ document.getElementById(m[0]).insertAdjacentHTML(
 );
 });
 
-function calc(){
 function plus(i){
-let el = document.getElementById('i'+i);
-el.value = parseInt(el.value || 0) + 1;
-document.getElementById('qty'+i).innerText = el.value;
-calc();
+  let el = document.getElementById('i'+i);
+  el.value = parseInt(el.value || 0) + 1;
+  document.getElementById('qty'+i).innerText = el.value;
+  calc();
 }
 
 function minus(i){
-let el = document.getElementById('i'+i);
+  let el = document.getElementById('i'+i);
 
-if(parseInt(el.value) > 0){
-el.value = parseInt(el.value) - 1;
+  if(parseInt(el.value) > 0){
+    el.value = parseInt(el.value) - 1;
+  }
+
+  document.getElementById('qty'+i).innerText = el.value;
+  calc();
 }
 
-document.getElementById('qty'+i).innerText = el.value;
-calc();
-}
-let t=0;
-data.forEach((m,i)=>{
-let q=parseInt(document.getElementById('i'+i).value)||0;
-t+=q*m[2];
-});
-document.getElementById('total').innerText=t;
+function calc(){
+  let t = 0;
+
+  data.forEach((m,i)=>{
+    let q = parseInt(document.getElementById('i'+i).value) || 0;
+    t += q * m[2];
+  });
+
+  document.getElementById('total').innerText = t;
 }
 
 async function sendOrder(){
