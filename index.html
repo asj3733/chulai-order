@@ -208,8 +208,54 @@ body:JSON.stringify(orderData)
 }
 );
 
-alert('訂單已送出');
-location.reload();
+document.body.innerHTML = `
+<div style="
+max-width:500px;
+margin:50px auto;
+padding:30px;
+text-align:center;
+font-family:Arial;
+">
+
+<h1 style="color:#06C755;">
+✅ 訂單送出成功
+</h1>
+
+<h2>
+感謝您的訂購
+</h2>
+
+<p>
+姓名：${orderData.name}
+</p>
+
+<p>
+取餐時間：${orderData.pickupTime}
+</p>
+
+<p>
+總金額：${total} 元
+</p>
+
+<p>
+初萊食麵已收到您的訂單 🍜
+</p>
+
+<button
+onclick="location.reload()"
+style="
+background:#06C755;
+color:white;
+border:none;
+padding:12px 25px;
+border-radius:10px;
+font-size:18px;
+">
+再訂一筆
+</button>
+
+</div>
+`;
 
 }catch(err){
 
