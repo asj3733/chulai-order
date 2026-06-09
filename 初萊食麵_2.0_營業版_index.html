@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>初萊食麵 2.0 營業版</title>
+<style>
+body{font-family:Arial,sans-serif;background:#f4f4f4;margin:0}
+header{background:#c65d1e;color:#fff;text-align:center;padding:20px}
+.wrap{max-width:1000px;margin:auto;padding:15px}
+.card{background:#fff;border-radius:12px;padding:15px;margin:15px 0}
+h2{margin-top:0}
+.item{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid #eee}
+input[type=number]{width:70px}
+input,textarea{width:100%;padding:10px;margin:6px 0;box-sizing:border-box}
+button{background:#06C755;color:#fff;border:0;padding:14px;width:100%;border-radius:10px;font-size:18px}
+.notice{background:#fff3cd;padding:10px;border-radius:8px}
+.tel{display:inline-block;padding:10px 15px;background:#333;color:#fff;text-decoration:none;border-radius:8px}
+</style>
+</head>
+<body>
+<header>
+<h1>初萊食麵</h1>
+<p>高雄市三民區遼寧二街168號</p>
+<p>週一~週五 11:30-20:30｜週六~週日 11:30-18:30</p>
+<a class="tel" href="tel:0903392687">📞 0903-392687</a>
+</header>
+
+<div class="wrap">
+<div class="card">
+<h2>公告</h2>
+<div class="notice">歡迎使用線上點餐，如有售完品項請依現場為準。</div>
+</div>
+
+<div class="card"><h2>麵類</h2><div id="cat1"></div></div>
+<div class="card"><h2>關東煮</h2><div id="cat2"></div></div>
+<div class="card"><h2>小菜</h2><div id="cat3"></div></div>
+<div class="card"><h2>湯類</h2><div id="cat4"></div></div>
+
+<div class="card">
+<h2>訂購資訊</h2>
+<input id="name" placeholder="姓名">
+<input id="phone" placeholder="電話">
+<input id="time" type="time">
+<textarea id="note" placeholder="備註：例如不加蔥、加辣"></textarea>
+<p><b>總金額：<span id="total">0</span> 元</b></p>
+<button onclick="sendOrder()">送出 LINE 訂單</button>
+</div>
+</div>
+
+<script>
+const data=[
+["cat1","肉燥乾麵(小)",55],["cat1","肉燥乾麵(大)",65],
+["cat1","肉燥米粉(小)",55],["cat1","肉燥米粉(大)",65],
+["cat1","湯麵(小)",55],["cat1","湯麵(大)",65],
+["cat1","麻醬麵(小)",60],["cat1","麻醬麵(大)",70],
+["cat1","鮮蝦餛飩麵(小)",70],["cat1","鮮蝦餛飩麵(大)",80],
+["cat2","黑輪",10],["cat2","米血",10],["cat2","魚板",10],["cat2","蛋丸",10],
+["cat2","菜頭",10],["cat2","竹輪",15],["cat2","貢丸",15],
+["cat3","滷蛋",15],["cat3","荷包蛋",20],["cat3","香腸",35],["cat3","手工大腸",50],
+["cat4","菜頭湯",25],["cat4","魚丸湯",30],["cat4","貢丸湯",30],["cat4","鮮蝦餛飩湯",50]
+];
+
+data.forEach((m,i)=>{
+document.getElementById(m[0]).insertAdjacentHTML('beforeend',
+`<div class="item"><span>${m[1]} $${m[2]}</span><input type="number" min="0" value="0" id="i${i}" onchange="calc()"></div>`);
+});
+
+function calc(){
+let t=0;
+data.forEach((m,i)=>{
+let q=parseInt(document.getElementById('i'+i).value)||0;
+t+=q*m[2];
+});
+document.getElementById('total').innerText=t;
+}
+
+function sendOrder(){
+let txt='【初萊食麵線上訂餐】\n';
+let total=0;
+data.forEach((m,i)=>{
+let q=parseInt(document.getElementById('i'+i).value)||0;
+if(q>0){txt+=`${m[1]} x ${q}\n`; total+=q*m[2];}
+});
+txt+=`\n姓名：${name.value}\n電話：${phone.value}\n取餐時間：${time.value}\n備註：${note.value}\n總金額：${total}元`;
+location.href='https://line.me/R/oaMessage/@249jltei/?'+encodeURIComponent(txt);
+}
+</script>
+</body>
+</html>
