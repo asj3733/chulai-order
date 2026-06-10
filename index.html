@@ -84,8 +84,8 @@ margin-bottom:10px;
 
 <div class="card">
 <h2>訂購資訊</h2>
-<input id="name" placeholder="姓名">
-<input id="phone" placeholder="電話">
+<input id="name" placeholder="姓名(必填)">
+<input id="phone" placeholder="電話(必填)">
 <input id="time" type="time">
 <textarea id="note" placeholder="備註：例如不加蔥、加辣"></textarea>
 <div class="order-bar">
@@ -163,6 +163,24 @@ function calc(){
 }
 
 async function sendOrder(){
+
+const name = document.getElementById('name').value.trim();
+const phone = document.getElementById('phone').value.trim();
+
+if(name === ''){
+  alert('請輸入姓名');
+  return;
+}
+
+if(phone === ''){
+  alert('請輸入電話');
+  return;
+}
+
+if(!/^09\d{8}$/.test(phone)){
+  alert('請輸入正確手機號碼');
+  return;
+}
 
 let total = 0;
 let items = [];
