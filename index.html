@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>初萊食麵 2.0 營業版</title>
+<title>初萊食麵  營業版</title>
 <style>
 body{font-family:Arial,sans-serif;background:#f4f4f4;margin:0}
 header{background:#c65d1e;color:#fff;text-align:center;padding:20px}
@@ -74,7 +74,9 @@ margin-bottom:10px;
 <div class="wrap">
 <div class="card">
 <h2>公告</h2>
-<div class="notice">歡迎使用線上點餐，如有售完品項請依現場為準。</div>
+<div class="notice" id="notice">
+歡迎使用線上點餐，如有售完品項請依現場為準。
+</div>
 </div>
 
 <div class="card"><h2>麵類</h2><div id="cat1"></div></div>
@@ -276,6 +278,41 @@ alert(err);
 }
 
 }
+async function loadSetting(){
+
+try{
+
+const res = await fetch(
+'https://script.google.com/macros/s/AKfycbypf75MeQUzAggQW4uxARUmrp3sZ08Nzc-1agVUSBtJnbX6pXS6WA6AVtKlkWHIiDDeig/exec'
+);
+
+const data = await res.json();
+
+document.getElementById('notice').innerText =
+data.notice || '';
+
+if(data.status === '暫停'){
+
+document.querySelector('.submit-btn').disabled = true;
+
+document.querySelector('.submit-btn').innerText =
+'🚫 目前暫停接單';
+
+document.querySelector('.submit-btn').style.background =
+'#999';
+
+}
+
+}catch(err){
+
+console.log(err);
+
+}
+
+}
+
+loadSetting();
+  
 </script>
 </body>
 </html>
