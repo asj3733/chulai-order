@@ -90,6 +90,7 @@ margin-bottom:10px;
 <input id="name" placeholder="姓名(必填)">
 <input id="phone" placeholder="電話(必填)">
 <textarea id="note" placeholder="備註：例如不加蔥、加辣"></textarea>
+<input id="time" placeholder="取餐時間">
 <div class="order-bar">
 
 <div class="order-total">
@@ -210,6 +211,7 @@ return;
 const orderData = {
 name: name,
 phone: phone,
+time: time,
 note: document.getElementById('note').value,
 items: items.join('\n'),
 total: total
