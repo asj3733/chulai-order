@@ -211,7 +211,7 @@ return;
 const orderData = {
 name: name,
 phone: phone,
-time: time,
+time: document.getElementById('time').value,
 note: document.getElementById('note').value,
 items: items.join('\n'),
 total: total
@@ -250,6 +250,10 @@ font-family:Arial;
 
 <p>
 姓名：${orderData.name}
+</p>
+
+<p>
+取餐時間：${orderData.time}
 </p>
 
 <p>
