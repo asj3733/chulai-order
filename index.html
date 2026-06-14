@@ -211,7 +211,7 @@ return;
 const orderData = {
 name: name,
 phone: phone,
-time: pickupTime,
+time: document.getElementById('time').value.trim(),
 note: document.getElementById('note').value,
 items: items.join('\n'),
 total: total
