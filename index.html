@@ -205,7 +205,36 @@ img{
 
 <script>
 
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz8hKQSxI-GS9dZ9bprlF27mapgsd84oZT0arTSF0_WNrSyc366e1AHrLvV_d4Ua3Pe2Q/exec";
+const SCRIPT_URL = "async function loadSetting(){
+
+  try{
+
+    const res = await fetch(SCRIPT_URL);
+    const text = await res.text();
+
+    const setting = JSON.parse(text);
+
+    document.getElementById("notice").innerText =
+      setting.notice || "";
+
+    if(setting.status === "暫停"){
+
+      document.querySelector(".checkout-bar button").disabled = true;
+
+      document.querySelector(".checkout-bar button").innerText =
+      "🚫 暫停接單";
+
+    }
+
+  }catch(err){
+
+    console.log(err);
+
+  }
+
+}
+
+loadSetting();";
 
 const data=[
 ["cat1","肉燥乾麵(小)",55],["cat1","肉燥乾麵(大)",65],
@@ -295,6 +324,37 @@ location.reload();
 }
 
 </script>
+
+async function loadSetting(){
+
+  try{
+
+    const res = await fetch(SCRIPT_URL);
+    const text = await res.text();
+
+    const setting = JSON.parse(text);
+
+    document.getElementById("notice").innerText =
+      setting.notice || "";
+
+    if(setting.status === "暫停"){
+
+      document.querySelector(".checkout-bar button").disabled = true;
+
+      document.querySelector(".checkout-bar button").innerText =
+      "🚫 暫停接單";
+
+    }
+
+  }catch(err){
+
+    console.log(err);
+
+  }
+
+}
+
+loadSetting();
 
 </body>
 </html>
