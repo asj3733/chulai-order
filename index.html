@@ -10,57 +10,154 @@ body{
   font-family:Arial,sans-serif;
   background:#f4f4f4;
   margin:0;
+  color:#333;
 }
 
+/* 頭部 */
 header{
   background:#c65d1e;
   color:#fff;
   text-align:center;
-  padding:20px;
+  padding:18px 10px;
 }
 
+header h1{
+  margin:5px 0;
+  font-size:26px;
+}
+
+header p{
+  margin:3px 0;
+  font-size:14px;
+}
+
+/* 主容器 */
 .wrap{
-  max-width:1000px;
+  max-width:900px;
   margin:auto;
-  padding:15px;
+  padding:12px;
   padding-bottom:140px;
 }
 
+/* 卡片 */
 .card{
   background:#fff;
   padding:15px;
-  margin-bottom:15px;
-  border-radius:10px;
+  margin-bottom:12px;
+  border-radius:12px;
+  box-shadow:0 2px 8px rgba(0,0,0,0.06);
 }
 
+/* 標題 */
+.card h2{
+  color:#c65d1e;
+  font-size:18px;
+  border-left:6px solid #c65d1e;
+  padding-left:10px;
+  margin-bottom:10px;
+}
+
+/* 商品列 */
 .item{
   display:flex;
   justify-content:space-between;
-  padding:8px 0;
+  align-items:center;
+  padding:10px 0;
   border-bottom:1px solid #eee;
 }
 
+.item span{
+  font-size:15px;
+}
+
+/* 價格強化 */
+.item span:last-child{
+  font-weight:bold;
+  color:#d32f2f;
+}
+
+/* 加減按鈕區 */
+.qty{
+  display:flex;
+  align-items:center;
+  gap:6px;
+}
+
 .qty button{
-  width:30px;
-  height:30px;
+  width:34px;
+  height:34px;
+  border:none;
+  border-radius:6px;
+  background:#c65d1e;
+  color:#fff;
+  font-size:18px;
 }
 
-button{
-  cursor:pointer;
+.qty button:active{
+  transform:scale(0.95);
 }
 
+.qty span{
+  min-width:22px;
+  text-align:center;
+  font-weight:bold;
+}
+
+/* 輸入欄 */
+input, textarea, select{
+  width:100%;
+  padding:10px;
+  margin:6px 0;
+  border:1px solid #ddd;
+  border-radius:8px;
+  font-size:14px;
+}
+
+/* 總金額 */
+.order-total{
+  text-align:center;
+  margin-top:12px;
+  font-size:22px;
+  font-weight:bold;
+  color:#c65d1e;
+}
+
+#total{
+  font-size:34px;
+  color:#d32f2f;
+}
+
+/* 送出按鈕 */
 .submit-btn{
   width:100%;
-  padding:12px;
+  padding:14px;
+  margin-top:10px;
   background:#c65d1e;
   color:#fff;
   border:none;
-  border-radius:8px;
+  border-radius:10px;
   font-size:16px;
+  font-weight:bold;
+}
+
+.submit-btn:active{
+  transform:scale(0.98);
 }
 
 .submit-btn:disabled{
   background:#999;
+}
+
+/* 圖片 */
+img{
+  border-radius:12px;
+}
+
+/* 小提示區 */
+.notice{
+  font-size:14px;
+  line-height:1.5;
+  color:#555;
 }
 </style>
 </head>
