@@ -94,18 +94,43 @@ style="width:100%;border-radius:12px;">
 
 <div class="card">
 <h2>訂購資訊</h2>
-
-<input id="name" placeholder="姓名">
-<input id="phone" placeholder="電話">
-<textarea id="note" placeholder="備註"></textarea>
-
-<input id="time" type="time">
-
-<div style="font-weight:bold;margin:10px 0;">
-總金額：<span id="total">0</span>
+<input id="name" placeholder="姓名(必填)">
+<input id="phone" placeholder="電話(必填)">
+<textarea id="note" placeholder="備註：例如不加蔥、加辣"></textarea>
+<div style="
+background:#fff3cd;
+padding:10px;
+border-radius:8px;
+margin-bottom:8px;
+font-weight:bold;
+text-align:center;
+">
+⏰ 提前預訂請填寫取餐時間，立即取餐免填
 </div>
 
-<button id="submitBtn" class="submit-btn" onclick="sendOrder()">
+<label style="
+display:block;
+font-weight:bold;
+margin-bottom:5px;
+">
+⏰ 取餐時間
+</label>
+
+<input
+id="time"
+type="time"
+min="11:30"
+max="20:30"
+style="
+font-size:18px;
+padding:12px;
+">
+
+<div class="order-total">
+總金額：<span id="total">0</span> 元
+</div>
+
+<button class="submit-btn" onclick="sendOrder()">
 送出訂單
 </button>
 
@@ -121,11 +146,16 @@ const SCRIPT_URL =
 // 菜單
 const data=[
 ["cat1","肉燥乾麵(小)",55],["cat1","肉燥乾麵(大)",65],
+["cat1","肉燥米粉(小)",55],["cat1","肉燥米粉(大)",65],
+["cat1","湯麵(小)",55],["cat1","湯麵(大)",65],
 ["cat1","麻醬麵(小)",60],["cat1","麻醬麵(大)",70],
-["cat2","黑輪",10],["cat2","米血",10],
-["cat3","滷蛋",15],["cat3","荷包蛋",15],
-["cat4","貢丸湯",40],
-["cat5","肉燥飯",35]
+["cat1","鮮蝦餛飩麵(小)",70],["cat1","鮮蝦餛飩麵(大)",80],
+["cat2","黑輪",10],["cat2","米血",10],["cat2","魚板",10],["cat2","蛋丸",10],
+["cat2","菜頭",15],["cat2","竹輪",15],["cat2","貢丸",20],["cat2","福州丸",20],
+["cat2","黃金魚板",20],["cat2","高麗菜捲",20],["cat2","苦瓜封",40],
+["cat3","麵輪",10],["cat3","滷蛋",15],["cat3","荷包蛋",15],["cat3","蔥蛋",40],["cat3","香腸",25],["cat3","手工大腸",75],
+["cat4","菜頭湯",35],["cat4","魚丸湯",35],["cat4","貢丸湯",40],["cat4","鮮蝦餛飩湯",45],
+["cat5","肉燥飯",35],["cat5","白飯",15],["cat5","燙青菜",40],["cat5","水餃",50]
 ];
 
 // 建立菜單
@@ -207,27 +237,49 @@ alert("請選餐");
 resetBtn(); return;
 }
 
-const orderData={
-name,
-phone,
-time:document.getElementById('time').value || "立即",
-note:document.getElementById('note').value,
-items:items.join("\n"),
-total,
-timeStamp:new Date().toISOString()
+const orderData = {
+name: name,
+phone: phone,
+time: document.getElementById('time').value.trim(),
+note: document.getElementById('note').value,
+items: items.join('\n'),
+total: total
 };
 
 try{
 
-await fetch(SCRIPT_URL,{
+await fetch(https://script.google.com/macros/s/AKfycbyurfBQWR1p6_Fb9apnbHIXT07__h41afzFI0g_1AwtDulDnhwYBsqCLpAg2LcXFopShA/exec,{
 method:"POST",
 body:JSON.stringify(orderData)
 });
 
 document.body.innerHTML=`
 <div style="text-align:center;padding:40px;">
-<h1>✅ 訂單成功</h1>
-<p>總金額：${total}</p>
+<h1 style="color:#06C755;">
+✅ 訂單送出成功
+</h1>
+
+<h2>
+感謝您的訂購
+</h2>
+
+<p>
+姓名：${orderData.name}
+</p>
+
+<p>
+取餐時間：
+${orderData.time ? orderData.time : '立即取餐'}
+</p>
+
+<p>
+總金額：${total} 元
+</p>
+
+<p>
+初萊食麵已收到您的訂單 🍜
+</p>
+
 <button onclick="location.reload()">再訂一筆</button>
 </div>`;
 
@@ -244,6 +296,40 @@ const btn=document.getElementById("submitBtn");
 btn.disabled=false;
 btn.innerText="送出訂單";
 }
+async function loadSetting(){
+
+try{
+
+const res = await fetch(
+'https://script.google.com/macros/s/AKfycbyurfBQWR1p6_Fb9apnbHIXT07__h41afzFI0g_1AwtDulDnhwYBsqCLpAg2LcXFopShA/exec'
+);
+
+const data = await res.json();
+
+document.getElementById('notice').innerText =
+data.notice || '';
+
+if(data.status === '暫停'){
+
+document.querySelector('.submit-btn').disabled = true;
+
+document.querySelector('.submit-btn').innerText =
+'🚫 目前暫停接單';
+
+document.querySelector('.submit-btn').style.background =
+'#999';
+
+}
+
+}catch(err){
+
+console.log(err);
+
+}
+
+}
+
+loadSetting();
 
 </script>
 
