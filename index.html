@@ -299,30 +299,32 @@ async function loadSetting(){
 
 try{
 
-const res = await fetch(
-'https://script.google.com/macros/s/AKfycbyurfBQWR1p6_Fb9apnbHIXT07__h41afzFI0g_1AwtDulDnhwYBsqCLpAg2LcXFopShA/exec'
-);
+const res = await fetch(SCRIPT_URL);
 
-const data = await res.json();
+const text = await res.text();   // 🔥 先用 text
+
+let data = {};
+
+try {
+  data = JSON.parse(text);       // 🔥 再手動轉 JSON
+} catch(e) {
+  console.log("不是 JSON 回傳：", text);
+  return;
+}
 
 document.getElementById('notice').innerText =
 data.notice || '';
 
 if(data.status === '暫停'){
-
 document.querySelector('.submit-btn').disabled = true;
-
-document.querySelector('.submit-btn').innerText =
-'🚫 目前暫停接單';
-
-document.querySelector('.submit-btn').style.background =
-'#999';
-
+document.querySelector('.submit-btn').innerText = '🚫 目前暫停接單';
 }
 
 }catch(err){
-
 console.log(err);
+}
+
+}
 
 }
 
