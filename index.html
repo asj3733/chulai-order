@@ -3,61 +3,69 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>初萊食麵  營業版</title>
+<title>初萊食麵 營業版</title>
+
 <style>
 body{
-font-family:Arial,sans-serif;
-background:#f4f4f4;
-margin:0;
+  font-family:Arial,sans-serif;
+  background:#f4f4f4;
+  margin:0;
 }
 
 header{
-background:#c65d1e;
-color:#fff;
-text-align:center;
-padding:20px;
+  background:#c65d1e;
+  color:#fff;
+  text-align:center;
+  padding:20px;
 }
 
 .wrap{
-max-width:1000px;
-margin:auto;
-padding:15px;
-padding-bottom:140px;
+  max-width:1000px;
+  margin:auto;
+  padding:15px;
+  padding-bottom:140px;
 }
 
-/* 其他CSS */
-</style>
-</header>
+.card{
+  background:#fff;
+  padding:15px;
+  margin-bottom:15px;
+  border-radius:10px;
+}
 
-<div style="padding:10px;">
-  <img
-    src="https://drive.google.com/uc?export=view&id=1Cw2ImmI9TY1ODFVsMnMmM3EtYBvhLAu7"
-    style="
-      width:100%;
-      max-height:260px;
-      object-fit:cover;
-      border-radius:12px;
-      box-shadow:0 2px 10px rgba(0,0,0,.15);
-    ">
-</div>
-<div class="wrap">
+.item{
+  display:flex;
+  justify-content:space-between;
+  padding:8px 0;
+  border-bottom:1px solid #eee;
+}
 
+.qty button{
+  width:30px;
+  height:30px;
+}
 </style>
 </head>
+
 <body>
+
 <header>
 <h1>初萊食麵</h1>
 <p>高雄市三民區遼寧二街168號</p>
 <p>週一~週五 11:30-20:30｜週六~週日 11:30-18:30</p>
-<a class="tel" href="tel:0903392687">📞 0903-392687</a>
+<a href="tel:0903392687" style="color:#fff;">📞 0903-392687</a>
 </header>
 
 <div class="wrap">
+
+<div style="margin-bottom:10px;">
+  <img src="https://drive.google.com/uc?export=view&id=1Cw2ImmI9TY1ODFVsMnMmM3EtYBvhLAu7"
+  style="width:100%;max-height:260px;object-fit:cover;border-radius:12px;">
+</div>
+
 <div class="card">
 <h2>公告</h2>
-<div class="notice" id="notice">
-歡迎使用線上點餐，如有售完品項請依現場為準。
-</div>
+<div id="notice">歡迎使用線上點餐，如有售完品項請依現場為準。</div>
 </div>
 
 <div class="card"><h2>🍜 麵類</h2><div id="cat1"></div></div>
@@ -68,39 +76,14 @@ padding-bottom:140px;
 
 <div class="card">
 <h2>訂購資訊</h2>
+
 <input id="name" placeholder="姓名(必填)">
 <input id="phone" placeholder="電話(必填)">
-<textarea id="note" placeholder="備註：例如不加蔥、加辣"></textarea>
-<div style="
-background:#fff3cd;
-padding:10px;
-border-radius:8px;
-margin-bottom:8px;
-font-weight:bold;
-text-align:center;
-">
-⏰ 提前預訂請填寫取餐時間，立即取餐免填
-</div>
+<textarea id="note" placeholder="備註"></textarea>
 
-<label style="
-display:block;
-font-weight:bold;
-margin-bottom:5px;
-">
-⏰ 取餐時間
-</label>
+<input id="time" type="time" min="11:30" max="20:30">
 
-<input
-id="time"
-type="time"
-min="11:30"
-max="20:30"
-style="
-font-size:18px;
-padding:12px;
-">
-
-<div class="order-total">
+<div style="font-weight:bold;margin:10px 0;">
 總金額：<span id="total">0</span> 元
 </div>
 
@@ -110,226 +93,101 @@ padding:12px;
 
 </div>
 </div>
-</div>
 
 <script>
+
 const data=[
 ["cat1","肉燥乾麵(小)",55],["cat1","肉燥乾麵(大)",65],
 ["cat1","肉燥米粉(小)",55],["cat1","肉燥米粉(大)",65],
 ["cat1","湯麵(小)",55],["cat1","湯麵(大)",65],
 ["cat1","麻醬麵(小)",60],["cat1","麻醬麵(大)",70],
-["cat1","鮮蝦餛飩麵(小)",70],["cat1","鮮蝦餛飩麵(大)",80],
-["cat2","黑輪",10],["cat2","米血",10],["cat2","魚板",10],["cat2","蛋丸",10],
-["cat2","菜頭",15],["cat2","竹輪",15],["cat2","貢丸",20],["cat2","福州丸",20],
-["cat2","黃金魚板",20],["cat2","高麗菜捲",20],["cat2","苦瓜封",40],
-["cat3","麵輪",10],["cat3","滷蛋",15],["cat3","荷包蛋",15],["cat3","蔥蛋",40],["cat3","香腸",25],["cat3","手工大腸",75],
-["cat4","菜頭湯",35],["cat4","魚丸湯",35],["cat4","貢丸湯",40],["cat4","鮮蝦餛飩湯",45],
-["cat5","肉燥飯",35],["cat5","白飯",15],["cat5","燙青菜",40],["cat5","水餃",50]
+["cat2","黑輪",10],["cat2","米血",10],["cat2","魚板",10],
+["cat3","滷蛋",15],["cat3","荷包蛋",15],
+["cat4","貢丸湯",40],
+["cat5","肉燥飯",35]
 ];
 
+// 生成菜單
 data.forEach((m,i)=>{
-document.getElementById(m[0]).insertAdjacentHTML(
-'beforeend',
-`
+document.getElementById(m[0]).insertAdjacentHTML('beforeend',`
 <div class="item">
   <span>${m[1]} $${m[2]}</span>
-
   <div class="qty">
-    <button type="button" onclick="minus(${i})">-</button>
+    <button onclick="minus(${i})">-</button>
     <span id="qty${i}">0</span>
-    <button type="button" onclick="plus(${i})">+</button>
+    <button onclick="plus(${i})">+</button>
     <input type="hidden" id="i${i}" value="0">
   </div>
 </div>
-`
-);
+`);
 });
 
 function plus(i){
-  let el = document.getElementById('i'+i);
-  el.value = parseInt(el.value || 0) + 1;
-  document.getElementById('qty'+i).innerText = el.value;
-  calc();
+let el=document.getElementById('i'+i);
+el.value=+el.value+1;
+document.getElementById('qty'+i).innerText=el.value;
+calc();
 }
 
 function minus(i){
-  let el = document.getElementById('i'+i);
-
-  if(parseInt(el.value) > 0){
-    el.value = parseInt(el.value) - 1;
-  }
-
-  document.getElementById('qty'+i).innerText = el.value;
-  calc();
+let el=document.getElementById('i'+i);
+if(el.value>0) el.value--;
+document.getElementById('qty'+i).innerText=el.value;
+calc();
 }
 
 function calc(){
-  let t = 0;
-
-  data.forEach((m,i)=>{
-    let q = parseInt(document.getElementById('i'+i).value) || 0;
-    t += q * m[2];
-  });
-
-  document.getElementById('total').innerText = t;
+let t=0;
+data.forEach((m,i)=>{
+let q=+document.getElementById('i'+i).value||0;
+t+=q*m[2];
+});
+document.getElementById('total').innerText=t;
 }
 
 async function sendOrder(){
 
-const name = document.getElementById('name').value.trim();
-const phone = document.getElementById('phone').value.trim();
+const name=document.getElementById('name').value.trim();
+const phone=document.getElementById('phone').value.trim();
 
-if(name === ''){
-  alert('請輸入姓名');
-  return;
-}
+if(!name) return alert('請輸入姓名');
+if(!/^09\d{8}$/.test(phone)) return alert('電話錯誤');
 
-if(phone === ''){
-  alert('請輸入電話');
-  return;
-}
-
-if(!/^09\d{8}$/.test(phone)){
-  alert('請輸入正確手機號碼');
-  return;
-}
-
-let total = 0;
-let items = [];
+let items=[];
+let total=0;
 
 data.forEach((m,i)=>{
-
-let q = parseInt(
-document.getElementById('i'+i).value
-) || 0;
-
-if(q > 0){
+let q=+document.getElementById('i'+i).value||0;
+if(q>0){
 items.push(`${m[1]} x ${q}`);
-total += q * m[2];
+total+=q*m[2];
 }
-
 });
 
-if(items.length === 0){
-alert('請先選擇餐點');
-return;
-}
+if(items.length===0) return alert('請選餐');
 
-const orderData = {
-name: name,
-phone: phone,
-time: document.getElementById('time').value.trim(),
-note: document.getElementById('note').value,
-items: items.join('\n'),
-total: total
+const orderData={
+name,
+phone,
+time:document.getElementById('time').value,
+note:document.getElementById('note').value,
+items:items.join('\n'),
+total
 };
 
-console.log(orderData);
-try{
-
-await fetch(
-'https://script.google.com/macros/s/AKfycbyurfBQWR1p6_Fb9apnbHIXT07__h41afzFI0g_1AwtDulDnhwYBsqCLpAg2LcXFopShA/exec',
-{
+await fetch('你的Google Script網址',{
 method:'POST',
 mode:'no-cors',
-headers:{
-'Content-Type':'text/plain'
-},
 body:JSON.stringify(orderData)
+});
+
+document.body.innerHTML=`
+<div style="text-align:center;padding:40px;">
+<h1>✅ 訂單成功</h1>
+<p>總金額：${total}</p>
+<button onclick="location.reload()">再訂一筆</button>
+</div>`;
 }
-);
-
-document.body.innerHTML = `
-<div style="
-max-width:500px;
-margin:50px auto;
-padding:30px;
-text-align:center;
-font-family:Arial;
-">
-
-<h1 style="color:#06C755;">
-✅ 訂單送出成功
-</h1>
-
-<h2>
-感謝您的訂購
-</h2>
-
-<p>
-姓名：${orderData.name}
-</p>
-
-<p>
-取餐時間：
-${orderData.time ? orderData.time : '立即取餐'}
-</p>
-
-<p>
-總金額：${total} 元
-</p>
-
-<p>
-初萊食麵已收到您的訂單 🍜
-</p>
-
-<button
-onclick="location.reload()"
-style="
-background:#06C755;
-color:white;
-border:none;
-padding:12px 25px;
-border-radius:10px;
-font-size:18px;
-">
-再訂一筆
-</button>
-
-</div>
-`;
-
-}catch(err){
-
-alert(err);
-
-}
-
-}
-async function loadSetting(){
-
-try{
-
-const res = await fetch(
-'https://script.google.com/macros/s/AKfycbyurfBQWR1p6_Fb9apnbHIXT07__h41afzFI0g_1AwtDulDnhwYBsqCLpAg2LcXFopShA/exec'
-);
-
-const data = await res.json();
-
-document.getElementById('notice').innerText =
-data.notice || '';
-
-if(data.status === '暫停'){
-
-document.querySelector('.submit-btn').disabled = true;
-
-document.querySelector('.submit-btn').innerText =
-'🚫 目前暫停接單';
-
-document.querySelector('.submit-btn').style.background =
-'#999';
-
-}
-
-}catch(err){
-
-console.log(err);
-
-}
-
-}
-
-loadSetting();
 
 </script>
 </body>
