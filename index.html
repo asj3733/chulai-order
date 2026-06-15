@@ -44,6 +44,24 @@ header{
   width:30px;
   height:30px;
 }
+
+button{
+  cursor:pointer;
+}
+
+.submit-btn{
+  width:100%;
+  padding:12px;
+  background:#c65d1e;
+  color:#fff;
+  border:none;
+  border-radius:8px;
+  font-size:16px;
+}
+
+.submit-btn:disabled{
+  background:#999;
+}
 </style>
 </head>
 
@@ -52,48 +70,42 @@ header{
 <header>
 <h1>初萊食麵</h1>
 <p>高雄市三民區遼寧二街168號</p>
-<p>週一~週五 11:30-20:30｜週六~週日 11:30-18:30</p>
+<p>11:30-20:30</p>
 <a href="tel:0903392687" style="color:#fff;">📞 0903-392687</a>
 </header>
 
 <div class="wrap">
 
-<!-- 圖片（已修Cloudinary穩定版） -->
 <div class="card">
-<img 
-  src="https://res.cloudinary.com/dh1yjrfyr/image/upload/q_auto,f_auto/IMG_3424_ob2qm4.jpg"
-  style="width:100%;max-height:260px;object-fit:cover;border-radius:12px;"
->
+<img src="https://res.cloudinary.com/dh1yjrfyr/image/upload/q_auto,f_auto/IMG_3424_ob2qm4.jpg"
+style="width:100%;border-radius:12px;">
 </div>
 
-<!-- 公告 -->
 <div class="card">
 <h2>公告</h2>
-<div id="notice">歡迎使用線上點餐，如有售完品項請依現場為準。</div>
+<div id="notice">歡迎使用線上點餐</div>
 </div>
 
-<!-- 菜單 -->
 <div class="card"><h2>🍜 麵類</h2><div id="cat1"></div></div>
 <div class="card"><h2>🍢 關東煮</h2><div id="cat2"></div></div>
 <div class="card"><h2>🥚 小菜</h2><div id="cat3"></div></div>
 <div class="card"><h2>🍲 湯類</h2><div id="cat4"></div></div>
 <div class="card"><h2>🍚 其他</h2><div id="cat5"></div></div>
 
-<!-- 訂購 -->
 <div class="card">
 <h2>訂購資訊</h2>
 
-<input id="name" placeholder="姓名(必填)">
-<input id="phone" placeholder="電話(必填)">
+<input id="name" placeholder="姓名">
+<input id="phone" placeholder="電話">
 <textarea id="note" placeholder="備註"></textarea>
 
-<input id="time" type="time" min="11:30" max="20:30">
+<input id="time" type="time">
 
 <div style="font-weight:bold;margin:10px 0;">
-總金額：<span id="total">0</span> 元
+總金額：<span id="total">0</span>
 </div>
 
-<button class="submit-btn" onclick="sendOrder()">
+<button id="submitBtn" class="submit-btn" onclick="sendOrder()">
 送出訂單
 </button>
 
@@ -103,19 +115,17 @@ header{
 
 <script>
 
-// 菜單資料
+const SCRIPT_URL =
+"https://script.google.com/macros/s/AKfycbyurfBQWR1p6_Fb9apnbHIXT07__h41afzFI0g_1AwtDulDnhwYBsqCLpAg2LcXFopShA/exec";
+
+// 菜單
 const data=[
 ["cat1","肉燥乾麵(小)",55],["cat1","肉燥乾麵(大)",65],
-["cat1","肉燥米粉(小)",55],["cat1","肉燥米粉(大)",65],
-["cat1","湯麵(小)",55],["cat1","湯麵(大)",65],
 ["cat1","麻醬麵(小)",60],["cat1","麻醬麵(大)",70],
-["cat1","鮮蝦餛飩麵(小)",70],["cat1","鮮蝦餛飩麵(大)",80],
-["cat2","黑輪",10],["cat2","米血",10],["cat2","魚板",10],["cat2","蛋丸",10],
-["cat2","菜頭",15],["cat2","竹輪",15],["cat2","貢丸",20],["cat2","福州丸",20],
-["cat2","黃金魚板",20],["cat2","高麗菜捲",20],["cat2","苦瓜封",40],
-["cat3","麵輪",10],["cat3","滷蛋",15],["cat3","荷包蛋",15],["cat3","蔥蛋",40],["cat3","香腸",25],["cat3","手工大腸",75],
-["cat4","菜頭湯",35],["cat4","魚丸湯",35],["cat4","貢丸湯",40],["cat4","鮮蝦餛飩湯",45],
-["cat5","肉燥飯",35],["cat5","白飯",15],["cat5","燙青菜",40],["cat5","水餃",50]
+["cat2","黑輪",10],["cat2","米血",10],
+["cat3","滷蛋",15],["cat3","荷包蛋",15],
+["cat4","貢丸湯",40],
+["cat5","肉燥飯",35]
 ];
 
 // 建立菜單
@@ -156,14 +166,30 @@ t+=q*m[2];
 document.getElementById('total').innerText=t;
 }
 
-// 送出訂單
+// 🔥 商用重點：防重送 + 狀態控制
+let sending = false;
+
 async function sendOrder(){
+
+if(sending) return;
+
+const btn=document.getElementById("submitBtn");
+sending = true;
+btn.disabled = true;
+btn.innerText = "送出中...";
 
 const name=document.getElementById('name').value.trim();
 const phone=document.getElementById('phone').value.trim();
 
-if(!name) return alert('請輸入姓名');
-if(!/^09\d{8}$/.test(phone)) return alert('電話格式錯誤');
+if(!name){
+alert("請輸入姓名");
+resetBtn(); return;
+}
+
+if(!/^09\d{8}$/.test(phone)){
+alert("電話格式錯誤");
+resetBtn(); return;
+}
 
 let items=[];
 let total=0;
@@ -176,20 +202,25 @@ total+=q*m[2];
 }
 });
 
-if(items.length===0) return alert('請選餐');
+if(items.length===0){
+alert("請選餐");
+resetBtn(); return;
+}
 
 const orderData={
 name,
 phone,
-time:document.getElementById('time').value,
+time:document.getElementById('time').value || "立即",
 note:document.getElementById('note').value,
-items:items.join('\n'),
-total
+items:items.join("\n"),
+total,
+timeStamp:new Date().toISOString()
 };
 
-await fetch("https://script.google.com/macros/s/AKfycbyurfBQWR1p6_Fb9apnbHIXT07__h41afzFI0g_1AwtDulDnhwYBsqCLpAg2LcXFopShA/exec",{
-method:'POST',
-mode:'no-cors',
+try{
+
+await fetch(SCRIPT_URL,{
+method:"POST",
 body:JSON.stringify(orderData)
 });
 
@@ -199,8 +230,22 @@ document.body.innerHTML=`
 <p>總金額：${total}</p>
 <button onclick="location.reload()">再訂一筆</button>
 </div>`;
+
+}catch(e){
+alert("送出失敗，請重試");
+resetBtn();
+}
+
+}
+
+function resetBtn(){
+sending=false;
+const btn=document.getElementById("submitBtn");
+btn.disabled=false;
+btn.innerText="送出訂單";
 }
 
 </script>
+
 </body>
 </html>
