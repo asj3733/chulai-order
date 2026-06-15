@@ -3,73 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>初萊食麵 營業版</title>
+<title>初萊食麵 店面4.0</title>
 
 <style>
 body{
   font-family:Arial,sans-serif;
-  background:#f4f4f4;
+  background:#ededed;
   margin:0;
   color:#333;
 }
 
-/* 頭部 */
-header{
-  background:#3a3a3a;   /* 深灰底 */
-  color:#d4af37;        /* 金色字 */
-  text-align:center;
-  padding:18px 10px;
-  border-bottom:2px solid #d4af37;
-}
-
-header h1{
-  color:#d4af37;
-  font-size:28px;
-  letter-spacing:2px;
-  margin:5px 0;
-}
-
-header p{
-  margin:3px 0;
-  font-size:14px;
-}
-
-/* 主容器 */
-.wrap{
-  max-width:900px;
-  margin:auto;
-  padding:12px;
-  padding-bottom:140px;
-}
-
-/* 卡片 */
-.card{
-  background:#fff;
-  padding:15px;
-  margin-bottom:12px;
-  border-radius:12px;
-  box-shadow:0 2px 8px rgba(0,0,0,0.06);
-}
-
-/* 標題 */
-.card h2{
-  color:#c65d1e;
-  font-size:18px;
-  border-left:6px solid #c65d1e;
-  padding-left:10px;
-  margin-bottom:10px;
-}
-body{
-  background:#ededed;
-}
-
-/* 整體卡片更高級 */
-.card{
-  border:1px solid #e6e6e6;
-  box-shadow:0 4px 14px rgba(0,0,0,0.06);
-}
-
-/* 灰底金字 Header（品牌感加強） */
+/* ===== Header 品牌化 ===== */
 header{
   background:linear-gradient(135deg,#2f2f2f,#4a4a4a);
   color:#d4af37;
@@ -78,86 +22,61 @@ header{
   border-bottom:3px solid #d4af37;
 }
 
-/* 店名變LOGO感 */
 header h1{
-  color:#d4af37;
   font-size:30px;
   letter-spacing:3px;
   margin:6px 0;
+  color:#d4af37;
   font-weight:bold;
-  text-shadow:0 1px 2px rgba(0,0,0,0.4);
 }
 
-/* 地址電話 */
 header p, header a{
   color:#f1d98a;
   font-size:13px;
 }
 
-/* 金色標題更穩重 */
+/* ===== 容器 ===== */
+.wrap{
+  max-width:900px;
+  margin:auto;
+  padding:12px;
+  padding-bottom:120px;
+}
+
+/* ===== 卡片 ===== */
+.card{
+  background:#fff;
+  border-radius:12px;
+  margin-bottom:12px;
+  padding:15px;
+  box-shadow:0 4px 14px rgba(0,0,0,0.06);
+}
+
 .card h2{
   color:#b8912e;
   border-left:6px solid #d4af37;
+  padding-left:10px;
+  font-size:17px;
+  margin-bottom:10px;
 }
 
-/* 加減按鈕品牌化 */
-.qty button{
-  background:#3a3a3a;
-  color:#d4af37;
-  border:1px solid #d4af37;
-}
-
-/* 按鈕hover感 */
-.qty button:active{
-  transform:scale(0.95);
-  background:#d4af37;
-  color:#2f2f2f;
-}
-
-/* 送出按鈕品牌化 */
-.submit-btn{
-  background:linear-gradient(135deg,#3a3a3a,#2f2f2f);
-  border:1px solid #d4af37;
-  color:#d4af37;
-  font-weight:bold;
-}
-
-.submit-btn:active{
-  transform:scale(0.98);
-  background:#d4af37;
-  color:#2f2f2f;
-}
-
-/* 總金額更像重點 */
-#total{
-  color:#b8912e;
-  font-size:38px;
-}
-
-.order-total{
-  color:#3a3a3a;
-}
-
-/* 商品列 */
+/* ===== 商品列 ===== */
 .item{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding:10px 0;
+  padding:10px;
   border-bottom:1px solid #eee;
+  background:#fff;
+  border-radius:8px;
+  margin:6px 0;
 }
 
 .item span{
   font-size:15px;
 }
 
-/* 價格強化 */
-.item span:last-child{
-  font-weight:bold;
-  color:#d32f2f;
-}
-
-/* 加減按鈕區 */
+/* ===== 加減 ===== */
 .qty{
   display:flex;
   align-items:center;
@@ -165,17 +84,17 @@ header p, header a{
 }
 
 .qty button{
-  width:34px;
-  height:34px;
-  border:none;
+  width:32px;
+  height:32px;
   border-radius:6px;
-  background:#c65d1e;
-  color:#fff;
+  border:1px solid #d4af37;
+  background:#2f2f2f;
+  color:#d4af37;
   font-size:18px;
 }
 
 .qty button:active{
-  transform:scale(0.95);
+  transform:scale(0.92);
 }
 
 .qty span{
@@ -184,61 +103,60 @@ header p, header a{
   font-weight:bold;
 }
 
-/* 輸入欄 */
-input, textarea, select{
+/* ===== 輸入 ===== */
+input, textarea{
   width:100%;
   padding:10px;
   margin:6px 0;
   border:1px solid #ddd;
   border-radius:8px;
-  font-size:14px;
 }
 
-/* 總金額 */
-.order-total{
-  text-align:center;
-  margin-top:12px;
-  font-size:22px;
-  font-weight:bold;
-  color:#c65d1e;
-}
-
-#total{
-  font-size:34px;
-  color:#d32f2f;
-}
-
-/* 送出按鈕 */
-.submit-btn{
-  width:100%;
-  padding:14px;
-  margin-top:10px;
-  background:#c65d1e;
-  color:#fff;
-  border:none;
-  border-radius:10px;
-  font-size:16px;
-  font-weight:bold;
-}
-
-.submit-btn:active{
-  transform:scale(0.98);
-}
-
-.submit-btn:disabled{
-  background:#999;
-}
-
-/* 圖片 */
+/* ===== 圖片 ===== */
 img{
+  width:100%;
   border-radius:12px;
 }
 
-/* 小提示區 */
-.notice{
-  font-size:14px;
-  line-height:1.5;
-  color:#555;
+/* ===== 底部結帳列 ===== */
+.checkout-bar{
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  background:#2f2f2f;
+  color:#d4af37;
+  padding:12px 15px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-top:2px solid #d4af37;
+  z-index:999;
+}
+
+.checkout-bar .total{
+  font-size:18px;
+  font-weight:bold;
+}
+
+.checkout-bar button{
+  background:#d4af37;
+  color:#2f2f2f;
+  border:none;
+  padding:10px 16px;
+  border-radius:8px;
+  font-weight:bold;
+}
+
+.checkout-bar button:active{
+  transform:scale(0.95);
+}
+
+/* ===== 總金額 ===== */
+#total{
+  font-size:28px;
+  color:#d4af37;
+  font-weight:bold;
 }
 </style>
 </head>
@@ -249,14 +167,13 @@ img{
 <h1>初萊食麵</h1>
 <p>高雄市三民區遼寧二街168號</p>
 <p>週一~週五 11:30-20:30｜週六~週日 11:30-18:30</p>
-<a href="tel:0903392687" style="color:#fff;">📞 0903-392687</a>
+<a href="tel:0903392687">📞 0903-392687</a>
 </header>
 
 <div class="wrap">
 
 <div class="card">
-<img src="https://res.cloudinary.com/dh1yjrfyr/image/upload/q_auto,f_auto/IMG_3424_ob2qm4.jpg"
-style="width:100%;border-radius:12px;">
+<img src="https://res.cloudinary.com/dh1yjrfyr/image/upload/q_auto,f_auto/IMG_3424_ob2qm4.jpg">
 </div>
 
 <div class="card">
@@ -274,52 +191,21 @@ style="width:100%;border-radius:12px;">
 <h2>訂購資訊</h2>
 <input id="name" placeholder="姓名(必填)">
 <input id="phone" placeholder="電話(必填)">
-<textarea id="note" placeholder="備註：例如不加蔥、加辣"></textarea>
-<div style="
-background:#fff3cd;
-padding:10px;
-border-radius:8px;
-margin-bottom:8px;
-font-weight:bold;
-text-align:center;
-">
-⏰ 提前預訂請填寫取餐時間，立即取餐免填
+<textarea id="note" placeholder="備註"></textarea>
+<input id="time" type="time">
 </div>
-
-<label style="
-display:block;
-font-weight:bold;
-margin-bottom:5px;
-">
-⏰ 取餐時間
-</label>
-
-<input
-id="time"
-type="time"
-min="11:30"
-max="20:30"
-style="
-font-size:18px;
-padding:12px;
-">
-
-<div class="order-total">
-總金額：<span id="total">0</span> 元
-</div>
-
-<button id="submitBtn" class="submit-btn" onclick="sendOrder()">
-送出訂單
-</button>
 
 </div>
 
+<!-- 底部結帳列 -->
+<div class="checkout-bar">
+  <div>總金額：<span id="total">0</span> 元</div>
+  <button onclick="sendOrder()">送出訂單</button>
 </div>
 
 <script>
 
-const SCRIPT_URL =
-"https://script.google.com/macros/s/AKfycbyurfBQWR1p6_Fb9apnbHIXT07__h41afzFI0g_1AwtDulDnhwYBsqCLpAg2LcXFopShA/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyurfBQWR1p6_Fb9apnbHIXT07__h41afzFI0g_1AwtDulDnhwYBsqCLpAg2LcXFopShA/exec";
 
 const data=[
 ["cat1","肉燥乾麵(小)",55],["cat1","肉燥乾麵(大)",65],
@@ -335,7 +221,6 @@ const data=[
 ["cat5","肉燥飯",35],["cat5","白飯",15],["cat5","燙青菜",40],["cat5","水餃",50]
 ];
 
-// 建立菜單
 data.forEach((m,i)=>{
 document.getElementById(m[0]).insertAdjacentHTML('beforeend',`
 <div class="item">
@@ -373,30 +258,13 @@ t+=q*m[2];
 document.getElementById('total').innerText=t;
 }
 
-// 🔥 商用重點：防重送 + 狀態控制
-let sending = false;
-
 async function sendOrder(){
-
-if(sending) return;
-
-const btn=document.getElementById("submitBtn");
-sending = true;
-btn.disabled = true;
-btn.innerText = "送出中...";
 
 const name=document.getElementById('name').value.trim();
 const phone=document.getElementById('phone').value.trim();
 
-if(!name){
-alert("請輸入姓名");
-resetBtn(); return;
-}
-
-if(!/^09\d{8}$/.test(phone)){
-alert("電話格式錯誤");
-resetBtn(); return;
-}
+if(!name) return alert('請輸入姓名');
+if(!/^09\d{8}$/.test(phone)) return alert('電話錯誤');
 
 let items=[];
 let total=0;
@@ -409,103 +277,22 @@ total+=q*m[2];
 }
 });
 
-if(items.length===0){
-alert("請選餐");
-resetBtn(); return;
-}
+if(items.length===0) return alert('請選餐');
 
-const orderData = {
-name: name,
-phone: phone,
-time: document.getElementById('time').value.trim(),
-note: document.getElementById('note').value,
-items: items.join('\n'),
-total: total
-};
-
-try{
-
-await fetch("https://script.google.com/macros/s/AKfycbyurfBQWR1p6_Fb9apnbHIXT07__h41afzFI0g_1AwtDulDnhwYBsqCLpAg2LcXFopShA/exec",{
-method:"POST",
-body:JSON.stringify(orderData)
+await fetch(SCRIPT_URL,{
+method:'POST',
+body:JSON.stringify({
+name,phone,
+time:document.getElementById('time').value,
+note:document.getElementById('note').value,
+items:items.join('\n'),
+total
+})
 });
 
-document.body.innerHTML=`
-<div style="text-align:center;padding:40px;">
-<h1 style="color:#06C755;">
-✅ 訂單送出成功
-</h1>
-
-<h2>
-感謝您的訂購
-</h2>
-
-<p>
-姓名：${orderData.name}
-</p>
-
-<p>
-取餐時間：
-${orderData.time ? orderData.time : '立即取餐'}
-</p>
-
-<p>
-總金額：${total} 元
-</p>
-
-<p>
-初萊食麵已收到您的訂單 🍜
-</p>
-
-<button onclick="location.reload()">再訂一筆</button>
-</div>`;
-
-}catch(e){
-alert("送出失敗，請重試");
-resetBtn();
+alert("訂單已送出！");
+location.reload();
 }
-
-}
-
-function resetBtn(){
-sending=false;
-const btn=document.getElementById("submitBtn");
-btn.disabled=false;
-btn.innerText="送出訂單";
-}
-async function loadSetting(){
-
-try{
-
-const res = await fetch(SCRIPT_URL);
-
-const text = await res.text();   // 🔥 先用 text
-
-let data = {};
-
-try {
-  data = JSON.parse(text);       // 🔥 再手動轉 JSON
-} catch(e) {
-  console.log("不是 JSON 回傳：", text);
-  return;
-}
-
-document.getElementById('notice').innerText =
-data.notice || '';
-
-if(data.status === '暫停'){
-document.querySelector('.submit-btn').disabled = true;
-document.querySelector('.submit-btn').innerText = '🚫 目前暫停接單';
-}
-
-}catch(err){
-console.log(err);
-
-}
-
-}
-
-loadSetting();
 
 </script>
 
