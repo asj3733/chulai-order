@@ -15,7 +15,16 @@ padding-bottom:140px;
 }
 .card{background:#fff;border-radius:12px;padding:15px;margin:15px 0}
 h2{margin-top:0}
-.item{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid #eee}
+.item{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:12px;
+margin-bottom:8px;
+background:#fafafa;
+border-radius:10px;
+border:1px solid #eee;
+}
 input[type=number]{width:70px}
 input,textarea{width:100%;padding:10px;margin:6px 0;box-sizing:border-box}
 button{background:#06C755;color:#fff;border:0;padding:14px;width:100%;border-radius:10px;font-size:18px}
@@ -79,11 +88,11 @@ margin-bottom:10px;
 </div>
 </div>
 
-<div class="card"><h2>麵類</h2><div id="cat1"></div></div>
-<div class="card"><h2>關東煮</h2><div id="cat2"></div></div>
-<div class="card"><h2>小菜</h2><div id="cat3"></div></div>
-<div class="card"><h2>湯類</h2><div id="cat4"></div></div>
-<div class="card"><h2>其他</h2><div id="cat5"></div></div>
+<div class="card"><h2>🍜 麵類</h2><div id="cat1"></div></div>
+<div class="card"><h2>🍢 關東煮</h2><div id="cat2"></div></div>
+<div class="card"><h2>🥚 小菜</h2><div id="cat3"></div></div>
+<div class="card"><h2>🍲 湯類</h2><div id="cat4"></div></div>
+<div class="card"><h2>🍚 其他</h2><div id="cat5"></div></div>
 
 <div class="card">
 <h2>訂購資訊</h2>
@@ -92,15 +101,16 @@ margin-bottom:10px;
 <textarea id="note" placeholder="備註：例如不加蔥、加辣"></textarea>
 <div style="
 background:#fff3cd;
-padding:12px;
+padding:10px;
 border-radius:8px;
-margin:10px 0;
+margin-bottom:8px;
 font-weight:bold;
-color:#856404;
 text-align:center;
 ">
-⏰ 提前預訂請選擇取餐時間，立即取餐免填
+⏰ 提前預訂請填寫取餐時間，立即取餐免填
 </div>
+
+<input id="time" placeholder="取餐時間(提早預訂再輸入預定取餐時間）">
 
 <input
 id="time"
