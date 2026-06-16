@@ -203,8 +203,6 @@ img{
   <button onclick="sendOrder()">送出訂單</button>
 </div>
 
-</script>
-
 <script>
 
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz-PW_7f3vaEOiG29PyU0_d8fi2lAS1P8i3ITONhv6y_g_q9pW67dwCccgDMHAI5GOKzw/exec";
@@ -223,9 +221,12 @@ const data = [
 ["cat5","肉燥飯",35],["cat5","白飯",15],["cat5","燙青菜",40],["cat5","水餃",50]
 ];
 
-// 先畫商品
+// 畫商品
 data.forEach((m,i)=>{
-  document.getElementById(m[0]).insertAdjacentHTML('beforeend',`
+  const el=document.getElementById(m[0]);
+  if(!el) return;
+
+  el.insertAdjacentHTML('beforeend',`
   <div class="item">
     <span>${m[1]} $${m[2]}</span>
     <div class="qty">
@@ -274,7 +275,7 @@ async function loadSetting(){
     }
 
   }catch(err){
-    console.log(err);
+    console.log("loadSetting error", err);
   }
 }
 
@@ -301,26 +302,32 @@ async function sendOrder(){
 
   if(items.length===0) return alert('請選餐');
 
-  const res = await fetch(SCRIPT_URL,{
-    method:'POST',
-    headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({
-      name,
-      phone,
-      time:document.getElementById('time').value,
-      note:document.getElementById('note').value,
-      items:items.join('\n'),
-      total
-    })
-  });
+  try{
 
-  console.log(await res.text());
+    const res = await fetch(SCRIPT_URL,{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        name,
+        phone,
+        time:document.getElementById('time').value,
+        note:document.getElementById('note').value,
+        items:items.join('\n'),
+        total
+      })
+    });
 
-  alert("訂單已送出！");
-  location.reload();
+    console.log(await res.text());
+
+    alert("訂單已送出！");
+    location.reload();
+
+  }catch(err){
+    console.log("送單錯誤", err);
+    alert("送單失敗");
+  }
 }
 
 </script>
-
 </body>
 </html>
