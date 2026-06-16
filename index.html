@@ -305,17 +305,16 @@ async function sendOrder(){
   try{
 
     const res = await fetch(SCRIPT_URL,{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({
-        name,
-        phone,
-        time:document.getElementById('time').value,
-        note:document.getElementById('note').value,
-        items:items.join('\n'),
-        total
-      })
-    });
+  method:'POST',
+  body: JSON.stringify({
+    name,
+    phone,
+    time: document.getElementById('time').value,
+    note: document.getElementById('note').value,
+    items: items.join('\n'),
+    total
+  })
+});
 
     console.log(await res.text());
 
