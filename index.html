@@ -206,83 +206,10 @@ img{
 </script>
 
 <script>
+
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz-PW_7f3vaEOiG29PyU0_d8fi2lAS1P8i3ITONhv6y_g_q9pW67dwCccgDMHAI5GOKzw/exec";
 
-async function loadSetting(){
-  try{
-    const res = await fetch(SCRIPT_URL);
-    const setting = await res.json();
-
-    document.getElementById("notice").innerText =
-      setting.notice || "";
-
-    const btn = document.querySelector(".checkout-bar button");
-
-    if(setting.status === "暫停"){
-      btn.disabled = true;
-      btn.innerText = "🚫 暫停接單";
-    }
-
-  }catch(err){
-    console.log("loadSetting error", err);
-  }
-}
-
-loadSetting();
-
-async function sendOrder(){
-
-  const name = document.getElementById('name').value.trim();
-  const phone = document.getElementById('phone').value.trim();
-
-  if(!name) return alert('請輸入姓名');
-  if(!/^09\d{8}$/.test(phone)) return alert('電話錯誤');
-
-  let items = [];
-  let total = 0;
-
-  data.forEach((m,i)=>{
-    let q = +document.getElementById('i'+i).value || 0;
-    if(q>0){
-      items.push(`${m[1]} x ${q}`);
-      total += q * m[2];
-    }
-  });
-
-  if(items.length === 0) return alert('請選餐');
-
-  try {
-
-    const res = await fetch(SCRIPT_URL,{
-      method:'POST',
-      headers:{
-        'Content-Type':'application/json'
-      },
-      body:JSON.stringify({
-        name,
-        phone,
-        time:document.getElementById('time').value,
-        note:document.getElementById('note').value,
-        items:items.join('\n'),
-        total
-      })
-    });
-
-    const text = await res.text();
-    console.log("GAS回應:", text);
-
-    alert("訂單已送出！");
-    location.reload();
-
-  } catch(err){
-    console.log("送單錯誤:", err);
-    alert("送單失敗");
-  }
-}
-</script>
-loadSetting();
-
-const data=[
+const data = [
 ["cat1","肉燥乾麵(小)",55],["cat1","肉燥乾麵(大)",65],
 ["cat1","肉燥米粉(小)",55],["cat1","肉燥米粉(大)",65],
 ["cat1","湯麵(小)",55],["cat1","湯麵(大)",65],
@@ -296,77 +223,101 @@ const data=[
 ["cat5","肉燥飯",35],["cat5","白飯",15],["cat5","燙青菜",40],["cat5","水餃",50]
 ];
 
+// 先畫商品
 data.forEach((m,i)=>{
-document.getElementById(m[0]).insertAdjacentHTML('beforeend',`
-<div class="item">
-  <span>${m[1]} $${m[2]}</span>
-  <div class="qty">
-    <button onclick="minus(${i})">-</button>
-    <span id="qty${i}">0</span>
-    <button onclick="plus(${i})">+</button>
-    <input type="hidden" id="i${i}" value="0">
-  </div>
-</div>
-`);
+  document.getElementById(m[0]).insertAdjacentHTML('beforeend',`
+  <div class="item">
+    <span>${m[1]} $${m[2]}</span>
+    <div class="qty">
+      <button onclick="minus(${i})">-</button>
+      <span id="qty${i}">0</span>
+      <button onclick="plus(${i})">+</button>
+      <input type="hidden" id="i${i}" value="0">
+    </div>
+  </div>`);
 });
 
 function plus(i){
-let el=document.getElementById('i'+i);
-el.value=+el.value+1;
-document.getElementById('qty'+i).innerText=el.value;
-calc();
+  let el=document.getElementById('i'+i);
+  el.value=+el.value+1;
+  document.getElementById('qty'+i).innerText=el.value;
+  calc();
 }
 
 function minus(i){
-let el=document.getElementById('i'+i);
-if(el.value>0) el.value--;
-document.getElementById('qty'+i).innerText=el.value;
-calc();
+  let el=document.getElementById('i'+i);
+  if(el.value>0) el.value--;
+  document.getElementById('qty'+i).innerText=el.value;
+  calc();
 }
 
 function calc(){
-let t=0;
-data.forEach((m,i)=>{
-let q=+document.getElementById('i'+i).value||0;
-t+=q*m[2];
-});
-document.getElementById('total').innerText=t;
+  let t=0;
+  data.forEach((m,i)=>{
+    let q=+document.getElementById('i'+i).value||0;
+    t+=q*m[2];
+  });
+  document.getElementById('total').innerText=t;
 }
+
+async function loadSetting(){
+  try{
+    const res = await fetch(SCRIPT_URL);
+    const setting = await res.json();
+
+    document.getElementById("notice").innerText = setting.notice || "";
+
+    if(setting.status === "暫停"){
+      const btn = document.querySelector(".checkout-bar button");
+      btn.disabled = true;
+      btn.innerText = "🚫 暫停接單";
+    }
+
+  }catch(err){
+    console.log(err);
+  }
+}
+
+loadSetting();
 
 async function sendOrder(){
 
-const name=document.getElementById('name').value.trim();
-const phone=document.getElementById('phone').value.trim();
+  const name=document.getElementById('name').value.trim();
+  const phone=document.getElementById('phone').value.trim();
 
-if(!name) return alert('請輸入姓名');
-if(!/^09\d{8}$/.test(phone)) return alert('電話錯誤');
+  if(!name) return alert('請輸入姓名');
+  if(!/^09\d{8}$/.test(phone)) return alert('電話錯誤');
 
-let items=[];
-let total=0;
+  let items=[];
+  let total=0;
 
-data.forEach((m,i)=>{
-let q=+document.getElementById('i'+i).value||0;
-if(q>0){
-items.push(`${m[1]} x ${q}`);
-total+=q*m[2];
-}
-});
+  data.forEach((m,i)=>{
+    let q=+document.getElementById('i'+i).value||0;
+    if(q>0){
+      items.push(`${m[1]} x ${q}`);
+      total+=q*m[2];
+    }
+  });
 
-if(items.length===0) return alert('請選餐');
+  if(items.length===0) return alert('請選餐');
 
-await fetch(SCRIPT_URL,{
-method:'POST',
-body:JSON.stringify({
-name,phone,
-time:document.getElementById('time').value,
-note:document.getElementById('note').value,
-items:items.join('\n'),
-total
-})
-});
+  const res = await fetch(SCRIPT_URL,{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({
+      name,
+      phone,
+      time:document.getElementById('time').value,
+      note:document.getElementById('note').value,
+      items:items.join('\n'),
+      total
+    })
+  });
 
-alert("訂單已送出！");
-location.reload();
+  console.log(await res.text());
+
+  alert("訂單已送出！");
+  location.reload();
 }
 
 </script>
