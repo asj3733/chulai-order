@@ -12,7 +12,34 @@ body{
   margin:0;
   color:#333;
 }
+.hero{
+  text-align:center;
+  padding:25px 15px;
+  background:linear-gradient(135deg,#2f2f2f,#1c1c1c);
+  color:#d4af37;
+  border-bottom:3px solid #d4af37;
+}
 
+.hero h2{
+  font-size:28px;
+  margin:0;
+}
+
+.hero p{
+  font-size:14px;
+  color:#f1d98a;
+  margin-top:8px;
+}
+
+.status{
+  margin-top:10px;
+  display:inline-block;
+  padding:6px 12px;
+  border-radius:20px;
+  background:#28a745;
+  color:#fff;
+  font-size:13px;
+}
 /* ===== Header 品牌化 ===== */
 header{
   background:linear-gradient(135deg,#2f2f2f,#4a4a4a);
@@ -34,6 +61,13 @@ header p, header a{
   color:#f1d98a;
   font-size:13px;
 }
+
+<div class="hero">
+  <h2>🍜 初萊食麵</h2>
+  <p>肉燥乾麵｜關東煮｜水餃｜在地小吃</p>
+
+  <div class="status" id="status">🟢 正常營業中</div>
+</div>
 
 /* ===== 容器 ===== */
 .wrap{
@@ -218,10 +252,10 @@ img{
 </div>
 
 <div class="card">
-<h2>🚀 快速點餐</h2>
+<h2>🚀 線上點餐入口</h2>
 
 <a class="bigbtn self" href="#cat1">
-🍜 店內點餐（免平台服務費）
+🍜 店內點餐（最優惠 / 免平台抽成）
 </a>
 
 <a class="bigbtn uber"
@@ -236,15 +270,14 @@ target="_blank">
 🐼 foodpanda
 </a>
 
-<a class="bigbtn phone"
-href="tel:0903392687">
+<a class="bigbtn phone" href="tel:0903392687">
 📞 電話訂餐
 </a>
 
 <a class="bigbtn map"
 href="https://maps.google.com/?q=高雄市三民區遼寧二街168號"
 target="_blank">
-📍 Google 地圖導航
+📍 Google 地圖
 </a>
 
 </div>
