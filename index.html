@@ -158,6 +158,42 @@ img{
   color:#d4af37;
   font-weight:bold;
 }
+.bigbtn{
+  display:block;
+  text-decoration:none;
+  padding:16px;
+  margin:12px 0;
+  border-radius:12px;
+  text-align:center;
+  font-size:18px;
+  font-weight:bold;
+  color:#fff;
+  transition:0.25s;
+}
+
+.bigbtn:active{
+  transform:scale(0.97);
+}
+
+.self{
+  background:#28a745;
+}
+
+.uber{
+  background:#000000;
+}
+
+.panda{
+  background:#ff2b85;
+}
+
+.phone{
+  background:#0d6efd;
+}
+
+.map{
+  background:#f39c12;
+}
 </style>
 </head>
 
@@ -179,6 +215,38 @@ img{
 <div class="card">
 <h2>公告</h2>
 <div id="notice">歡迎使用線上點餐</div>
+</div>
+
+<div class="card">
+<h2>🚀 快速點餐</h2>
+
+<a class="bigbtn self" href="#cat1">
+🍜 店內點餐（免平台服務費）
+</a>
+
+<a class="bigbtn uber"
+href="https://www.ubereats.com/tw/store/初萊食麵｜大腸香腸、關東煮/9-pIirZHWkWxCprbnjgzBQ"
+target="_blank">
+🛵 Uber Eats
+</a>
+
+<a class="bigbtn panda"
+href="https://foodpanda.com.tw/restaurant/o32y/chu-lai-shi-mian"
+target="_blank">
+🐼 foodpanda
+</a>
+
+<a class="bigbtn phone"
+href="tel:0903392687">
+📞 電話訂餐
+</a>
+
+<a class="bigbtn map"
+href="https://maps.google.com/?q=高雄市三民區遼寧二街168號"
+target="_blank">
+📍 Google 地圖導航
+</a>
+
 </div>
 
 <div class="card"><h2>🍜 麵類</h2><div id="cat1"></div></div>
