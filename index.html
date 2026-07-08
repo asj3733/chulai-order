@@ -185,6 +185,12 @@ img{
 .checkout-bar button:active{
   transform:scale(0.95);
 }
+.checkout-bar button:disabled{
+  background:#999;
+  color:#fff;
+  cursor:not-allowed;
+  opacity:0.8;
+}
 
 /* ===== 總金額 ===== */
 #total{
@@ -442,7 +448,15 @@ async function loadSetting(){
 loadSetting();
 
 async function sendOrder(){
+  const btn = document.getElementById("submitBtn");
 
+  // 已經送出中就直接離開
+
+  if(btn.disabled){
+
+    return;
+
+  }
   const name=document.getElementById('name').value.trim();
   const phone=document.getElementById('phone').value.trim();
 
@@ -462,7 +476,6 @@ async function sendOrder(){
 
   if(items.length===0) return alert('請選餐');
 
-const btn = document.getElementById("submitBtn");
 
 // 防止重複送單
 btn.disabled = true;
