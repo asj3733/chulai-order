@@ -361,9 +361,8 @@ target="_blank">
 <!-- 底部結帳列 -->
 <div class="checkout-bar">
   <div>總金額：<span id="total">0</span> 元</div>
-  <button onclick="sendOrder()">送出訂單</button>
+  <button id="submitBtn" onclick="sendOrder()">送出訂單</button>
 </div>
-
 <script>
 
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzYMTH533Tn9GlVNgPn7m8fZqTGDA6_Nu9nJyLMdwgml8bM4R_jh6BgbyuAT5OJzBHTHw/exec";
@@ -463,6 +462,12 @@ async function sendOrder(){
 
   if(items.length===0) return alert('請選餐');
 
+const btn = document.getElementById("submitBtn");
+
+// 防止重複送單
+btn.disabled = true;
+btn.innerHTML = "📤 訂單送出中...";
+
   try{
 
     const res = await fetch(SCRIPT_URL,{
@@ -498,13 +503,18 @@ ${document.getElementById('note').value || '無'}
 ❤️ 感謝您支持初萊食麵！
 `;
 
+btn.innerHTML = "✅ 已送出";
+
 alert(orderSummary);
 
 location.reload();
 
   }catch(err){
     console.log("送單錯誤", err);
-    alert("送單失敗");
+btn.disabled = false;
+btn.innerHTML = "送出訂單";
+
+alert("送單失敗，請再試一次！");
   }
 }
 
