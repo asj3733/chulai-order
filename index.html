@@ -373,7 +373,7 @@ const data = [
 ["cat1","肉燥米粉(小)",55],["cat1","肉燥米粉(大)",65],
 ["cat1","湯麵(小)",55],["cat1","湯麵(大)",65],
 ["cat1","麻醬麵(小)",60],["cat1","麻醬麵(大)",70],
-["cat1","鮮蝦餛飩麵(小)",70],["cat1","鮮蝦餛飩麵(大)",80],
+["cat1","鮮蝦餛飩乾麵(小)",70],["cat1","鮮蝦餛飩乾麵(大)",80],["cat1","鮮蝦餛飩湯麵(小)",70],["cat1","鮮蝦餛飩湯麵(大)",80],
 ["cat2","黑輪",10],["cat2","米血",10],["cat2","魚板",10],["cat2","蛋丸",10],
 ["cat2","菜頭",15],["cat2","竹輪",15],["cat2","貢丸",20],["cat2","福州丸",20],
 ["cat2","黃金魚板",20],["cat2","高麗菜捲",20],["cat2","苦瓜封",40],
@@ -479,8 +479,28 @@ async function sendOrder(){
 
     console.log(await res.text());
 
-    alert("訂單已送出！");
-    location.reload();
+    const orderSummary = `
+🎉 訂單已送出！
+
+━━━━━━━━━━━━
+
+${items.join('\n')}
+
+━━━━━━━━━━━━
+
+💰 合計：${total} 元
+
+📍 取餐方式：${document.getElementById('time').value}
+
+📝 備註：
+${document.getElementById('note').value || '無'}
+
+❤️ 感謝您支持初萊食麵！
+`;
+
+alert(orderSummary);
+
+location.reload();
 
   }catch(err){
     console.log("送單錯誤", err);
