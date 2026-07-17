@@ -486,13 +486,9 @@ let spicy = prompt(
 );
 
 
-let level="";
+let level="不辣";
 
 switch(spicy){
-
-case "1":
-level="不辣";
-break;
 
 case "2":
 level="小辣🌶️";
@@ -506,14 +502,41 @@ case "4":
 level="大辣🌶️🌶️🌶️";
 break;
 
-default:
-level="不辣";
-
 }
 
 
-data[i][1] = data[i][1].replace(/（.*?）|🌶️.*/g,"")
-+"（"+level+"）";
+// 加料選擇
+
+let add=[];
+
+if(confirm("🥚 加荷包蛋 +15元？")){
+add.push("加蛋");
+}
+
+if(confirm("🥚 加滷蛋 +15元？")){
+add.push("加滷蛋");
+}
+
+
+// 修改品項名稱
+let extra="";
+
+if(add.length>0){
+extra="＋"+add.join("＋");
+}
+
+
+data[i][1] = data[i][1].replace(/（.*?）/g,"")
++"（"+level+extra+"）";
+
+
+// 加價處理
+
+if(add.length>0){
+
+data[i][2] += add.length * 15;
+
+}
 
 
 plus(i);
