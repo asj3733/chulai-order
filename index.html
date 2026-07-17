@@ -424,14 +424,31 @@ function addItem(i){
 
     const item = data[i];
 
-    if(item[0] !== "cat1"){
+    switch(item[0]){
 
-        plus(i);
-        return;
+        case "cat1":
+            openNoodleModal(i);
+            break;
 
+        case "cat2":
+            openOdenModal(i);
+            break;
+
+        default:
+            plus(i);
+            break;
     }
 
-    openNoodleModal(i);
+}
+function openNoodleModal(i){
+
+    alert("🍜 麵類客製化（下一步製作）");
+
+}
+
+function openOdenModal(i){
+
+    alert("🍢 關東煮醬料（下一步製作）");
 
 }
 
