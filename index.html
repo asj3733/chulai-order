@@ -61,6 +61,8 @@ header p, header a{
   color:#f1d98a;
   font-size:13px;
 }
+</style>
+<body>
 
 <div class="hero">
   <h2>🍜 初萊食麵</h2>
@@ -451,18 +453,19 @@ function openOdenModal(i){
     alert("🍢 關東煮醬料（下一步製作）");
 
 }
-
+function plus(i){
+    let el=document.getElementById('i'+i);
+    el.value = +el.value + 1;
+    document.getElementById('qty'+i).innerText = el.value;
+    calc();
+}
 function minus(i){
   let el=document.getElementById('i'+i);
   if(el.value>0) el.value--;
   document.getElementById('qty'+i).innerText=el.value;
   calc();
 }
-function openNoodleModal(i){
 
-    alert("下一步我們改成漂亮的客製化視窗");
-
-}
 function calc(){
   let t=0;
   data.forEach((m,i)=>{
