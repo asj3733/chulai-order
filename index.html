@@ -414,17 +414,25 @@ data.forEach((m,i)=>{
     <div class="qty">
       <button onclick="minus(${i})">-</button>
       <span id="qty${i}">0</span>
-      <button onclick="plus(${i})">+</button>
+      <button onclick="addItem(${i})">+</button>
       <input type="hidden" id="i${i}" value="0">
     </div>
   </div>`);
 });
 
-function plus(i){
-  let el=document.getElementById('i'+i);
-  el.value=+el.value+1;
-  document.getElementById('qty'+i).innerText=el.value;
-  calc();
+function addItem(i){
+
+    const item = data[i];
+
+    if(item[0] !== "cat1"){
+
+        plus(i);
+        return;
+
+    }
+
+    openNoodleModal(i);
+
 }
 
 function minus(i){
@@ -433,7 +441,11 @@ function minus(i){
   document.getElementById('qty'+i).innerText=el.value;
   calc();
 }
+function openNoodleModal(i){
 
+    alert("下一步我們改成漂亮的客製化視窗");
+
+}
 function calc(){
   let t=0;
   data.forEach((m,i)=>{
