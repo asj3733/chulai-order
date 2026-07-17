@@ -409,6 +409,15 @@ target="_blank">
 <div class="card"><h2>🍚 其他</h2><div id="cat5"></div></div>
 
 <div class="card">
+
+<h2>🛒 購物車</h2>
+
+<div id="cartList">
+尚未選擇商品
+</div>
+
+</div>
+<div class="card">
 <h2>訂購資訊</h2>
 <input id="name" placeholder="姓名(必填)">
 <input id="phone" placeholder="電話(必填)">
@@ -426,7 +435,7 @@ target="_blank">
 <script>
 
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzYMTH533Tn9GlVNgPn7m8fZqTGDA6_Nu9nJyLMdwgml8bM4R_jh6BgbyuAT5OJzBHTHw/exec";
-
+let cart = [];
 const data = [
 ["cat1","肉燥乾麵(小)",55],["cat1","肉燥乾麵(大)",65],
 ["cat1","肉燥米粉(小)",55],["cat1","肉燥米粉(大)",65],
@@ -584,10 +593,74 @@ plus(i);
 
 }
 function plus(i){
-    let el=document.getElementById('i'+i);
-    el.value = +el.value + 1;
-    document.getElementById('qty'+i).innerText = el.value;
-    calc();
+
+let item = {
+name:data[i][1],
+price:data[i][2],
+qty:1
+};
+
+cart.push(item);
+
+renderCart();
+
+calc();
+
+}
+function renderCart(){
+
+let box=document.getElementById("cartList");
+
+if(cart.length===0){
+
+box.innerHTML="尚未選擇商品";
+return;
+
+}
+
+
+let html="";
+
+
+cart.forEach((item,index)=>{
+
+html+=`
+
+<div class="item">
+
+<span>
+${item.name}
+<br>
+$${item.price} x ${item.qty}
+</span>
+
+
+<button onclick="removeCart(${index})">
+❌
+</button>
+
+
+</div>
+
+`;
+
+});
+
+
+box.innerHTML=html;
+
+
+}
+
+
+function removeCart(index){
+
+cart.splice(index,1);
+
+renderCart();
+
+calc();
+
 }
 function minus(i){
   let el=document.getElementById('i'+i);
