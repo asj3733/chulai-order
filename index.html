@@ -476,12 +476,85 @@ function addItem(i){
 
 }
 function openNoodleModal(i){
-    alert("🍜 麵類客製化（下一版加入）");
+
+let spicy = prompt(
+"🍜 請選擇辣度\n\n"+
+"1 = 不辣\n"+
+"2 = 小辣 🌶️\n"+
+"3 = 中辣 🌶️🌶️\n"+
+"4 = 大辣 🌶️🌶️🌶️"
+);
+
+
+let level="";
+
+switch(spicy){
+
+case "1":
+level="不辣";
+break;
+
+case "2":
+level="小辣🌶️";
+break;
+
+case "3":
+level="中辣🌶️🌶️";
+break;
+
+case "4":
+level="大辣🌶️🌶️🌶️";
+break;
+
+default:
+level="不辣";
+
+}
+
+
+data[i][1] = data[i][1].replace(/（.*?）|🌶️.*/g,"")
++"（"+level+"）";
+
+
+plus(i);
+
 }
 
 function openOdenModal(i){
 
-    alert("🍢 關東煮醬料（下一步製作）");
+
+let sauce=[];
+
+
+if(confirm("🍢 要加醬油膏嗎？")){
+sauce.push("醬油膏");
+}
+
+
+if(confirm("🌶️ 要加辣椒醬嗎？")){
+sauce.push("辣椒醬");
+}
+
+
+if(confirm("🍅 要加蕃茄醬嗎？")){
+sauce.push("蕃茄醬");
+}
+
+
+
+if(sauce.length===0){
+
+sauce.push("不加醬");
+
+}
+
+
+data[i][1] = data[i][1].replace(/（.*?）/g,"")
++"（"+sauce.join("＋")+"）";
+
+
+plus(i);
+
 
 }
 function plus(i){
