@@ -61,18 +61,7 @@ header p, header a{
   color:#f1d98a;
   font-size:13px;
 }
-</style>
-<body>
-
-<div class="hero">
-  <h2>🍜 初萊食麵</h2>
-  <p>肉燥乾麵｜關東煮｜水餃｜在地小吃</p>
-
-  <div class="status" id="status">🟢 正常營業中</div>
-</div>
-
-/* ===== 容器 ===== */
-.wrap{
+wrap{
   max-width:900px;
   margin:auto;
   padding:12px;
@@ -280,6 +269,12 @@ img{
 
 <body>
 
+<div class="hero">
+  <h2>🍜 初萊食麵</h2>
+  <p>肉燥乾麵｜關東煮｜水餃｜在地小吃</p>
+  <div class="status" id="status">🟢 正常營業中</div>
+</div>
+
 <header>
 <h1>初萊食麵</h1>
 <p>高雄市三民區遼寧二街168號</p>
@@ -424,7 +419,7 @@ data.forEach((m,i)=>{
 
 function addItem(i){
 
-    const item = data[i];
+    const item=data[i];
 
     switch(item[0]){
 
@@ -443,9 +438,7 @@ function addItem(i){
 
 }
 function openNoodleModal(i){
-
-    alert("🍜 麵類客製化（下一步製作）");
-
+    alert("🍜 麵類客製化（下一版加入）");
 }
 
 function openOdenModal(i){
