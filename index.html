@@ -6,7 +6,7 @@
 
 <meta
 name="viewport"
-content="width=device-width,initial-scale=1,maximum-scale=1"
+content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"
 >
 
 <title>初萊食麵｜線上點餐</title>
@@ -19,6 +19,7 @@ content="width=device-width,initial-scale=1,maximum-scale=1"
 
 *{
   box-sizing:border-box;
+  -webkit-tap-highlight-color:transparent;
 }
 
 html{
@@ -27,7 +28,7 @@ html{
 
 body{
   margin:0;
-  padding:0 0 75px 0;
+  padding:0 0 72px 0;
 
   font-family:
   -apple-system,
@@ -38,11 +39,8 @@ body{
   sans-serif;
 
   background:#ededed;
-
   color:#333;
-
   font-size:15px;
-
   overflow-x:hidden;
 }
 
@@ -53,20 +51,14 @@ body{
 
 header{
   background:
-  linear-gradient(
-    135deg,
-    #111,
-    #2d2d2d
-  );
+  linear-gradient(135deg,#111,#2d2d2d);
 
   color:#d4af37;
-
   text-align:center;
 
   padding:20px 10px 17px;
 
-  border-bottom:
-  2px solid #d4af37;
+  border-bottom:2px solid #d4af37;
 
   box-shadow:
   0 3px 10px
@@ -77,7 +69,6 @@ header{
   margin:0;
 
   font-size:30px;
-
   font-weight:bold;
 
   letter-spacing:3px;
@@ -142,8 +133,7 @@ header{
 
   color:#d4af37;
 
-  border:
-  1px solid #d4af37;
+  border:1px solid #d4af37;
 
   font-size:11px;
 
@@ -185,13 +175,11 @@ header{
 }
 
 .card h2{
-  margin:
-  0 0 9px 0;
+  margin:0 0 9px 0;
 
   padding-left:8px;
 
-  border-left:
-  4px solid #d4af37;
+  border-left:4px solid #d4af37;
 
   color:#b8912e;
 
@@ -209,7 +197,6 @@ header{
   display:block;
 
   width:100%;
-
   max-width:100%;
 
   border-radius:8px;
@@ -227,8 +214,7 @@ header{
 
   background:#faf7ed;
 
-  border:
-  1px solid #ead89b;
+  border:1px solid #ead89b;
 
   border-radius:7px;
 
@@ -277,8 +263,7 @@ header{
   0 2px 5px
   rgba(0,0,0,.1);
 
-  transition:
-  transform .1s;
+  transition:transform .1s;
 }
 
 .bigbtn:active{
@@ -346,8 +331,7 @@ header{
 }
 
 .food h3{
-  margin:
-  7px 3px 2px;
+  margin:7px 3px 2px;
 
   text-align:center;
 
@@ -357,8 +341,7 @@ header{
 }
 
 .food p{
-  margin:
-  0 3px 8px;
+  margin:0 3px 8px;
 
   text-align:center;
 
@@ -385,8 +368,7 @@ header{
 
   padding:7px 2px;
 
-  border-bottom:
-  1px solid #eee;
+  border-bottom:1px solid #eee;
 }
 
 .item:last-child{
@@ -420,13 +402,11 @@ header{
 
 .qty button{
   width:30px;
-
   height:30px;
 
   padding:0;
 
-  border:
-  1px solid #d4af37;
+  border:1px solid #d4af37;
 
   border-radius:6px;
 
@@ -439,8 +419,6 @@ header{
   line-height:28px;
 
   cursor:pointer;
-
-  -webkit-tap-highlight-color:transparent;
 }
 
 .qty button:active{
@@ -468,35 +446,132 @@ header{
   font-size:14px;
 }
 
-#cartList .item{
-  min-height:50px;
+.cart-empty{
+  padding:10px 0;
 
-  padding:
-  8px 0;
+  color:#888;
+
+  text-align:center;
 }
 
-#cartList .item span{
+.cart-row{
+  display:flex;
+
+  align-items:center;
+
+  justify-content:space-between;
+
+  gap:8px;
+
+  padding:9px 0;
+
+  border-bottom:1px solid #eee;
+}
+
+.cart-row:last-child{
+  border-bottom:none;
+}
+
+.cart-info{
+  flex:1;
+
+  min-width:0;
+}
+
+.cart-name{
+  color:#333;
+
+  font-size:14px;
+
+  font-weight:bold;
+
   line-height:1.5;
+
+  word-break:break-word;
 }
 
-#cartList button{
+.cart-price{
+  margin-top:3px;
+
+  color:#777;
+
+  font-size:13px;
+}
+
+.cart-controls{
+  display:flex;
+
+  align-items:center;
+
+  gap:5px;
+
   flex-shrink:0;
+}
 
-  width:30px;
-
-  height:30px;
+.cart-controls button{
+  width:29px;
+  height:29px;
 
   padding:0;
 
-  border:none;
+  border:1px solid #d4af37;
 
   border-radius:6px;
+
+  background:#2f2f2f;
+
+  color:#d4af37;
+
+  font-size:16px;
+
+  line-height:27px;
+}
+
+.cart-controls .cart-delete{
+  margin-left:3px;
+
+  border:none;
 
   background:#dc3545;
 
   color:#fff;
 
+  font-size:13px;
+}
+
+.cart-qty{
+  width:20px;
+
+  text-align:center;
+
+  font-size:13px;
+
+  font-weight:bold;
+}
+
+
+/* ==================================================
+   購物車總計
+================================================== */
+
+.cart-summary{
+  margin-top:8px;
+
+  padding-top:9px;
+
+  border-top:2px solid #eee;
+
+  text-align:right;
+
+  color:#555;
+
   font-size:14px;
+}
+
+.cart-summary strong{
+  color:#b8912e;
+
+  font-size:19px;
 }
 
 
@@ -512,11 +587,9 @@ textarea{
 
   padding:9px;
 
-  margin:
-  6px 0;
+  margin:6px 0;
 
-  border:
-  1px solid #ddd;
+  border:1px solid #ddd;
 
   border-radius:7px;
 
@@ -577,15 +650,13 @@ textarea:focus{
 
   gap:8px !important;
 
-  padding:
-  7px 10px !important;
+  padding:7px 10px !important;
 
   background:#2f2f2f !important;
 
   color:#fff !important;
 
-  border-top:
-  2px solid #d4af37 !important;
+  border-top:2px solid #d4af37 !important;
 
   box-shadow:
   0 -2px 10px
@@ -597,48 +668,29 @@ textarea:focus{
    底部總金額
 ================================================== */
 
-.checkout-bar > div{
+.checkout-total{
 
-  display:block !important;
+  flex:1;
 
-  width:auto !important;
+  color:#fff;
 
-  height:auto !important;
+  font-size:13px;
 
-  flex:1 !important;
+  line-height:1.3;
 
-  color:#fff !important;
+  white-space:nowrap;
+}
 
-  font-size:13px !important;
+.checkout-total strong{
 
-  line-height:1.3 !important;
+  color:#d4af37;
 
-  white-space:nowrap !important;
+  font-size:21px;
 }
 
 
 /* ==================================================
-   金額數字
-================================================== */
-
-#total{
-
-  display:inline !important;
-
-  width:auto !important;
-
-  height:auto !important;
-
-  color:#d4af37 !important;
-
-  font-size:21px !important;
-
-  font-weight:bold !important;
-}
-
-
-/* ==================================================
-   送出訂單按鈕
+   送出訂單
 ================================================== */
 
 .checkout-bar button{
@@ -689,7 +741,6 @@ textarea:focus{
 }
 
 .checkout-bar button:active{
-
   transform:scale(.96);
 }
 
@@ -706,18 +757,17 @@ textarea:focus{
 
 
 /* ==================================================
-   小螢幕 iPhone
+   小螢幕
 ================================================== */
 
 @media(max-width:390px){
 
   body{
-    padding-bottom:72px;
+    padding-bottom:70px;
   }
 
   header{
-    padding:
-    18px 8px 15px;
+    padding:18px 8px 15px;
   }
 
   .brand-logo{
@@ -772,7 +822,6 @@ textarea:focus{
 
   .qty button{
     width:29px;
-
     height:29px;
   }
 
@@ -780,18 +829,17 @@ textarea:focus{
 
     height:56px !important;
 
-    padding:
-    6px 8px !important;
+    padding:6px 8px !important;
   }
 
-  .checkout-bar > div{
+  .checkout-total{
 
-    font-size:12px !important;
+    font-size:12px;
   }
 
-  #total{
+  .checkout-total strong{
 
-    font-size:20px !important;
+    font-size:20px;
   }
 
   .checkout-bar button{
@@ -900,10 +948,6 @@ id="status"
 </header>
 
 
-<!-- ==================================================
-     主內容
-================================================== -->
-
 <div class="wrap">
 
 
@@ -932,14 +976,11 @@ alt="初萊食麵"
 </div>
 
 
-<!-- ==================================================
-     線上點餐入口
-================================================== -->
+<!-- 線上點餐入口 -->
 
 <div class="card">
 
 <h2>🚀 線上點餐入口</h2>
-
 
 <a
 class="bigbtn self"
@@ -947,7 +988,6 @@ href="#cat1"
 >
 🍜 店內點餐（最優惠 / 免平台抽成）
 </a>
-
 
 <a
 class="bigbtn uber"
@@ -957,7 +997,6 @@ target="_blank"
 🚴 Uber Eats
 </a>
 
-
 <a
 class="bigbtn panda"
 href="https://foodpanda.com.tw/restaurant/o32y/chu-lai-shi-mian"
@@ -965,7 +1004,6 @@ target="_blank"
 >
 🛵 foodpanda
 </a>
-
 
 <a
 class="bigbtn foodmo"
@@ -975,14 +1013,12 @@ target="_blank"
 🛵 foodomo
 </a>
 
-
 <a
 class="bigbtn phone"
 href="tel:0903392687"
 >
 📞 電話訂餐
 </a>
-
 
 <a
 class="bigbtn map"
@@ -991,7 +1027,6 @@ target="_blank"
 >
 📍 Google 地圖
 </a>
-
 
 <a
 class="bigbtn map"
@@ -1004,16 +1039,13 @@ target="_blank"
 </div>
 
 
-<!-- ==================================================
-     人氣推薦
-================================================== -->
+<!-- 人氣推薦 -->
 
 <div class="card">
 
 <h2>🔥 人氣推薦</h2>
 
 <div class="popular">
-
 
 <div class="food">
 
@@ -1056,15 +1088,12 @@ alt="黑輪"
 
 </div>
 
-
 </div>
 
 </div>
 
 
-<!-- ==================================================
-     麵類
-================================================== -->
+<!-- 麵類 -->
 
 <div class="card">
 
@@ -1075,9 +1104,7 @@ alt="黑輪"
 </div>
 
 
-<!-- ==================================================
-     關東煮
-================================================== -->
+<!-- 關東煮 -->
 
 <div class="card">
 
@@ -1088,9 +1115,7 @@ alt="黑輪"
 </div>
 
 
-<!-- ==================================================
-     小菜
-================================================== -->
+<!-- 小菜 -->
 
 <div class="card">
 
@@ -1101,9 +1126,7 @@ alt="黑輪"
 </div>
 
 
-<!-- ==================================================
-     湯類
-================================================== -->
+<!-- 湯類 -->
 
 <div class="card">
 
@@ -1114,9 +1137,7 @@ alt="黑輪"
 </div>
 
 
-<!-- ==================================================
-     其他
-================================================== -->
+<!-- 其他 -->
 
 <div class="card">
 
@@ -1127,24 +1148,24 @@ alt="黑輪"
 </div>
 
 
-<!-- ==================================================
-     購物車
-================================================== -->
+<!-- 購物車 -->
 
 <div class="card">
 
 <h2>🛒 購物車</h2>
 
 <div id="cartList">
+
+<div class="cart-empty">
 尚未選擇商品
 </div>
 
 </div>
 
+</div>
 
-<!-- ==================================================
-     訂購資訊
-================================================== -->
+
+<!-- 訂購資訊 -->
 
 <div class="card">
 
@@ -1177,16 +1198,16 @@ type="time"
 </div>
 
 
-<!-- ==================================================
-     底部固定結帳
-================================================== -->
+<!-- 底部結帳 -->
 
 <div class="checkout-bar">
 
-<div>
+<div class="checkout-total">
+
 總金額：
-<span id="total">0</span>
+<strong id="total">0</strong>
 元
+
 </div>
 
 <button
@@ -1199,12 +1220,7 @@ onclick="sendOrder()"
 </div>
 
 
-<!-- ==================================================
-     JavaScript
-================================================== -->
-
 <script>
-
 
 /* ==================================================
    Google Apps Script
@@ -1223,6 +1239,8 @@ let cart = [];
 
 /* ==================================================
    商品資料
+   這裡只保存原始商品
+   不再修改 data
 ================================================== */
 
 const data = [
@@ -1286,16 +1304,24 @@ const data = [
 
 
 /* ==================================================
+   商品數量顯示
+================================================== */
+
+const productQty = {};
+
+
+/* ==================================================
    畫商品
 ================================================== */
 
 data.forEach((m,i)=>{
 
+  productQty[i] = 0;
+
   const el =
   document.getElementById(m[0]);
 
   if(!el) return;
-
 
   el.insertAdjacentHTML(
     "beforeend",
@@ -1310,6 +1336,7 @@ ${m[1]} $${m[2]}
 <div class="qty">
 
 <button
+type="button"
 onclick="minus(${i})"
 >
 −
@@ -1320,22 +1347,16 @@ onclick="minus(${i})"
 </span>
 
 <button
+type="button"
 onclick="addItem(${i})"
 >
 ＋
 </button>
 
-<input
-type="hidden"
-id="i${i}"
-value="0"
->
-
 </div>
 
 </div>
 `
-
   );
 
 });
@@ -1350,85 +1371,76 @@ function addItem(i){
   const item =
   data[i];
 
+  if(item[0] === "cat1"){
 
-  switch(item[0]){
+    openNoodleModal(i);
 
-    case "cat1":
-
-      openNoodleModal(i);
-
-      break;
-
-
-    case "cat2":
-
-      openOdenModal(i);
-
-      break;
-
-
-    default:
-
-      plus(i);
-
-      break;
+    return;
 
   }
+
+  if(item[0] === "cat2"){
+
+    openOdenModal(i);
+
+    return;
+
+  }
+
+  addToCart(
+    item[1],
+    item[2],
+    i
+  );
 
 }
 
 
 /* ==================================================
-   麵類選項
+   麵類客製化
 ================================================== */
 
 function openNoodleModal(i){
 
+  const item =
+  data[i];
+
   let spicy =
   prompt(
-`🍜 請選擇辣度
+`🍜 ${item[1]}
+
+請選擇辣度：
 
 1 = 不辣
 2 = 小辣 🌶️
 3 = 中辣 🌶️🌶️
-4 = 大辣 🌶️🌶️🌶️`
+4 = 大辣 🌶️🌶️🌶️`,
+  "1"
   );
 
+  if(spicy === null){
+
+    return;
+
+  }
 
   let level =
   "不辣";
 
+  if(spicy === "2"){
+    level = "小辣🌶️";
+  }
 
-  switch(spicy){
+  if(spicy === "3"){
+    level = "中辣🌶️🌶️";
+  }
 
-    case "2":
-
-      level =
-      "小辣🌶️";
-
-      break;
-
-
-    case "3":
-
-      level =
-      "中辣🌶️🌶️";
-
-      break;
-
-
-    case "4":
-
-      level =
-      "大辣🌶️🌶️🌶️";
-
-      break;
-
+  if(spicy === "4"){
+    level = "大辣🌶️🌶️🌶️";
   }
 
 
   let add = [];
-
 
   if(
     confirm(
@@ -1456,9 +1468,7 @@ function openNoodleModal(i){
   }
 
 
-  let extra =
-  "";
-
+  let extra = "";
 
   if(add.length > 0){
 
@@ -1469,38 +1479,36 @@ function openNoodleModal(i){
   }
 
 
-  const originalName =
-  data[i][1]
-  .replace(/（.*?）/g,"");
-
-
-  const originalPrice =
-  data[i][2];
-
-
-  data[i][1] =
-  originalName +
+  const name =
+  item[1] +
   "（" +
   level +
   extra +
   "）";
 
 
-  data[i][2] =
-  originalPrice +
+  const price =
+  Number(item[2]) +
   add.length * 15;
 
 
-  plus(i);
+  addToCart(
+    name,
+    price,
+    i
+  );
 
 }
 
 
 /* ==================================================
-   關東煮選項
+   關東煮客製化
 ================================================== */
 
 function openOdenModal(i){
+
+  const item =
+  data[i];
 
   let sauce = [];
 
@@ -1555,19 +1563,18 @@ function openOdenModal(i){
   }
 
 
-  const originalName =
-  data[i][1]
-  .replace(/（.*?）/g,"");
-
-
-  data[i][1] =
-  originalName +
+  const name =
+  item[1] +
   "（" +
   sauce.join("＋") +
   "）";
 
 
-  plus(i);
+  addToCart(
+    name,
+    Number(item[2]),
+    i
+  );
 
 }
 
@@ -1576,18 +1583,22 @@ function openOdenModal(i){
    加入購物車
 ================================================== */
 
-function plus(i){
+function addToCart(
+  name,
+  price,
+  productIndex
+){
 
   const item = {
 
-    name:
-    data[i][1],
+    name:name,
 
-    price:
-    data[i][2],
+    price:Number(price),
 
-    qty:
-    1
+    qty:1,
+
+    productIndex:
+    productIndex
 
   };
 
@@ -1595,8 +1606,167 @@ function plus(i){
   cart.push(item);
 
 
+  productQty[productIndex] =
+  (productQty[productIndex] || 0) + 1;
+
+
+  updateProductQty(
+    productIndex
+  );
+
+
   renderCart();
 
+  calc();
+
+}
+
+
+/* ==================================================
+   更新商品旁數量
+================================================== */
+
+function updateProductQty(i){
+
+  const el =
+  document.getElementById(
+    "qty" + i
+  );
+
+  if(el){
+
+    el.innerText =
+    productQty[i] || 0;
+
+  }
+
+}
+
+
+/* ==================================================
+   購物車增加數量
+================================================== */
+
+function increaseCart(index){
+
+  if(!cart[index]) return;
+
+
+  cart[index].qty++;
+
+
+  const p =
+  cart[index].productIndex;
+
+
+  if(
+    p !== undefined &&
+    p !== null
+  ){
+
+    productQty[p] =
+    (productQty[p] || 0) + 1;
+
+    updateProductQty(p);
+
+  }
+
+
+  renderCart();
+
+  calc();
+
+}
+
+
+/* ==================================================
+   購物車減少數量
+================================================== */
+
+function decreaseCart(index){
+
+  if(!cart[index]) return;
+
+
+  cart[index].qty--;
+
+
+  const p =
+  cart[index].productIndex;
+
+
+  if(
+    p !== undefined &&
+    p !== null
+  ){
+
+    productQty[p] =
+    Math.max(
+      0,
+      (productQty[p] || 0) - 1
+    );
+
+    updateProductQty(p);
+
+  }
+
+
+  if(
+    cart[index].qty <= 0
+  ){
+
+    cart.splice(
+      index,
+      1
+    );
+
+  }
+
+
+  renderCart();
+
+  calc();
+
+}
+
+
+/* ==================================================
+   刪除購物車商品
+================================================== */
+
+function removeCart(index){
+
+  if(!cart[index]) return;
+
+
+  const p =
+  cart[index].productIndex;
+
+
+  if(
+    p !== undefined &&
+    p !== null
+  ){
+
+    productQty[p] =
+    Math.max(
+      0,
+      (productQty[p] || 0) -
+      cart[index].qty
+    );
+
+    updateProductQty(p);
+
+  }
+
+
+  cart.splice(
+    index,
+    1
+  );
+
+
+  renderCart();
 
   calc();
 
@@ -1620,47 +1790,105 @@ function renderCart(){
   ){
 
     box.innerHTML =
-    "尚未選擇商品";
+
+`
+<div class="cart-empty">
+尚未選擇商品
+</div>
+`;
 
     return;
 
   }
 
 
-  let html =
-  "";
+  let html = "";
 
 
   cart.forEach(
   (item,index)=>{
 
+    const subtotal =
+    Number(item.price) *
+    Number(item.qty);
+
+
     html +=
 
 `
-<div class="item">
+<div class="cart-row">
 
-<span>
+  <div class="cart-info">
 
-${item.name}
+    <div class="cart-name">
+      ${escapeHtml(item.name)}
+    </div>
 
-<br>
+    <div class="cart-price">
+      $${item.price}
+      ×
+      ${item.qty}
+      =
+      <strong>
+      $${subtotal}
+      </strong>
+    </div>
 
-$${item.price}
-×
-${item.qty}
+  </div>
 
-</span>
+  <div class="cart-controls">
 
-<button
-onclick="removeCart(${index})"
->
-❌
-</button>
+    <button
+    type="button"
+    onclick="decreaseCart(${index})"
+    >
+    −
+    </button>
+
+    <span class="cart-qty">
+    ${item.qty}
+    </span>
+
+    <button
+    type="button"
+    onclick="increaseCart(${index})"
+    >
+    ＋
+    </button>
+
+    <button
+    type="button"
+    class="cart-delete"
+    onclick="removeCart(${index})"
+    >
+    ✕
+    </button>
+
+  </div>
 
 </div>
 `;
 
   });
+
+
+  const total =
+  getCartTotal();
+
+
+  html +=
+
+`
+<div class="cart-summary">
+
+購物車合計：
+
+<strong>
+$${total}
+</strong>
+
+</div>
+`;
 
 
   box.innerHTML =
@@ -1670,86 +1898,103 @@ onclick="removeCart(${index})"
 
 
 /* ==================================================
-   刪除購物車商品
+   防止商品名稱特殊字元影響畫面
 ================================================== */
 
-function removeCart(index){
+function escapeHtml(text){
 
-  cart.splice(
-    index,
-    1
+  const div =
+  document.createElement(
+    "div"
   );
 
+  div.textContent =
+  text;
 
-  renderCart();
-
-
-  calc();
+  return div.innerHTML;
 
 }
 
 
 /* ==================================================
-   減少數量
+   計算購物車總金額
+   ★ 底部總金額唯一來源
 ================================================== */
 
-function minus(i){
+function getCartTotal(){
 
-  const el =
-  document.getElementById(
-    "i" + i
+  return cart.reduce(
+    function(total,item){
+
+      return total +
+      (
+        Number(item.price) *
+        Number(item.qty)
+      );
+
+    },
+    0
   );
-
-
-  if(
-    el.value > 0
-  ){
-
-    el.value--;
-
-  }
-
-
-  document.getElementById(
-    "qty" + i
-  ).innerText =
-  el.value;
-
-
-  calc();
 
 }
 
 
 /* ==================================================
-   計算總金額
+   更新底部總金額
 ================================================== */
 
 function calc(){
 
-  let t =
-  0;
+  const total =
+  getCartTotal();
 
 
-  data.forEach(
-  (m,i)=>{
-
-    const q =
-    +document.getElementById(
-      "i" + i
-    ).value || 0;
-
-
-    t +=
-    q * m[2];
-
-  });
-
-
+  const totalEl =
   document.getElementById(
     "total"
-  ).innerText =
-  t;
+  );
+
+
+  if(totalEl){
+
+    totalEl.innerText =
+    total;
+
+  }
+
+}
+
+
+/* ==================================================
+   商品列表減少
+================================================== */
+
+function minus(i){
+
+  /*
+    商品列表的 −
+    只會移除一個對應商品
+
+    優先移除最後加入的同商品
+  */
+
+  for(
+    let x = cart.length - 1;
+    x >= 0;
+    x--
+  ){
+
+    if(
+      cart[x].productIndex === i
+    ){
+
+      decreaseCart(x);
+
+      return;
+
+    }
+
+  }
 
 }
 
@@ -1775,12 +2020,23 @@ async function loadSetting(){
     document.getElementById(
       "notice"
     ).innerText =
-    setting.notice || "";
+    setting.notice ||
+    "歡迎使用線上點餐";
+
+
+    const statusEl =
+    document.getElementById(
+      "status"
+    );
 
 
     if(
       setting.status === "暫停"
     ){
+
+      statusEl.innerText =
+      "🔴 暫停接單";
+
 
       const btn =
       document.getElementById(
@@ -1797,6 +2053,13 @@ async function loadSetting(){
 
     }
 
+    else{
+
+      statusEl.innerText =
+      "🟢 正常營業中";
+
+    }
+
   }
 
   catch(err){
@@ -1810,6 +2073,10 @@ async function loadSetting(){
 
 }
 
+
+/* ==================================================
+   載入設定
+================================================== */
 
 loadSetting();
 
@@ -1871,7 +2138,7 @@ async function sendOrder(){
   ){
 
     alert(
-      "電話錯誤"
+      "電話錯誤，請輸入09開頭的10位數手機"
     );
 
     return;
@@ -1879,36 +2146,8 @@ async function sendOrder(){
   }
 
 
-  let items =
-  [];
-
-  let total =
-  0;
-
-
-  /*
-     這裡改成從購物車 cart
-     取得訂單
-     避免客製化品項名稱消失
-  */
-
-  cart.forEach(
-  item=>{
-
-    items.push(
-      `${item.name} x ${item.qty}`
-    );
-
-
-    total +=
-    item.price *
-    item.qty;
-
-  });
-
-
   if(
-    items.length === 0
+    cart.length === 0
   ){
 
     alert(
@@ -1920,9 +2159,35 @@ async function sendOrder(){
   }
 
 
+  /*
+    從購物車產生訂單
+    與底部總金額完全相同
+  */
+
+  const items =
+  cart.map(
+    function(item){
+
+      return (
+        item.name +
+        " x " +
+        item.qty
+      );
+
+    }
+  );
+
+
+  const total =
+  getCartTotal();
+
+
+  /*
+    防止重複送單
+  */
+
   btn.disabled =
   true;
-
 
   btn.innerText =
   "📤 訂單送出中...";
@@ -1975,8 +2240,13 @@ async function sendOrder(){
     );
 
 
+    const result =
+    await res.text();
+
+
     console.log(
-      await res.text()
+      "送單回應：",
+      result
     );
 
 
