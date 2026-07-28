@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>初萊食麵</title>
-
 <style>
 body{
   font-family:Arial,sans-serif;
@@ -19,7 +18,6 @@ body{
   color:#d4af37;
   border-bottom:3px solid #d4af37;
 }
-
 .status{
   margin-top:12px;
   display:inline-block;
@@ -33,17 +31,15 @@ body{
   letter-spacing:1px;
   box-shadow:0 3px 8px rgba(0,0,0,.25);
 }
-/* ===== 初萊食麵 品牌首頁 Header ===== */
+/* ===== Header ===== */
 header{
-  background:
-  linear-gradient(135deg,#111,#3b3b3b);
+  background:linear-gradient(135deg,#111,#3b3b3b);
   color:#d4af37;
   text-align:center;
   padding:30px 15px 25px;
   border-bottom:3px solid #d4af37;
   box-shadow:0 4px 15px rgba(0,0,0,.25);
 }
-
 .brand-logo{
   font-size:38px;
   font-weight:bold;
@@ -52,21 +48,18 @@ header{
   color:#d4af37;
   text-shadow:0 2px 5px rgba(0,0,0,.5);
 }
-
 .brand-sub{
   margin-top:10px;
   color:#f1d98a;
   font-size:15px;
   letter-spacing:2px;
 }
-
 .brand-info{
   margin-top:18px;
   line-height:1.8;
   font-size:14px;
   color:#fff;
 }
-
 .brand-phone{
   display:inline-block;
   margin-top:12px;
@@ -83,7 +76,6 @@ header{
   padding:12px;
   padding-bottom:120px;
 }
-
 /* ===== 卡片 ===== */
 .card{
   background:#fff;
@@ -92,7 +84,6 @@ header{
   padding:15px;
   box-shadow:0 4px 14px rgba(0,0,0,0.06);
 }
-
 .card h2{
   color:#b8912e;
   border-left:6px solid #d4af37;
@@ -100,8 +91,7 @@ header{
   font-size:17px;
   margin-bottom:10px;
 }
-
-/* ===== 商品列 ===== */
+/* ===== 商品 ===== */
 .item{
   display:flex;
   justify-content:space-between;
@@ -112,18 +102,14 @@ header{
   border-radius:8px;
   margin:6px 0;
 }
-
 .item span{
   font-size:15px;
 }
-
-/* ===== 加減 ===== */
 .qty{
   display:flex;
   align-items:center;
   gap:6px;
 }
-
 .qty button{
   width:32px;
   height:32px;
@@ -133,32 +119,29 @@ header{
   color:#d4af37;
   font-size:18px;
 }
-
 .qty button:active{
   transform:scale(0.92);
 }
-
 .qty span{
   min-width:22px;
   text-align:center;
   font-weight:bold;
 }
-
 /* ===== 輸入 ===== */
-input, textarea{
+input,
+textarea{
   width:100%;
   padding:10px;
   margin:6px 0;
   border:1px solid #ddd;
   border-radius:8px;
+  box-sizing:border-box;
 }
-
 /* ===== 圖片 ===== */
 img{
   width:100%;
   border-radius:12px;
 }
-
 /* ===== 底部結帳列 ===== */
 .checkout-bar{
   position:fixed;
@@ -173,13 +156,12 @@ img{
   align-items:center;
   border-top:2px solid #d4af37;
   z-index:999;
+  box-sizing:border-box;
 }
-
 .checkout-bar .total{
   font-size:18px;
   font-weight:bold;
 }
-
 .checkout-bar button{
   background:#d4af37;
   color:#2f2f2f;
@@ -188,7 +170,6 @@ img{
   border-radius:8px;
   font-weight:bold;
 }
-
 .checkout-bar button:active{
   transform:scale(0.95);
 }
@@ -198,13 +179,12 @@ img{
   cursor:not-allowed;
   opacity:0.8;
 }
-
-/* ===== 總金額 ===== */
 #total{
   font-size:28px;
   color:#d4af37;
   font-weight:bold;
 }
+/* ===== 大按鈕 ===== */
 .bigbtn{
   display:block;
   text-decoration:none;
@@ -217,86 +197,126 @@ img{
   color:#fff;
   transition:0.25s;
 }
-
 .bigbtn:active{
   transform:scale(0.97);
 }
-
 .self{
   background:#28a745;
 }
-
 .uber{
   background:#000000;
 }
-
 .panda{
   background:#ff2b85;
 }
-
 .foodmo{
   background:#ff3333;
 }
-
 .phone{
   background:#0d6efd;
 }
-
 .map{
   background:#f39c12;
 }
+/* ===== 人氣推薦 ===== */
 .popular{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:15px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:15px;
 }
-
 .food{
-    background:#fff;
-    border-radius:15px;
-    overflow:hidden;
-    box-shadow:0 4px 12px rgba(0,0,0,.12);
-    transition:.3s;
+  background:#fff;
+  border-radius:15px;
+  overflow:hidden;
+  box-shadow:0 4px 12px rgba(0,0,0,.12);
+  transition:.3s;
 }
-
 .food:hover{
-    transform:translateY(-5px);
+  transform:translateY(-5px);
 }
-
 .food img{
-    width:100%;
-    height:180px;
-    object-fit:cover;
+  width:100%;
+  height:180px;
+  object-fit:cover;
 }
-
 .food h3{
-    text-align:center;
-    margin:12px 0 6px;
-    color:#b8912e;
+  text-align:center;
+  margin:12px 0 6px;
+  color:#b8912e;
 }
-
 .food p{
-    text-align:center;
-    color:#777;
-    margin-bottom:15px;
+  text-align:center;
+  color:#777;
+  margin-bottom:15px;
+}
+/* ===== 購物車 ===== */
+.cart-item{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  padding:12px 0;
+  border-bottom:1px solid #eee;
+}
+.cart-info{
+  flex:1;
+  line-height:1.6;
+}
+.cart-name{
+  font-weight:bold;
+  color:#333;
+}
+.cart-price{
+  color:#777;
+  font-size:14px;
+}
+.cart-actions{
+  display:flex;
+  align-items:center;
+  gap:6px;
+}
+.cart-actions button{
+  width:32px;
+  height:32px;
+  border:none;
+  border-radius:6px;
+  background:#2f2f2f;
+  color:#d4af37;
+  font-size:18px;
+}
+.cart-qty{
+  min-width:24px;
+  text-align:center;
+  font-weight:bold;
+}
+.cart-remove{
+  background:#dc3545 !important;
+  color:#fff !important;
+}
+.cart-total{
+  margin-top:15px;
+  padding-top:12px;
+  border-top:2px solid #d4af37;
+  text-align:right;
+  font-size:20px;
+  font-weight:bold;
+  color:#b8912e;
+}
+.empty-cart{
+  text-align:center;
+  color:#999;
+  padding:15px 0;
 }
 </style>
 </head>
-
 <body>
-
-
 <header>
-
 <h1 class="brand-logo">
 🍜 初萊食麵
 </h1>
-
 <div class="brand-sub">
 肉燥乾麵｜關東煮｜水餃｜在地好味道
 </div>
-
-
 <div class="brand-info">
 
 📍 高雄市三民區遼寧二街168號
@@ -304,118 +324,88 @@ img{
 <br>
 
 🕒 週一～週五 11:30-20:30
-<br>
 🕒 週六～週日 11:30-18:30
 
 </div>
-
-
 <a class="brand-phone" href="tel:0903392687">
 📞 0903-392687
 </a>
-
 <br>
-
 <div class="status" id="status">
 🟢 正常營業中
 </div>
-
-
 </header>
-
 <div class="wrap">
-
 <div class="card">
 <img src="https://res.cloudinary.com/dh1yjrfyr/image/upload/q_auto,f_auto/IMG_3424_ob2qm4.jpg">
 </div>
-
 <div class="card">
 <h2>公告</h2>
 <div id="notice">歡迎使用線上點餐</div>
 </div>
-
 <div class="card">
 <h2>🚀 線上點餐入口</h2>
-
 <a class="bigbtn self" href="#cat1">
 🍜 店內點餐（最優惠 / 免平台抽成）
 </a>
 
-<a class="bigbtn uber"
-href="https://www.ubereats.com/tw/store/初萊食麵|大腸香腸、關東煮/9-pIirZHWkWxCprbnjgzBQ?diningMode=PICKUP&ps=1&sc=SEARCH_SUGGESTION"
-target="_blank">
 Uber Eats
-</a>
-
-<a class="bigbtn panda"
-href="https://foodpanda.com.tw/restaurant/o32y/chu-lai-shi-mian"
-target="_blank">
 foodpanda
-</a>
-
-<a class="bigbtn foodmo"
-href="https://www.foodomo.com/store?stid=163737&number=0903392687"
-target="_blank">
 foodomo
-</a>
-
 <a class="bigbtn phone" href="tel:0903392687">
 📞 電話訂餐
 </a>
 
-<a class="bigbtn map"
-href="https://maps.app.goo.gl/HKeMyZ1iDuBQ5QWQ9?g_st=ic"
-target="_blank">
 📍 Google 地圖
-</a>
-
-<a class="bigbtn map"
-href="https://g.page/r/CQl3fUEN40_CEBM/review"
-target="_blank">
 ⭐ 我要給五星好評
-</a>
-
 </div>
 <div class="card">
 <h2>🔥 人氣推薦</h2>
-
 <div class="popular">
-
 <div class="food">
 <img src="IMG_3516.jpeg" alt="肉燥乾麵">
 <h3>🍜 肉燥乾麵</h3>
 <p>招牌必點</p>
 </div>
-
 <div class="food">
 <img src="IMG_3515.jpeg" alt="水餃">
 <h3>🥟 水餃</h3>
 <p>每日現煮</p>
 </div>
-
 <div class="food">
 <img src="IMG_3517.jpeg" alt="黑輪">
 <h3>🍢 關東煮</h3>
 <p>人氣推薦</p>
 </div>
-
 </div>
-
 </div>
-<div class="card"><h2>🍜 麵類</h2><div id="cat1"></div></div>
-<div class="card"><h2>🍢 關東煮</h2><div id="cat2"></div></div>
-<div class="card"><h2>🥚 小菜</h2><div id="cat3"></div></div>
-<div class="card"><h2>🍲 湯類</h2><div id="cat4"></div></div>
-<div class="card"><h2>🍚 其他</h2><div id="cat5"></div></div>
-
 <div class="card">
-
+<h2>🍜 麵類</h2>
+<div id="cat1"></div>
+</div>
+<div class="card">
+<h2>🍢 關東煮</h2>
+<div id="cat2"></div>
+</div>
+<div class="card">
+<h2>🥚 小菜</h2>
+<div id="cat3"></div>
+</div>
+<div class="card">
+<h2>🍲 湯類</h2>
+<div id="cat4"></div>
+</div>
+<div class="card">
+<h2>🍚 其他</h2>
+<div id="cat5"></div>
+</div>
+<div class="card">
 <h2>🛒 購物車</h2>
-
 <div id="cartList">
+<div class="empty-cart">
 尚未選擇商品
 </div>
-
+</div>
 </div>
 <div class="card">
 <h2>訂購資訊</h2>
@@ -424,374 +414,562 @@ target="_blank">
 <textarea id="note" placeholder="備註"></textarea>
 <input id="time" type="time">
 </div>
-
 </div>
-
 <!-- 底部結帳列 -->
 <div class="checkout-bar">
-  <div>總金額：<span id="total">0</span> 元</div>
-  <button id="submitBtn" onclick="sendOrder()">送出訂單</button>
+<div>
+總金額：
+<span id="total">0</span> 元
+</div>
+<button id="submitBtn" onclick="sendOrder()">
+送出訂單
+</button>
 </div>
 <script>
-
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzYMTH533Tn9GlVNgPn7m8fZqTGDA6_Nu9nJyLMdwgml8bM4R_jh6BgbyuAT5OJzBHTHw/exec";
-let cart = [];
+/*
+=========================================
+商品原始資料
+=========================================
+*/
 const data = [
-["cat1","肉燥乾麵(小)",55],["cat1","肉燥乾麵(大)",65],
-["cat1","肉燥米粉(小)",55],["cat1","肉燥米粉(大)",65],
-["cat1","湯麵(小)",55],["cat1","湯麵(大)",65],
-["cat1","麻醬麵(小)",60],["cat1","麻醬麵(大)",70],
-["cat1","鮮蝦餛飩乾麵(小)",70],["cat1","鮮蝦餛飩乾麵(大)",80],["cat1","鮮蝦餛飩湯麵(小)",70],["cat1","鮮蝦餛飩湯麵(大)",80],
-["cat2","黑輪",10],["cat2","米血",10],["cat2","魚板",10],["cat2","蛋丸",10],
-["cat2","菜頭",15],["cat2","竹輪",15],["cat2","貢丸",20],["cat2","福州丸",20],
-["cat2","黃金魚板",20],["cat2","高麗菜捲",20],["cat2","苦瓜封",40],
-["cat3","麵輪",10],["cat3","滷蛋",15],["cat3","荷包蛋",15],["cat3","蔥蛋",40],["cat3","香腸",25],["cat3","手工大腸",75],
-["cat4","菜頭湯",35],["cat4","魚丸湯",35],["cat4","貢丸湯",40],["cat4","鮮蝦餛飩湯",45],
-["cat5","肉燥飯",35],["cat5","白飯",15],["cat5","燙青菜",40],["cat5","水餃",50]
+["cat1","肉燥乾麵(小)",55],
+["cat1","肉燥乾麵(大)",65],
+["cat1","肉燥米粉(小)",55],
+["cat1","肉燥米粉(大)",65],
+["cat1","湯麵(小)",55],
+["cat1","湯麵(大)",65],
+["cat1","麻醬麵(小)",60],
+["cat1","麻醬麵(大)",70],
+["cat1","鮮蝦餛飩乾麵(小)",70],
+["cat1","鮮蝦餛飩乾麵(大)",80],
+["cat1","鮮蝦餛飩湯麵(小)",70],
+["cat1","鮮蝦餛飩湯麵(大)",80],
+["cat2","黑輪",10],
+["cat2","米血",10],
+["cat2","魚板",10],
+["cat2","蛋丸",10],
+["cat2","菜頭",15],
+["cat2","竹輪",15],
+["cat2","貢丸",20],
+["cat2","福州丸",20],
+["cat2","黃金魚板",20],
+["cat2","高麗菜捲",20],
+["cat2","苦瓜封",40],
+["cat3","麵輪",10],
+["cat3","滷蛋",15],
+["cat3","荷包蛋",15],
+["cat3","蔥蛋",40],
+["cat3","香腸",25],
+["cat3","手工大腸",75],
+["cat4","菜頭湯",35],
+["cat4","魚丸湯",35],
+["cat4","貢丸湯",40],
+["cat4","鮮蝦餛飩湯",45],
+["cat5","肉燥飯",35],
+["cat5","白飯",15],
+["cat5","燙青菜",40],
+["cat5","水餃",50]
 ];
-
-// 畫商品
+/*
+=========================================
+購物車
+每一筆都是獨立商品
+=========================================
+*/
+let cart = [];
+/*
+=========================================
+畫商品
+=========================================
+*/
 data.forEach((m,i)=>{
-  const el=document.getElementById(m[0]);
+  const el = document.getElementById(m[0]);
   if(!el) return;
-
   el.insertAdjacentHTML('beforeend',`
   <div class="item">
-    <span>${m[1]} $${m[2]}</span>
+    <span>
+      ${m[1]} $${m[2]}
+    </span>
     <div class="qty">
-      <button onclick="minus(${i})">-</button>
-      <span id="qty${i}">0</span>
-      <button onclick="addItem(${i})">+</button>
-      <input type="hidden" id="i${i}" value="0">
+      <button onclick="minus(${i})">
+        -
+      </button>
+      <span id="qty${i}">
+        0
+      </span>
+      <button onclick="addItem(${i})">
+        +
+      </button>
     </div>
-  </div>`);
+  </div>
+  `);
 });
-
+/*
+=========================================
+點擊 +
+=========================================
+*/
 function addItem(i){
-
-    const item=data[i];
-
-    switch(item[0]){
-
-        case "cat1":
-            openNoodleModal(i);
-            break;
-
-        case "cat2":
-            openOdenModal(i);
-            break;
-
-        default:
-            plus(i);
-            break;
-    }
-
+  const item = data[i];
+  /*
+  麵類
+  */
+  if(item[0] === "cat1"){
+    openNoodleModal(i);
+    return;
+  }
+  /*
+  關東煮
+  */
+  if(item[0] === "cat2"){
+    openOdenModal(i);
+    return;
+  }
+  /*
+  其他商品
+  */
+  addToCart(
+    item[1],
+    item[2],
+    i
+  );
 }
+/*
+=========================================
+麵類選項
+=========================================
+*/
 function openNoodleModal(i){
-
-let spicy = prompt(
-"🍜 請選擇辣度\n\n"+
-"1 = 不辣\n"+
-"2 = 小辣 🌶️\n"+
-"3 = 中辣 🌶️🌶️\n"+
-"4 = 大辣 🌶️🌶️🌶️"
-);
-
-
-let level="不辣";
-
-switch(spicy){
-
-case "2":
-level="小辣🌶️";
-break;
-
-case "3":
-level="中辣🌶️🌶️";
-break;
-
-case "4":
-level="大辣🌶️🌶️🌶️";
-break;
-
+  const item = data[i];
+  let spicy = prompt(
+    "🍜 請選擇辣度\n\n"+
+    "1 = 不辣\n"+
+    "2 = 小辣 🌶️\n"+
+    "3 = 中辣 🌶️🌶️\n"+
+    "4 = 大辣 🌶️🌶️🌶️"
+  );
+  if(spicy === null){
+    return;
+  }
+  let level = "不辣";
+  if(spicy === "2"){
+    level = "小辣🌶️";
+  }
+  if(spicy === "3"){
+    level = "中辣🌶️🌶️";
+  }
+  if(spicy === "4"){
+    level = "大辣🌶️🌶️🌶️";
+  }
+  let add = [];
+  if(confirm("🥚 加荷包蛋 +15元？")){
+    add.push("加荷包蛋");
+  }
+  if(confirm("🥚 加滷蛋 +15元？")){
+    add.push("加滷蛋");
+  }
+  let extra = "";
+  if(add.length > 0){
+    extra = "＋" + add.join("＋");
+  }
+  /*
+  這裡不修改原始 data
+  */
+  const name =
+    item[1] +
+    "（" +
+    level +
+    extra +
+    "）";
+  const price =
+    item[2] +
+    add.length * 15;
+  addToCart(
+    name,
+    price,
+    i
+  );
 }
-
-
-// 加料選擇
-
-let add=[];
-
-if(confirm("🥚 加荷包蛋 +15元？")){
-add.push("加荷包蛋");
-}
-
-if(confirm("🥚 加滷蛋 +15元？")){
-add.push("加滷蛋");
-}
-
-
-// 修改品項名稱
-let extra="";
-
-if(add.length>0){
-extra="＋"+add.join("＋");
-}
-
-
-data[i][1] = data[i][1].replace(/（.*?）/g,"")
-+"（"+level+extra+"）";
-
-
-// 加價處理
-
-if(add.length>0){
-
-data[i][2] += add.length * 15;
-
-}
-
-
-plus(i);
-
-}
-
+/*
+=========================================
+關東煮選項
+=========================================
+*/
 function openOdenModal(i){
-
-
-let sauce=[];
-
-
-if(confirm("🍢 要加醬油膏嗎？")){
-sauce.push("醬油膏");
+  const item = data[i];
+  let sauce = [];
+  if(confirm("🍢 要加醬油膏嗎？")){
+    sauce.push("醬油膏");
+  }
+  if(confirm("🌶️ 要加辣椒醬嗎？")){
+    sauce.push("辣椒醬");
+  }
+  if(confirm("🍅 要加蕃茄醬嗎？")){
+    sauce.push("蕃茄醬");
+  }
+  if(sauce.length === 0){
+    sauce.push("不加醬");
+  }
+  const name =
+    item[1] +
+    "（" +
+    sauce.join("＋") +
+    "）";
+  addToCart(
+    name,
+    item[2],
+    i
+  );
 }
-
-
-if(confirm("🌶️ 要加辣椒醬嗎？")){
-sauce.push("辣椒醬");
-}
-
-
-if(confirm("🍅 要加蕃茄醬嗎？")){
-sauce.push("蕃茄醬");
-}
-
-
-
-if(sauce.length===0){
-
-sauce.push("不加醬");
-
-}
-
-
-data[i][1] = data[i][1].replace(/（.*?）/g,"")
-+"（"+sauce.join("＋")+"）";
-
-
-plus(i);
-
-
-}
-function plus(i){
-
-let item = {
-name:data[i][1],
-price:data[i][2],
-qty:1
-};
-
-cart.push(item);
-
-renderCart();
-
-calc();
-
-}
-function renderCart(){
-
-let box=document.getElementById("cartList");
-
-if(cart.length===0){
-
-box.innerHTML="尚未選擇商品";
-return;
-
-}
-
-
-let html="";
-
-
-cart.forEach((item,index)=>{
-
-html+=`
-
-<div class="item">
-
-<span>
-${item.name}
-<br>
-$${item.price} x ${item.qty}
-</span>
-
-
-<button onclick="removeCart(${index})">
-❌
-</button>
-
-
-</div>
-
-`;
-
-});
-
-
-box.innerHTML=html;
-
-
-}
-
-
-function removeCart(index){
-
-cart.splice(index,1);
-
-renderCart();
-
-calc();
-
-}
-function minus(i){
-  let el=document.getElementById('i'+i);
-  if(el.value>0) el.value--;
-  document.getElementById('qty'+i).innerText=el.value;
+/*
+=========================================
+加入購物車
+=========================================
+*/
+function addToCart(name,price,dataIndex){
+  /*
+  尋找相同商品
+  */
+  const existing = cart.find(item =>
+    item.name === name &&
+    item.price === price &&
+    item.dataIndex === dataIndex
+  );
+  if(existing){
+    existing.qty++;
+  }else{
+    cart.push({
+      name:name,
+      price:price,
+      qty:1,
+      dataIndex:dataIndex
+    });
+  }
+  renderCart();
   calc();
 }
-
-function calc(){
-  let t=0;
-  data.forEach((m,i)=>{
-    let q=+document.getElementById('i'+i).value||0;
-    t+=q*m[2];
+/*
+=========================================
+購物車顯示
+=========================================
+*/
+function renderCart(){
+  const box =
+    document.getElementById("cartList");
+  if(cart.length === 0){
+    box.innerHTML = `
+      <div class="empty-cart">
+        尚未選擇商品
+      </div>
+    `;
+    return;
+  }
+  let html = "";
+  cart.forEach((item,index)=>{
+    const subtotal =
+      item.price *
+      item.qty;
+    html += `
+    <div class="cart-item">
+      <div class="cart-info">
+        <div class="cart-name">
+          ${item.name}
+        </div>
+        <div class="cart-price">
+          $${item.price} × ${item.qty}
+          = $${subtotal}
+        </div>
+      </div>
+      <div class="cart-actions">
+        <button
+          onclick="cartMinus(${index})">
+          -
+        </button>
+        <span class="cart-qty">
+          ${item.qty}
+        </span>
+        <button
+          onclick="cartPlus(${index})">
+          +
+        </button>
+        <button
+          class="cart-remove"
+          onclick="removeCart(${index})">
+          ×
+        </button>
+      </div>
+    </div>
+    `;
   });
-  document.getElementById('total').innerText=t;
+  html += `
+    <div class="cart-total">
+      購物車合計：
+      $${getCartTotal()} 元
+    </div>
+  `;
+  box.innerHTML = html;
 }
-
+/*
+=========================================
+購物車 +1
+=========================================
+*/
+function cartPlus(index){
+  cart[index].qty++;
+  renderCart();
+  calc();
+}
+/*
+=========================================
+購物車 -1
+=========================================
+*/
+function cartMinus(index){
+  cart[index].qty--;
+  if(cart[index].qty <= 0){
+    cart.splice(index,1);
+  }
+  renderCart();
+  calc();
+}
+/*
+=========================================
+刪除商品
+=========================================
+*/
+function removeCart(index){
+  cart.splice(index,1);
+  renderCart();
+  calc();
+}
+/*
+=========================================
+取得購物車總金額
+=========================================
+*/
+function getCartTotal(){
+  let total = 0;
+  cart.forEach(item=>{
+    total +=
+      item.price *
+      item.qty;
+  });
+  return total;
+}
+/*
+=========================================
+更新底部總金額
+=========================================
+*/
+function calc(){
+  const total =
+    getCartTotal();
+  document
+    .getElementById("total")
+    .innerText = total;
+}
+/*
+=========================================
+更新商品旁邊數量
+=========================================
+*/
+function updateProductQty(){
+  data.forEach((m,i)=>{
+    let qty = 0;
+    cart.forEach(item=>{
+      if(item.dataIndex === i){
+        qty += item.qty;
+      }
+    });
+    const el =
+      document.getElementById("qty"+i);
+    if(el){
+      el.innerText = qty;
+    }
+  });
+}
+/*
+=========================================
+舊版商品 -1
+現在改成從購物車扣除
+=========================================
+*/
+function minus(i){
+  /*
+  找到該商品最後一筆
+  */
+  for(let x = cart.length - 1; x >= 0; x--){
+    if(cart[x].dataIndex === i){
+      cart[x].qty--;
+      if(cart[x].qty <= 0){
+        cart.splice(x,1);
+      }
+      renderCart();
+      calc();
+      return;
+    }
+  }
+}
+/*
+=========================================
+載入後台設定
+=========================================
+*/
 async function loadSetting(){
   try{
-    const res = await fetch(SCRIPT_URL);
-    const setting = await res.json();
-
-    document.getElementById("notice").innerText = setting.notice || "";
-
+    const res =
+      await fetch(SCRIPT_URL);
+    const setting =
+      await res.json();
+    document
+      .getElementById("notice")
+      .innerText =
+      setting.notice || "";
     if(setting.status === "暫停"){
-      const btn = document.querySelector(".checkout-bar button");
+      const btn =
+        document.getElementById("submitBtn");
       btn.disabled = true;
-      btn.innerText = "🚫 暫停接單";
+      btn.innerText =
+        "🚫 暫停接單";
     }
-
   }catch(err){
-    console.log("loadSetting error", err);
+    console.log(
+      "loadSetting error",
+      err
+    );
   }
 }
-
 loadSetting();
-
+/*
+=========================================
+送出訂單
+=========================================
+*/
 async function sendOrder(){
-  const btn = document.getElementById("submitBtn");
-
-  // 已經送出中就直接離開
-
+  const btn =
+    document.getElementById("submitBtn");
+  /*
+  防止重複送單
+  */
   if(btn.disabled){
-
     return;
-
   }
-  const name=document.getElementById('name').value.trim();
-  const phone=document.getElementById('phone').value.trim();
-
-  if(!name) return alert('請輸入姓名');
-  if(!/^09\d{8}$/.test(phone)) return alert('電話錯誤');
-
-  let items=[];
-  let total=0;
-
-  data.forEach((m,i)=>{
-    let q=+document.getElementById('i'+i).value||0;
-    if(q>0){
-      items.push(`${m[1]} x ${q}`);
-      total+=q*m[2];
-    }
+  /*
+  檢查購物車
+  */
+  if(cart.length === 0){
+    alert("🛒 請先選擇餐點");
+    return;
+  }
+  const name =
+    document
+      .getElementById("name")
+      .value
+      .trim();
+  const phone =
+    document
+      .getElementById("phone")
+      .value
+      .trim();
+  if(!name){
+    alert("請輸入姓名");
+    return;
+  }
+  if(!/^09\d{8}$/.test(phone)){
+    alert("電話錯誤");
+    return;
+  }
+  /*
+  組合訂單
+  */
+  let items = [];
+  cart.forEach(item=>{
+    items.push(
+      `${item.name} x ${item.qty}`
+    );
   });
-
-  if(items.length===0) return alert('請選餐');
-
-
-// 防止重複送單
-btn.disabled = true;
-btn.innerHTML = "📤 訂單送出中...";
-
+  const total =
+    getCartTotal();
+  /*
+  防止重複送單
+  */
+  btn.disabled = true;
+  btn.innerHTML =
+    "📤 訂單送出中...";
   try{
-
-    const res = await fetch(SCRIPT_URL,{
-  method:'POST',
-  body: JSON.stringify({
-    name,
-    phone,
-    time: document.getElementById('time').value,
-    note: document.getElementById('note').value,
-    items: items.join('\n'),
-    total
-  })
-});
-
-    console.log(await res.text());
-
+    const res =
+      await fetch(
+        SCRIPT_URL,
+        {
+          method:"POST",
+          body:JSON.stringify({
+            name:name,
+            phone:phone,
+            time:
+              document
+                .getElementById("time")
+                .value,
+            note:
+              document
+                .getElementById("note")
+                .value,
+            items:
+              items.join("\n"),
+            total:total
+          })
+        }
+      );
+    console.log(
+      await res.text()
+    );
     const orderSummary = `
 🎉 訂單已送出！
-
 ━━━━━━━━━━━━
-
-${items.join('\n')}
-
+${items.join("\n")}
 ━━━━━━━━━━━━
-
 💰 合計：${total} 元
-
-⏰ 取餐時間：${document.getElementById('time').value || '即時'}
-
+⏰ 取餐時間：
+${document.getElementById("time").value || "即時"}
 📝 備註：
-${document.getElementById('note').value || '無'}
-
+${document.getElementById("note").value || "無"}
 ❤️ 感謝您支持初萊食麵！
 `;
-
-btn.innerHTML = "✅ 已送出";
-
-alert(orderSummary);
-
-location.reload();
-
+    btn.innerHTML =
+      "✅ 已送出";
+    alert(orderSummary);
+    location.reload();
   }catch(err){
-    console.log("送單錯誤", err);
-btn.disabled = false;
-btn.innerHTML = "送出訂單";
-
-alert("送單失敗，請再試一次！");
+    console.log(
+      "送單錯誤",
+      err
+    );
+    btn.disabled = false;
+    btn.innerHTML =
+      "送出訂單";
+    alert(
+      "送單失敗，請再試一次！"
+    );
   }
 }
-
 </script>
-<!-- Google tag (gtag.js) -->
+<!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-8VF77M6KYM">
 </script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-8VF77M6KYM');
+window.dataLayer =
+  window.dataLayer || [];
+function gtag(){
+  dataLayer.push(arguments);
+}
+gtag(
+  "js",
+  new Date()
+);
+gtag(
+  "config",
+  "G-8VF77M6KYM"
+);
 </script>
 </body>
 </html>
