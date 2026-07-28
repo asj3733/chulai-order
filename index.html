@@ -1,26 +1,34 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
+
 <meta charset="UTF-8">
 
 <meta
-name=“viewport”
-content=“width=device-width, initial-scale=1.0”
+name="viewport"
+content="width=device-width,initial-scale=1,maximum-scale=1"
+>
 
 <title>初萊食麵｜線上點餐</title>
+
 <style>
-/* ================================
+
+/* ==================================================
    基本設定
-================================ */
+================================================== */
+
 *{
   box-sizing:border-box;
 }
+
 html{
   scroll-behavior:smooth;
 }
+
 body{
   margin:0;
-  padding:0;
+  padding:0 0 75px 0;
+
   font-family:
   -apple-system,
   BlinkMacSystemFont,
@@ -28,20 +36,21 @@ body{
   "Microsoft JhengHei",
   Arial,
   sans-serif;
+
   background:#ededed;
+
   color:#333;
+
   font-size:15px;
-  padding-bottom:82px;
+
   overflow-x:hidden;
 }
-button,
-input,
-textarea{
-  font-family:inherit;
-}
-/* ================================
+
+
+/* ==================================================
    Header
-================================ */
+================================================== */
+
 header{
   background:
   linear-gradient(
@@ -49,1603 +58,2030 @@ header{
     #111,
     #2d2d2d
   );
+
   color:#d4af37;
+
   text-align:center;
-  padding:22px 12px 18px;
+
+  padding:20px 10px 17px;
+
   border-bottom:
   2px solid #d4af37;
+
   box-shadow:
   0 3px 10px
-  rgba(0,0,0,.18);
+  rgba(0,0,0,.2);
 }
+
 .brand-logo{
   margin:0;
+
   font-size:30px;
+
   font-weight:bold;
+
   letter-spacing:3px;
+
   color:#d4af37;
+
+  line-height:1.3;
 }
+
 .brand-sub{
-  margin-top:7px;
+  margin-top:6px;
+
   color:#f1d98a;
-  font-size:12px;
+
+  font-size:11px;
+
   letter-spacing:1px;
-  line-height:1.6;
+
+  line-height:1.5;
 }
+
 .brand-info{
   margin-top:10px;
+
   color:#fff;
+
   font-size:12px;
+
   line-height:1.7;
 }
+
 .brand-phone{
   display:inline-block;
-  margin-top:9px;
-  padding:7px 16px;
+
+  margin-top:8px;
+
+  padding:6px 15px;
+
   border-radius:20px;
+
   background:#d4af37;
+
   color:#222;
+
   text-decoration:none;
-  font-size:14px;
+
+  font-size:13px;
+
   font-weight:bold;
 }
+
 .status{
   display:inline-block;
-  margin-top:9px;
-  padding:5px 13px;
+
+  margin-top:8px;
+
+  padding:5px 12px;
+
   border-radius:20px;
+
   background:#2f2f2f;
+
   color:#d4af37;
+
   border:
   1px solid #d4af37;
-  font-size:12px;
+
+  font-size:11px;
+
   font-weight:bold;
 }
-/* ================================
+
+
+/* ==================================================
    主內容
-================================ */
+================================================== */
+
 .wrap{
   width:100%;
-  max-width:600px;
+
+  max-width:760px;
+
   margin:0 auto;
+
   padding:8px;
 }
-/* ================================
+
+
+/* ==================================================
    卡片
-================================ */
+================================================== */
+
 .card{
   background:#fff;
+
   border-radius:10px;
+
   margin-bottom:9px;
+
   padding:11px;
+
   box-shadow:
   0 2px 8px
   rgba(0,0,0,.06);
 }
-.card-title{
-  margin:0 0 9px 0;
+
+.card h2{
+  margin:
+  0 0 9px 0;
+
   padding-left:8px;
+
   border-left:
   4px solid #d4af37;
+
   color:#b8912e;
+
   font-size:16px;
+
   line-height:1.4;
 }
-/* ================================
-   主圖
-================================ */
-.main-image{
-  width:100%;
+
+
+/* ==================================================
+   圖片
+================================================== */
+
+.card > img{
   display:block;
+
+  width:100%;
+
+  max-width:100%;
+
   border-radius:8px;
-  max-height:220px;
-  object-fit:cover;
+
+  height:auto;
 }
-/* ================================
+
+
+/* ==================================================
    公告
-================================ */
-.notice-box{
+================================================== */
+
+#notice{
   padding:9px;
+
   background:#faf7ed;
+
   border:
   1px solid #ead89b;
+
   border-radius:7px;
+
   color:#555;
-  font-size:14px;
+
+  font-size:13px;
+
   line-height:1.6;
-  white-space:pre-wrap;
+
+  min-height:35px;
 }
-/* ================================
-   外送平台按鈕
-================================ */
-.order-links{
+
+
+/* ==================================================
+   線上點餐入口
+================================================== */
+
+.bigbtn{
   display:flex;
-  flex-direction:column;
-  gap:7px;
-}
-.order-btn{
-  display:flex;
+
   width:100%;
-  min-height:44px;
+
+  min-height:43px;
+
   align-items:center;
+
   justify-content:center;
-  padding:9px 12px;
+
+  padding:8px 10px;
+
+  margin:7px 0;
+
   border-radius:8px;
-  text-decoration:none;
-  font-size:15px;
+
+  text-align:center;
+
+  font-size:14px;
+
   font-weight:bold;
+
   color:#fff;
-  border:none;
-  cursor:pointer;
+
+  text-decoration:none;
+
   box-shadow:
   0 2px 5px
   rgba(0,0,0,.1);
+
   transition:
-  transform .1s,
-  opacity .1s;
+  transform .1s;
 }
-.order-btn:active{
+
+.bigbtn:active{
   transform:scale(.98);
 }
-.order-btn:hover{
-  opacity:.92;
-}
-.btn-self{
+
+.self{
   background:#28a745;
 }
-.btn-uber{
+
+.uber{
   background:#111;
 }
-.btn-panda{
+
+.panda{
   background:#ff2b85;
 }
-.btn-foodomo{
+
+.foodmo{
   background:#e53935;
 }
-.btn-phone{
+
+.phone{
   background:#0d6efd;
 }
-.btn-map{
+
+.map{
   background:#f39c12;
 }
-.btn-review{
-  background:#d4af37;
-  color:#222;
-}
-/* ================================
+
+
+/* ==================================================
    人氣推薦
-================================ */
+================================================== */
+
 .popular{
   display:grid;
+
   grid-template-columns:
   repeat(3,1fr);
+
   gap:7px;
 }
+
 .food{
   overflow:hidden;
+
   background:#fff;
+
   border-radius:8px;
+
   box-shadow:
   0 2px 6px
   rgba(0,0,0,.1);
 }
+
 .food img{
   display:block;
+
   width:100%;
+
   height:90px;
+
   object-fit:cover;
 }
+
 .food h3{
-  margin:7px 3px 2px;
+  margin:
+  7px 3px 2px;
+
   text-align:center;
+
   color:#b8912e;
+
   font-size:13px;
 }
+
 .food p{
-  margin:0 3px 8px;
+  margin:
+  0 3px 8px;
+
   text-align:center;
+
   color:#777;
+
   font-size:11px;
 }
-/* ================================
-   商品列表
-================================ */
-.menu-item{
+
+
+/* ==================================================
+   商品
+================================================== */
+
+.item{
   display:flex;
+
   align-items:center;
+
   justify-content:space-between;
+
   gap:7px;
+
   min-height:48px;
-  padding:8px 2px;
+
+  padding:7px 2px;
+
   border-bottom:
   1px solid #eee;
 }
-.menu-item:last-child{
+
+.item:last-child{
   border-bottom:none;
 }
-.menu-name{
+
+.item > span{
   flex:1;
+
   min-width:0;
+
   font-size:14px;
+
   line-height:1.4;
 }
-.menu-price{
-  color:#b8912e;
-  font-size:14px;
-  font-weight:bold;
-}
-/* ================================
-   商品加減按鈕
-================================ */
-.qty-control{
+
+
+/* ==================================================
+   商品加減
+================================================== */
+
+.qty{
   display:flex;
+
   align-items:center;
+
   gap:5px;
+
   flex-shrink:0;
 }
-.qty-btn{
+
+.qty button{
   width:30px;
+
   height:30px;
+
   padding:0;
+
   border:
   1px solid #d4af37;
+
   border-radius:6px;
+
   background:#2f2f2f;
+
   color:#d4af37;
-  font-size:18px;
+
+  font-size:17px;
+
   line-height:28px;
+
   cursor:pointer;
+
   -webkit-tap-highlight-color:transparent;
 }
-.qty-btn:active{
+
+.qty button:active{
   transform:scale(.9);
 }
-.qty-number{
-  width:20px;
+
+.qty span{
+  width:18px;
+
   text-align:center;
-  font-size:14px;
-  font-weight:bold;
-}
-/* ================================
-   購物車
-================================ */
-.cart-empty{
-  padding:15px 5px;
-  text-align:center;
-  color:#999;
-  font-size:14px;
-}
-.cart-item{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:7px;
-  padding:9px 0;
-  border-bottom:
-  1px solid #eee;
-}
-.cart-info{
-  flex:1;
-  min-width:0;
-}
-.cart-name{
-  font-size:14px;
-  font-weight:bold;
-  line-height:1.4;
-  word-break:break-word;
-}
-.cart-detail{
-  margin-top:3px;
-  color:#777;
-  font-size:12px;
-}
-.cart-actions{
-  display:flex;
-  align-items:center;
-  gap:4px;
-  flex-shrink:0;
-}
-.cart-action-btn{
-  width:28px;
-  height:28px;
-  padding:0;
-  border:none;
-  border-radius:5px;
-  background:#2f2f2f;
-  color:#d4af37;
-  font-size:17px;
-  cursor:pointer;
-}
-.cart-delete{
-  background:#dc3545;
-  color:#fff;
-}
-.cart-total{
-  display:flex;
-  justify-content:space-between;
-  margin-top:10px;
-  padding-top:10px;
-  border-top:
-  2px solid #d4af37;
-  font-size:16px;
-  font-weight:bold;
-  color:#b8912e;
-}
-/* ================================
-   訂購資料
-================================ */
-.form-group{
-  margin-bottom:8px;
-}
-.form-label{
-  display:block;
-  margin-bottom:4px;
+
   font-size:13px;
+
   font-weight:bold;
-  color:#555;
 }
-.form-input{
+
+
+/* ==================================================
+   購物車
+================================================== */
+
+#cartList{
+  min-height:25px;
+
+  font-size:14px;
+}
+
+#cartList .item{
+  min-height:50px;
+
+  padding:
+  8px 0;
+}
+
+#cartList .item span{
+  line-height:1.5;
+}
+
+#cartList button{
+  flex-shrink:0;
+
+  width:30px;
+
+  height:30px;
+
+  padding:0;
+
+  border:none;
+
+  border-radius:6px;
+
+  background:#dc3545;
+
+  color:#fff;
+
+  font-size:14px;
+}
+
+
+/* ==================================================
+   輸入資料
+================================================== */
+
+input,
+textarea{
+  display:block;
+
   width:100%;
-  padding:10px;
+
+  padding:9px;
+
+  margin:
+  6px 0;
+
   border:
   1px solid #ddd;
+
   border-radius:7px;
+
   outline:none;
-  font-size:15px;
+
   background:#fff;
+
+  color:#333;
+
+  font-size:15px;
+
   -webkit-appearance:none;
 }
-.form-input:focus{
+
+textarea{
+  min-height:65px;
+
+  resize:vertical;
+}
+
+input:focus,
+textarea:focus{
   border-color:#d4af37;
+
   box-shadow:
   0 0 0 2px
   rgba(212,175,55,.12);
 }
-textarea.form-input{
-  min-height:70px;
-  resize:vertical;
-}
-/* ================================
-   底部結帳列
-================================ */
+
+
+/* ==================================================
+   底部固定結帳列
+================================================== */
+
 .checkout-bar{
-position:fixed;
-z-index:9999;
-left:0;
-right:0;
-bottom:0;
 
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:8px;
+  position:fixed !important;
 
-padding:8px 10px;
+  left:0 !important;
 
-background:#2f2f2f;
-color:#fff;
+  right:0 !important;
 
-border-top:2px solid #d4af37;
+  bottom:0 !important;
 
-box-shadow:
-0 -2px 8px
-rgba(0,0,0,.18);
+  z-index:99999 !important;
+
+  width:100% !important;
+
+  height:58px !important;
+
+  display:flex !important;
+
+  flex-direction:row !important;
+
+  align-items:center !important;
+
+  justify-content:space-between !important;
+
+  gap:8px !important;
+
+  padding:
+  7px 10px !important;
+
+  background:#2f2f2f !important;
+
+  color:#fff !important;
+
+  border-top:
+  2px solid #d4af37 !important;
+
+  box-shadow:
+  0 -2px 10px
+  rgba(0,0,0,.25) !important;
 }
 
-/* 總金額文字 */
+
+/* ==================================================
+   底部總金額
+================================================== */
+
 .checkout-bar > div{
-flex:1;
 
-color:#fff;
+  display:block !important;
 
-font-size:13px;
+  width:auto !important;
 
-white-space:nowrap;
+  height:auto !important;
+
+  flex:1 !important;
+
+  color:#fff !important;
+
+  font-size:13px !important;
+
+  line-height:1.3 !important;
+
+  white-space:nowrap !important;
 }
 
-/* 金額數字 */
+
+/* ==================================================
+   金額數字
+================================================== */
+
 #total{
-font-size:21px;
 
-color:#d4af37;
+  display:inline !important;
 
-font-weight:bold;
+  width:auto !important;
+
+  height:auto !important;
+
+  color:#d4af37 !important;
+
+  font-size:21px !important;
+
+  font-weight:bold !important;
 }
 
-/* 送出訂單按鈕 */
+
+/* ==================================================
+   送出訂單按鈕
+================================================== */
+
 .checkout-bar button{
-flex-shrink:0;
 
-min-width:105px;
+  display:flex !important;
 
-padding:10px 12px;
+  align-items:center !important;
 
-border:none;
+  justify-content:center !important;
 
-border-radius:7px;
+  flex-shrink:0 !important;
 
-background:#d4af37;
+  width:110px !important;
 
-color:#222;
+  min-width:110px !important;
 
-font-size:14px;
+  max-width:110px !important;
 
-font-weight:bold;
+  height:40px !important;
+
+  min-height:40px !important;
+
+  margin:0 !important;
+
+  padding:0 !important;
+
+  background:#d4af37 !important;
+
+  color:#222 !important;
+
+  border:none !important;
+
+  border-radius:7px !important;
+
+  font-size:14px !important;
+
+  font-weight:bold !important;
+
+  line-height:40px !important;
+
+  text-align:center !important;
+
+  cursor:pointer !important;
+
+  opacity:1 !important;
+
+  visibility:visible !important;
 }
 
-/* 按鈕按下效果 */
 .checkout-bar button:active{
-transform:scale(.96);
-}
 
-/* 暫停接單 */
-.checkout-bar button:disabled{
-background:#888;
-
-color:#fff;
-
-cursor:not-allowed;
-
-opacity:.9;
-}
-
-/* iPhone 小螢幕 */
-@media(max-width:390px){
-
-.checkout-bar{
-padding:7px 8px;
-}
-
-.checkout-bar > div{
-font-size:12px;
-}
-
-#total{
-font-size:20px;
-}
-
-.checkout-bar button{
-min-width:100px;
-
-padding:9px 10px;
-font-size:13px;
-
-}
-
-}
-.submit-btn{
-  flex-shrink:0;
-  min-width:110px;
-  padding:10px 13px;
-  border:none;
-  border-radius:7px;
-  background:#d4af37;
-  color:#222;
-  font-size:15px;
-  font-weight:bold;
-  cursor:pointer;
-}
-.submit-btn:active{
   transform:scale(.96);
 }
-.submit-btn:disabled{
-  background:#888;
-  color:#fff;
-  cursor:not-allowed;
+
+.checkout-bar button:disabled{
+
+  background:#888 !important;
+
+  color:#fff !important;
+
+  cursor:not-allowed !important;
+
+  opacity:.9 !important;
 }
-/* ================================
-   iPhone 小螢幕
-================================ */
+
+
+/* ==================================================
+   小螢幕 iPhone
+================================================== */
+
 @media(max-width:390px){
+
   body{
-    font-size:14px;
+    padding-bottom:72px;
   }
-  .wrap{
-    padding:6px;
-  }
+
   header{
     padding:
-    18px 10px 15px;
+    18px 8px 15px;
   }
+
   .brand-logo{
     font-size:27px;
+
     letter-spacing:2px;
   }
+
   .brand-sub{
-    font-size:11px;
+    font-size:10px;
   }
+
   .brand-info{
     font-size:11px;
   }
-  .brand-phone{
-    font-size:13px;
-    padding:
-    6px 14px;
+
+  .wrap{
+    padding:6px;
   }
+
   .card{
     padding:9px;
+
     margin-bottom:7px;
   }
-  .card-title{
+
+  .card h2{
     font-size:15px;
   }
-  .order-btn{
-    min-height:42px;
-    font-size:14px;
+
+  .bigbtn{
+    min-height:41px;
+
+    font-size:13px;
   }
+
   .food img{
     height:75px;
   }
+
   .food h3{
     font-size:12px;
   }
+
   .food p{
     font-size:10px;
   }
-  .menu-name{
+
+  .item > span{
     font-size:13px;
   }
-  .qty-btn{
+
+  .qty button{
     width:29px;
+
     height:29px;
   }
-  .checkout-total strong{
-    font-size:20px;
+
+  .checkout-bar{
+
+    height:56px !important;
+
+    padding:
+    6px 8px !important;
   }
-  .submit-btn{
-    min-width:105px;
-    font-size:14px;
+
+  .checkout-bar > div{
+
+    font-size:12px !important;
   }
+
+  #total{
+
+    font-size:20px !important;
+  }
+
+  .checkout-bar button{
+
+    width:105px !important;
+
+    min-width:105px !important;
+
+    max-width:105px !important;
+
+    height:38px !important;
+
+    min-height:38px !important;
+
+    line-height:38px !important;
+
+    font-size:13px !important;
+  }
+
 }
-/* ================================
+
+
+/* ==================================================
    平板 / 電腦
-================================ */
+================================================== */
+
 @media(min-width:601px){
+
   .wrap{
     max-width:760px;
-    padding:
-    14px;
+
+    padding:14px;
   }
+
   .card{
     padding:15px;
   }
-  .order-links{
-    display:grid;
-    grid-template-columns:
-    repeat(2,1fr);
-    gap:10px;
+
+  .bigbtn{
+    min-height:45px;
+
+    font-size:15px;
   }
-  .btn-self{
-    grid-column:
-    1 / -1;
-  }
+
   .popular{
-    grid-template-columns:
-    repeat(3,1fr);
+    gap:12px;
   }
+
   .food img{
     height:150px;
   }
+
 }
+
 </style>
 </head>
+
+
 <body>
+
+
 <!-- ==================================================
-     品牌 Header
+     店家 Header
 ================================================== -->
+
 <header>
-  <h1 class="brand-logo">
-    🍜 初萊食麵
-  </h1>
-  <div class="brand-sub">
-    肉燥乾麵｜關東煮｜水餃｜在地好味道
-  </div>
-  <div class="brand-info">
+
+<h1 class="brand-logo">
+🍜 初萊食麵
+</h1>
+
+<div class="brand-sub">
+肉燥乾麵｜關東煮｜水餃｜在地好味道
+</div>
+
+<div class="brand-info">
+
 📍 高雄市三民區遼寧二街168號
+
 <br>
+
 🕒 週一～週五 11:30-20:30
+
 <br>
+
 🕒 週六～週日 11:30-18:30
-  </div>
+
+</div>
 
 <a
-class=“brand-phone”
-href=“tel:0903392687”
-
+class="brand-phone"
+href="tel:0903392687"
+>
 📞 0903-392687
-  </a>
-  <br>
-  <div
-    class="status"
-    id="status"
-  >
-    🟢 正常營業中
-  </div>
+</a>
+
+<br>
+
+<div
+class="status"
+id="status"
+>
+🟢 正常營業中
+</div>
+
 </header>
-<div class="wrap">
+
+
 <!-- ==================================================
-     主圖
+     主內容
 ================================================== -->
+
+<div class="wrap">
+
+
+<!-- 店家圖片 -->
+
 <div class="card">
 
 <img
-class=“main-image”
-src=“https://res.cloudinary.com/dh1yjrfyr/image/upload/q_auto,f_auto/IMG_3424_ob2qm4.jpg”
-alt=“初萊食麵”
+src="https://res.cloudinary.com/dh1yjrfyr/image/upload/q_auto,f_auto/IMG_3424_ob2qm4.jpg"
+alt="初萊食麵"
+>
 
 </div>
-<!-- ==================================================
-     公告
-================================================== -->
+
+
+<!-- 公告 -->
+
 <div class="card">
-  <h2 class="card-title">
-    📢 公告
-  </h2>
-  <div
-    class="notice-box"
-    id="notice"
-  >
-    歡迎使用線上點餐
-  </div>
+
+<h2>📢 公告</h2>
+
+<div id="notice">
+歡迎使用線上點餐
 </div>
+
+</div>
+
+
 <!-- ==================================================
      線上點餐入口
 ================================================== -->
+
 <div class="card">
-  <h2 class="card-title">
-    🚀 線上點餐入口
-  </h2>
-  <div class="order-links">
-<!-- 店內點餐 -->
+
+<h2>🚀 線上點餐入口</h2>
+
+
 <a
-  class="order-btn btn-self"
-  href="#cat1"
+class="bigbtn self"
+href="#cat1"
 >
-  🍜 店內點餐（最優惠／免平台抽成）
+🍜 店內點餐（最優惠 / 免平台抽成）
 </a>
-<!-- Uber Eats -->
+
+
 <a
-  class="order-btn btn-uber"
-  href="https://www.ubereats.com/tw/store/%E5%88%9D%E8%90%8A%E9%A3%9F%E9%BA%B5%7C%E5%A4%A7%E8%85%B8%E9%A6%99%E8%85%B8%E3%80%81%E9%97%9C%E6%9D%B1%E7%85%AE/9-pIirZHWkWxCprbnjgzBQ?diningMode=PICKUP&ps=1&sc=SEARCH_SUGGESTION"
-  target="_blank"
-  rel="noopener noreferrer"
+class="bigbtn uber"
+href="https://www.ubereats.com/tw/store/初萊食麵|大腸香腸、關東煮/9-pIirZHWkWxCprbnjgzBQ?diningMode=PICKUP&ps=1&sc=SEARCH_SUGGESTION"
+target="_blank"
 >
-  🛵 Uber Eats
+🚴 Uber Eats
 </a>
-<!-- foodpanda -->
+
+
 <a
-  class="order-btn btn-panda"
-  href="https://foodpanda.com.tw/restaurant/o32y/chu-lai-shi-mian"
-  target="_blank"
-  rel="noopener noreferrer"
+class="bigbtn panda"
+href="https://foodpanda.com.tw/restaurant/o32y/chu-lai-shi-mian"
+target="_blank"
 >
-  🛵 foodpanda
+🛵 foodpanda
 </a>
-<!-- foodomo -->
+
+
 <a
-  class="order-btn btn-foodomo"
-  href="https://www.foodomo.com/store?stid=163737&number=0903392687"
-  target="_blank"
-  rel="noopener noreferrer"
+class="bigbtn foodmo"
+href="https://www.foodomo.com/store?stid=163737&number=0903392687"
+target="_blank"
 >
-  🛵 foodomo
+🛵 foodomo
 </a>
-<!-- 電話 -->
+
+
 <a
-  class="order-btn btn-phone"
-  href="tel:0903392687"
+class="bigbtn phone"
+href="tel:0903392687"
 >
-  📞 電話訂餐
+📞 電話訂餐
 </a>
-<!-- Google 地圖 -->
+
+
 <a
-  class="order-btn btn-map"
-  href="https://maps.app.goo.gl/HKeMyZ1iDuBQ5QWQ9?g_st=ic"
-  target="_blank"
-  rel="noopener noreferrer"
+class="bigbtn map"
+href="https://maps.app.goo.gl/HKeMyZ1iDuBQ5QWQ9?g_st=ic"
+target="_blank"
 >
-  📍 Google 地圖
+📍 Google 地圖
 </a>
-<!-- 五星好評 -->
+
+
 <a
-  class="order-btn btn-review"
-  href="https://g.page/r/CQl3fUEN40_CEBM/review"
-  target="_blank"
-  rel="noopener noreferrer"
+class="bigbtn map"
+href="https://g.page/r/CQl3fUEN40_CEBM/review"
+target="_blank"
 >
-  ⭐ 我要給五星好評
+⭐ 我要給五星好評
 </a>
-  </div>
+
 </div>
+
+
 <!-- ==================================================
      人氣推薦
 ================================================== -->
+
 <div class="card">
-  <h2 class="card-title">
-    🔥 人氣推薦
-  </h2>
-  <div class="popular">
+
+<h2>🔥 人氣推薦</h2>
+
+<div class="popular">
+
+
 <div class="food">
-  <img
-    src="IMG_3516.jpeg"
-    alt="肉燥乾麵"
-    onerror="this.style.display='none'"
-  >
-  <h3>
-    🍜 肉燥乾麵
-  </h3>
-  <p>
-    招牌必點
-  </p>
+
+<img
+src="IMG_3516.jpeg"
+alt="肉燥乾麵"
+>
+
+<h3>🍜 肉燥乾麵</h3>
+
+<p>招牌必點</p>
+
 </div>
+
+
 <div class="food">
-  <img
-    src="IMG_3515.jpeg"
-    alt="水餃"
-    onerror="this.style.display='none'"
-  >
-  <h3>
-    🥟 水餃
-  </h3>
-  <p>
-    每日現煮
-  </p>
+
+<img
+src="IMG_3515.jpeg"
+alt="水餃"
+>
+
+<h3>🥟 水餃</h3>
+
+<p>每日現煮</p>
+
 </div>
+
+
 <div class="food">
-  <img
-    src="IMG_3517.jpeg"
-    alt="關東煮"
-    onerror="this.style.display='none'"
-  >
-  <h3>
-    🍢 關東煮
-  </h3>
-  <p>
-    人氣推薦
-  </p>
+
+<img
+src="IMG_3517.jpeg"
+alt="黑輪"
+>
+
+<h3>🍢 關東煮</h3>
+
+<p>人氣推薦</p>
+
 </div>
-  </div>
+
+
 </div>
+
+</div>
+
+
 <!-- ==================================================
      麵類
 ================================================== -->
+
 <div class="card">
-  <h2 class="card-title">
-    🍜 麵類
-  </h2>
-  <div id="cat1"></div>
+
+<h2>🍜 麵類</h2>
+
+<div id="cat1"></div>
+
 </div>
+
+
 <!-- ==================================================
      關東煮
 ================================================== -->
+
 <div class="card">
-  <h2 class="card-title">
-    🍢 關東煮
-  </h2>
-  <div id="cat2"></div>
+
+<h2>🍢 關東煮</h2>
+
+<div id="cat2"></div>
+
 </div>
+
+
 <!-- ==================================================
      小菜
 ================================================== -->
+
 <div class="card">
-  <h2 class="card-title">
-    🥚 小菜
-  </h2>
-  <div id="cat3"></div>
+
+<h2>🥚 小菜</h2>
+
+<div id="cat3"></div>
+
 </div>
+
+
 <!-- ==================================================
      湯類
 ================================================== -->
+
 <div class="card">
-  <h2 class="card-title">
-    🍲 湯類
-  </h2>
-  <div id="cat4"></div>
+
+<h2>🍲 湯類</h2>
+
+<div id="cat4"></div>
+
 </div>
+
+
 <!-- ==================================================
      其他
 ================================================== -->
+
 <div class="card">
-  <h2 class="card-title">
-    🍚 其他
-  </h2>
-  <div id="cat5"></div>
+
+<h2>🍚 其他</h2>
+
+<div id="cat5"></div>
+
 </div>
+
+
 <!-- ==================================================
      購物車
 ================================================== -->
+
 <div class="card">
-  <h2 class="card-title">
-    🛒 購物車
-  </h2>
-  <div id="cartList">
-<div class="cart-empty">
-  尚未選擇商品
+
+<h2>🛒 購物車</h2>
+
+<div id="cartList">
+尚未選擇商品
 </div>
-  </div>
+
 </div>
+
+
 <!-- ==================================================
-     訂購資料
+     訂購資訊
 ================================================== -->
+
 <div class="card">
-  <h2 class="card-title">
-    📝 訂購資訊
-  </h2>
-  <div class="form-group">
-<label class="form-label">
-  姓名
-</label>
+
+<h2>📝 訂購資訊</h2>
+
 <input
-  class="form-input"
-  id="name"
-  placeholder="請輸入姓名"
+id="name"
+placeholder="姓名（必填）"
 >
-  </div>
-  <div class="form-group">
-<label class="form-label">
-  電話
-</label>
+
 <input
-  class="form-input"
-  id="phone"
-  type="tel"
-  inputmode="numeric"
-  placeholder="例如：0903392687"
+id="phone"
+placeholder="電話（必填）"
+inputmode="tel"
 >
-  </div>
-  <div class="form-group">
-<label class="form-label">
-  備註
-</label>
+
 <textarea
-  class="form-input"
-  id="note"
-  placeholder="例如：不要香菜、餐具需求..."
+id="note"
+placeholder="備註"
 ></textarea>
-  </div>
-  <div class="form-group">
-<label class="form-label">
-  預約取餐時間
-</label>
+
 <input
-  class="form-input"
-  id="time"
-  type="time"
+id="time"
+type="time"
 >
-  </div>
+
 </div>
+
+
 </div>
+
+
 <!-- ==================================================
-     底部購物車
+     底部固定結帳
 ================================================== -->
+
 <div class="checkout-bar">
-  <div class="checkout-total">
-總金額
-<br>
-<strong>
-  $<span id="total">0</span>
-</strong>
-  </div>
+
+<div>
+總金額：
+<span id="total">0</span>
+元
+</div>
 
 <button
-class=“submit-btn”
-id=“submitBtn”
-onclick=“sendOrder()”
-
+id="submitBtn"
+onclick="sendOrder()"
+>
 送出訂單
-  </button>
+</button>
+
 </div>
+
+
+<!-- ==================================================
+     JavaScript
+================================================== -->
+
 <script>
+
+
 /* ==================================================
    Google Apps Script
 ================================================== */
+
 const SCRIPT_URL =
 "https://script.google.com/macros/s/AKfycbzYMTH533Tn9GlVNgPn7m8fZqTGDA6_Nu9nJyLMdwgml8bM4R_jh6BgbyuAT5OJzBHTHw/exec";
-/* ==================================================
-   商品資料
-================================================== */
-const data = [
-  ["cat1","肉燥乾麵(小)",55],
-  ["cat1","肉燥乾麵(大)",65],
-  ["cat1","肉燥米粉(小)",55],
-  ["cat1","肉燥米粉(大)",65],
-  ["cat1","湯麵(小)",55],
-  ["cat1","湯麵(大)",65],
-  ["cat1","麻醬麵(小)",60],
-  ["cat1","麻醬麵(大)",70],
-  ["cat1","鮮蝦餛飩乾麵(小)",70],
-  ["cat1","鮮蝦餛飩乾麵(大)",80],
-  ["cat1","鮮蝦餛飩湯麵(小)",70],
-  ["cat1","鮮蝦餛飩湯麵(大)",80],
-  ["cat2","黑輪",10],
-  ["cat2","米血",10],
-  ["cat2","魚板",10],
-  ["cat2","蛋丸",10],
-  ["cat2","菜頭",15],
-  ["cat2","竹輪",15],
-  ["cat2","貢丸",20],
-  ["cat2","福州丸",20],
-  ["cat2","黃金魚板",20],
-  ["cat2","高麗菜捲",20],
-  ["cat2","苦瓜封",40],
-  ["cat3","麵輪",10],
-  ["cat3","滷蛋",15],
-  ["cat3","荷包蛋",15],
-  ["cat3","蔥蛋",40],
-  ["cat3","香腸",25],
-  ["cat3","手工大腸",75],
-  ["cat4","菜頭湯",35],
-  ["cat4","魚丸湯",35],
-  ["cat4","貢丸湯",40],
-  ["cat4","鮮蝦餛飩湯",45],
-  ["cat5","肉燥飯",35],
-  ["cat5","白飯",15],
-  ["cat5","燙青菜",40],
-  ["cat5","水餃",50]
-];
+
+
 /* ==================================================
    購物車
 ================================================== */
+
 let cart = [];
+
+
 /* ==================================================
-   建立商品列表
+   商品資料
 ================================================== */
-data.forEach(
-  (item,index)=>{
-    const category =
-      document.getElementById(
-        item[0]
-      );
-    if(!category){
-      return;
-    }
-    category.insertAdjacentHTML(
-      "beforeend",
-      `
-      <div class="menu-item">
-        <div class="menu-name">
-          ${item[1]}
-          <span class="menu-price">
-            $${item[2]}
-          </span>
-        </div>
-        <div class="qty-control">
-          <button
-            class="qty-btn"
-            onclick="minus(${index})"
-          >
-            −
-          </button>
-          <span
-            class="qty-number"
-            id="qty${index}"
-          >
-            0
-          </span>
-          <button
-            class="qty-btn"
-            onclick="addItem(${index})"
-          >
-            ＋
-          </button>
-        </div>
-      </div>
-      `
-    );
-  }
-);
+
+const data = [
+
+["cat1","肉燥乾麵(小)",55],
+["cat1","肉燥乾麵(大)",65],
+
+["cat1","肉燥米粉(小)",55],
+["cat1","肉燥米粉(大)",65],
+
+["cat1","湯麵(小)",55],
+["cat1","湯麵(大)",65],
+
+["cat1","麻醬麵(小)",60],
+["cat1","麻醬麵(大)",70],
+
+["cat1","鮮蝦餛飩乾麵(小)",70],
+["cat1","鮮蝦餛飩乾麵(大)",80],
+
+["cat1","鮮蝦餛飩湯麵(小)",70],
+["cat1","鮮蝦餛飩湯麵(大)",80],
+
+
+["cat2","黑輪",10],
+["cat2","米血",10],
+["cat2","魚板",10],
+["cat2","蛋丸",10],
+
+["cat2","菜頭",15],
+["cat2","竹輪",15],
+
+["cat2","貢丸",20],
+["cat2","福州丸",20],
+
+["cat2","黃金魚板",20],
+["cat2","高麗菜捲",20],
+
+["cat2","苦瓜封",40],
+
+
+["cat3","麵輪",10],
+["cat3","滷蛋",15],
+["cat3","荷包蛋",15],
+["cat3","蔥蛋",40],
+["cat3","香腸",25],
+["cat3","手工大腸",75],
+
+
+["cat4","菜頭湯",35],
+["cat4","魚丸湯",35],
+["cat4","貢丸湯",40],
+["cat4","鮮蝦餛飩湯",45],
+
+
+["cat5","肉燥飯",35],
+["cat5","白飯",15],
+["cat5","燙青菜",40],
+["cat5","水餃",50]
+
+];
+
+
 /* ==================================================
-   點擊商品 + 號
+   畫商品
 ================================================== */
-function addItem(index){
-  const item =
-    data[index];
-  /* 麵類 */
-  if(item[0] === "cat1"){
-    openNoodleModal(index);
-    return;
-  }
-  /* 關東煮 */
-  if(item[0] === "cat2"){
-    openOdenModal(index);
-    return;
-  }
-  /* 其他商品 */
-  addToCart(
-    item[1],
-    item[2],
-    index
+
+data.forEach((m,i)=>{
+
+  const el =
+  document.getElementById(m[0]);
+
+  if(!el) return;
+
+
+  el.insertAdjacentHTML(
+    "beforeend",
+
+`
+<div class="item">
+
+<span>
+${m[1]} $${m[2]}
+</span>
+
+<div class="qty">
+
+<button
+onclick="minus(${i})"
+>
+−
+</button>
+
+<span id="qty${i}">
+0
+</span>
+
+<button
+onclick="addItem(${i})"
+>
+＋
+</button>
+
+<input
+type="hidden"
+id="i${i}"
+value="0"
+>
+
+</div>
+
+</div>
+`
+
   );
+
+});
+
+
+/* ==================================================
+   加入商品
+================================================== */
+
+function addItem(i){
+
+  const item =
+  data[i];
+
+
+  switch(item[0]){
+
+    case "cat1":
+
+      openNoodleModal(i);
+
+      break;
+
+
+    case "cat2":
+
+      openOdenModal(i);
+
+      break;
+
+
+    default:
+
+      plus(i);
+
+      break;
+
+  }
+
 }
+
+
 /* ==================================================
    麵類選項
 ================================================== */
-function openNoodleModal(index){
-  const item =
-    data[index];
-  const spicy =
-    prompt(
-      "🍜 請選擇辣度\n\n" +
-      "1 = 不辣\n" +
-      "2 = 小辣 🌶️\n" +
-      "3 = 中辣 🌶️🌶️\n" +
-      "4 = 大辣 🌶️🌶️🌶️"
-    );
-  if(spicy === null){
-    return;
-  }
+
+function openNoodleModal(i){
+
+  let spicy =
+  prompt(
+`🍜 請選擇辣度
+
+1 = 不辣
+2 = 小辣 🌶️
+3 = 中辣 🌶️🌶️
+4 = 大辣 🌶️🌶️🌶️`
+  );
+
+
   let level =
-    "不辣";
-  if(spicy === "2"){
-    level =
+  "不辣";
+
+
+  switch(spicy){
+
+    case "2":
+
+      level =
       "小辣🌶️";
-  }
-  if(spicy === "3"){
-    level =
+
+      break;
+
+
+    case "3":
+
+      level =
       "中辣🌶️🌶️";
-  }
-  if(spicy === "4"){
-    level =
+
+      break;
+
+
+    case "4":
+
+      level =
       "大辣🌶️🌶️🌶️";
+
+      break;
+
   }
-  const additions = [];
+
+
+  let add = [];
+
+
   if(
     confirm(
       "🥚 加荷包蛋 +15元？"
     )
   ){
-    additions.push(
+
+    add.push(
       "加荷包蛋"
     );
+
   }
+
+
   if(
     confirm(
       "🥚 加滷蛋 +15元？"
     )
   ){
-    additions.push(
+
+    add.push(
       "加滷蛋"
     );
+
   }
-  let extraText =
-    "";
-  if(
-    additions.length > 0
-  ){
-    extraText =
-      "＋" +
-      additions.join("＋");
+
+
+  let extra =
+  "";
+
+
+  if(add.length > 0){
+
+    extra =
+    "＋" +
+    add.join("＋");
+
   }
-  const finalName =
-    item[1] +
-    "（" +
-    level +
-    extraText +
-    "）";
-  const finalPrice =
-    item[2] +
-    additions.length * 15;
-  addToCart(
-    finalName,
-    finalPrice,
-    index
-  );
+
+
+  const originalName =
+  data[i][1]
+  .replace(/（.*?）/g,"");
+
+
+  const originalPrice =
+  data[i][2];
+
+
+  data[i][1] =
+  originalName +
+  "（" +
+  level +
+  extra +
+  "）";
+
+
+  data[i][2] =
+  originalPrice +
+  add.length * 15;
+
+
+  plus(i);
+
 }
+
+
 /* ==================================================
    關東煮選項
 ================================================== */
-function openOdenModal(index){
-  const item =
-    data[index];
-  const sauces = [];
+
+function openOdenModal(i){
+
+  let sauce = [];
+
+
   if(
     confirm(
       "🍢 要加醬油膏嗎？"
     )
   ){
-    sauces.push(
+
+    sauce.push(
       "醬油膏"
     );
+
   }
+
+
   if(
     confirm(
       "🌶️ 要加辣椒醬嗎？"
     )
   ){
-    sauces.push(
+
+    sauce.push(
       "辣椒醬"
     );
+
   }
+
+
   if(
     confirm(
       "🍅 要加蕃茄醬嗎？"
     )
   ){
-    sauces.push(
+
+    sauce.push(
       "蕃茄醬"
     );
+
   }
+
+
   if(
-    sauces.length === 0
+    sauce.length === 0
   ){
-    sauces.push(
+
+    sauce.push(
       "不加醬"
     );
+
   }
-  const finalName =
-    item[1] +
-    "（" +
-    sauces.join("＋") +
-    "）";
-  addToCart(
-    finalName,
-    item[2],
-    index
-  );
+
+
+  const originalName =
+  data[i][1]
+  .replace(/（.*?）/g,"");
+
+
+  data[i][1] =
+  originalName +
+  "（" +
+  sauce.join("＋") +
+  "）";
+
+
+  plus(i);
+
 }
+
+
 /* ==================================================
    加入購物車
 ================================================== */
-function addToCart(
-  name,
-  price,
-  dataIndex
-){
-  const existing =
-    cart.find(
-      item =>
-      item.name === name &&
-      item.price === price &&
-      item.dataIndex === dataIndex
-    );
-  if(existing){
-    existing.qty++;
-  }else{
-    cart.push({
-      name:name,
-      price:price,
-      qty:1,
-      dataIndex:dataIndex
-    });
-  }
+
+function plus(i){
+
+  const item = {
+
+    name:
+    data[i][1],
+
+    price:
+    data[i][2],
+
+    qty:
+    1
+
+  };
+
+
+  cart.push(item);
+
+
   renderCart();
-  updateAll();
+
+
+  calc();
+
 }
+
+
 /* ==================================================
    顯示購物車
 ================================================== */
+
 function renderCart(){
+
   const box =
-    document.getElementById(
-      "cartList"
-    );
+  document.getElementById(
+    "cartList"
+  );
+
+
   if(
     cart.length === 0
   ){
-    box.innerHTML = `
-      <div class="cart-empty">
-        尚未選擇商品
-      </div>
-    `;
+
+    box.innerHTML =
+    "尚未選擇商品";
+
     return;
+
   }
+
+
   let html =
-    "";
+  "";
+
+
   cart.forEach(
-    (item,index)=>{
-      const subtotal =
-        item.price *
-        item.qty;
-      html += `
-        <div class="cart-item">
-          <div class="cart-info">
-            <div class="cart-name">
-              ${item.name}
-            </div>
-            <div class="cart-detail">
-              $${item.price}
-              ×
-              ${item.qty}
-              ＝
-              $${subtotal}
-            </div>
-          </div>
-          <div class="cart-actions">
-            <button
-              class="cart-action-btn"
-              onclick="cartMinus(${index})"
-            >
-              −
-            </button>
-            <span>
-              ${item.qty}
-            </span>
-            <button
-              class="cart-action-btn"
-              onclick="cartPlus(${index})"
-            >
-              ＋
-            </button>
-            <button
-              class="cart-action-btn cart-delete"
-              onclick="removeCart(${index})"
-            >
-              ×
-            </button>
-          </div>
-        </div>
-      `;
-    }
-  );
-  html += `
-    <div class="cart-total">
-      <span>
-        購物車合計
-      </span>
-      <span>
-        $${getCartTotal()} 元
-      </span>
-    </div>
-  `;
+  (item,index)=>{
+
+    html +=
+
+`
+<div class="item">
+
+<span>
+
+${item.name}
+
+<br>
+
+$${item.price}
+×
+${item.qty}
+
+</span>
+
+<button
+onclick="removeCart(${index})"
+>
+❌
+</button>
+
+</div>
+`;
+
+  });
+
+
   box.innerHTML =
-    html;
+  html;
+
 }
-/* ==================================================
-   購物車 +1
-================================================== */
-function cartPlus(index){
-  if(
-    !cart[index]
-  ){
-    return;
-  }
-  cart[index].qty++;
-  renderCart();
-  updateAll();
-}
-/* ==================================================
-   購物車 -1
-================================================== */
-function cartMinus(index){
-  if(
-    !cart[index]
-  ){
-    return;
-  }
-  cart[index].qty--;
-  if(
-    cart[index].qty <= 0
-  ){
-    cart.splice(
-      index,
-      1
-    );
-  }
-  renderCart();
-  updateAll();
-}
+
+
 /* ==================================================
    刪除購物車商品
 ================================================== */
+
 function removeCart(index){
+
   cart.splice(
     index,
     1
   );
+
+
   renderCart();
-  updateAll();
+
+
+  calc();
+
 }
+
+
 /* ==================================================
-   商品區域 -1
+   減少數量
 ================================================== */
-function minus(index){
-  for(
-    let i =
-      cart.length - 1;
-    i >= 0;
-    i--
+
+function minus(i){
+
+  const el =
+  document.getElementById(
+    "i" + i
+  );
+
+
+  if(
+    el.value > 0
   ){
-    if(
-      cart[i].dataIndex === index
-    ){
-      cart[i].qty--;
-      if(
-        cart[i].qty <= 0
-      ){
-        cart.splice(
-          i,
-          1
-        );
-      }
-      renderCart();
-      updateAll();
-      return;
-    }
+
+    el.value--;
+
   }
+
+
+  document.getElementById(
+    "qty" + i
+  ).innerText =
+  el.value;
+
+
+  calc();
+
 }
+
+
 /* ==================================================
-   計算購物車總金額
+   計算總金額
 ================================================== */
-function getCartTotal(){
-  let total =
-    0;
-  cart.forEach(
-    item=>{
-      total +=
-        item.price *
-        item.qty;
-    }
-  );
-  return total;
-}
-/* ==================================================
-   更新底部金額
-================================================== */
-function updateTotal(){
-  document
-    .getElementById(
-      "total"
-    )
-    .innerText =
-    getCartTotal();
-}
-/* ==================================================
-   更新商品數量
-================================================== */
-function updateProductQty(){
+
+function calc(){
+
+  let t =
+  0;
+
+
   data.forEach(
-    (item,index)=>{
-      let qty =
-        0;
-      cart.forEach(
-        cartItem=>{
-          if(
-            cartItem.dataIndex === index
-          ){
-            qty +=
-              cartItem.qty;
-          }
-        }
-      );
-      const element =
-        document.getElementById(
-          "qty" + index
-        );
-      if(element){
-        element.innerText =
-          qty;
-      }
-    }
-  );
+  (m,i)=>{
+
+    const q =
+    +document.getElementById(
+      "i" + i
+    ).value || 0;
+
+
+    t +=
+    q * m[2];
+
+  });
+
+
+  document.getElementById(
+    "total"
+  ).innerText =
+  t;
+
 }
+
+
 /* ==================================================
-   統一更新
+   載入營業設定
 ================================================== */
-function updateAll(){
-  updateTotal();
-  updateProductQty();
-}
-/* ==================================================
-   載入後台設定
-================================================== */
+
 async function loadSetting(){
+
   try{
-    const response =
-      await fetch(
-        SCRIPT_URL
-      );
+
+    const res =
+    await fetch(
+      SCRIPT_URL
+    );
+
+
     const setting =
-      await response.json();
-    document
-      .getElementById(
-        "notice"
-      )
-      .innerText =
-      setting.notice ||
-      "歡迎使用線上點餐";
+    await res.json();
+
+
+    document.getElementById(
+      "notice"
+    ).innerText =
+    setting.notice || "";
+
+
     if(
       setting.status === "暫停"
     ){
-      const button =
-        document.getElementById(
-          "submitBtn"
-        );
-      button.disabled =
-        true;
-      button.innerText =
-        "🚫 暫停接單";
-      document
-        .getElementById(
-          "status"
-        )
-        .innerText =
-        "🔴 目前暫停接單";
+
+      const btn =
+      document.getElementById(
+        "submitBtn"
+      );
+
+
+      btn.disabled =
+      true;
+
+
+      btn.innerText =
+      "🚫 暫停接單";
+
     }
-  }catch(error){
-    console.log(
-      "載入設定失敗：",
-      error
-    );
+
   }
+
+  catch(err){
+
+    console.log(
+      "loadSetting error",
+      err
+    );
+
+  }
+
 }
+
+
 loadSetting();
+
+
 /* ==================================================
    送出訂單
 ================================================== */
+
 async function sendOrder(){
-  const button =
-    document.getElementById(
-      "submitBtn"
-    );
-  /* 防止重複點擊 */
+
+  const btn =
+  document.getElementById(
+    "submitBtn"
+  );
+
+
   if(
-    button.disabled
+    btn.disabled
   ){
+
     return;
+
   }
-  /* 檢查購物車 */
-  if(
-    cart.length === 0
-  ){
-    alert(
-      "🛒 請先選擇餐點"
-    );
-    return;
-  }
+
+
   const name =
-    document
-      .getElementById(
-        "name"
-      )
-      .value
-      .trim();
+  document
+  .getElementById(
+    "name"
+  )
+  .value
+  .trim();
+
+
   const phone =
-    document
-      .getElementById(
-        "phone"
-      )
-      .value
-      .trim();
-  const note =
-    document
-      .getElementById(
-        "note"
-      )
-      .value
-      .trim();
-  const time =
-    document
-      .getElementById(
-        "time"
-      )
-      .value;
-  /* 檢查姓名 */
-  if(
-    !name
-  ){
+  document
+  .getElementById(
+    "phone"
+  )
+  .value
+  .trim();
+
+
+  if(!name){
+
     alert(
       "請輸入姓名"
     );
-    document
-      .getElementById(
-        "name"
-      )
-      .focus();
+
     return;
+
   }
-  /* 檢查電話 */
+
+
   if(
     !/^09\d{8}$/.test(
       phone
     )
   ){
+
     alert(
-      "請輸入正確的手機號碼"
+      "電話錯誤"
     );
-    document
-      .getElementById(
-        "phone"
-      )
-      .focus();
+
     return;
+
   }
-  /* 組合訂單 */
-  const items =
-    cart.map(
-      item =>
+
+
+  let items =
+  [];
+
+  let total =
+  0;
+
+
+  /*
+     這裡改成從購物車 cart
+     取得訂單
+     避免客製化品項名稱消失
+  */
+
+  cart.forEach(
+  item=>{
+
+    items.push(
       `${item.name} x ${item.qty}`
     );
-  const total =
-    getCartTotal();
-  /* 鎖定按鈕 */
-  button.disabled =
-    true;
-  button.innerText =
-    "📤 送單中...";
-  try{
-    const response =
-      await fetch(
-        SCRIPT_URL,
-        {
-          method:
-            "POST",
-          body:
-            JSON.stringify({
-              name:
-                name,
-              phone:
-                phone,
-              time:
-                time,
-              note:
-                note,
-              items:
-                items.join("\n"),
-              total:
-                total
-            })
-        }
-      );
-    console.log(
-      await response.text()
+
+
+    total +=
+    item.price *
+    item.qty;
+
+  });
+
+
+  if(
+    items.length === 0
+  ){
+
+    alert(
+      "請選餐"
     );
-    const summary = `
+
+    return;
+
+  }
+
+
+  btn.disabled =
+  true;
+
+
+  btn.innerText =
+  "📤 訂單送出中...";
+
+
+  try{
+
+    const res =
+    await fetch(
+      SCRIPT_URL,
+      {
+
+        method:
+        "POST",
+
+        body:
+        JSON.stringify({
+
+          name:
+          name,
+
+          phone:
+          phone,
+
+          time:
+          document
+          .getElementById(
+            "time"
+          )
+          .value,
+
+          note:
+          document
+          .getElementById(
+            "note"
+          )
+          .value,
+
+          items:
+          items.join(
+            "\n"
+          ),
+
+          total:
+          total
+
+        })
+
+      }
+    );
+
+
+    console.log(
+      await res.text()
+    );
+
+
+    const orderSummary =
+
+`
 🎉 訂單已送出！
+
 ━━━━━━━━━━━━
+
 ${items.join("\n")}
+
 ━━━━━━━━━━━━
+
 💰 合計：${total} 元
+
 ⏰ 取餐時間：
-${time || "即時取餐"}
+${document.getElementById("time").value || "即時"}
+
 📝 備註：
-${note || "無"}
+${document.getElementById("note").value || "無"}
+
 ❤️ 感謝您支持初萊食麵！
 `;
-    button.innerText =
-      "✅ 已送出";
+
+
+    btn.innerText =
+    "✅ 已送出";
+
+
     alert(
-      summary
+      orderSummary
     );
+
+
     location.reload();
-  }catch(error){
-    console.error(
-      "送單錯誤：",
-      error
-    );
-    button.disabled =
-      false;
-    button.innerText =
-      "送出訂單";
-    alert(
-      "❌ 送單失敗！\n\n" +
-      "請確認網路連線後再試一次。"
-    );
+
   }
+
+
+  catch(err){
+
+    console.log(
+      "送單錯誤",
+      err
+    );
+
+
+    btn.disabled =
+    false;
+
+
+    btn.innerText =
+    "送出訂單";
+
+
+    alert(
+      "送單失敗，請再試一次！"
+    );
+
+  }
+
 }
+
 </script>
+
+
 <!-- ==================================================
      Google Analytics
 ================================================== -->
+
 <script
-  async
-  src="https://www.googletagmanager.com/gtag/js?id=G-8VF77M6KYM"
-></script>
+async
+src="https://www.googletagmanager.com/gtag/js?id=G-8VF77M6KYM"
+>
+</script>
+
 <script>
+
 window.dataLayer =
-  window.dataLayer || [];
+window.dataLayer || [];
+
+
 function gtag(){
+
   dataLayer.push(
     arguments
   );
+
 }
+
+
 gtag(
   "js",
   new Date()
 );
+
+
 gtag(
   "config",
   "G-8VF77M6KYM"
 );
+
 </script>
+
+
 </body>
 </html>
